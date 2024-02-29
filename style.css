@@ -16,7 +16,7 @@ header {
     width: 100%;
     position: fixed;
     align-items: center;
-    padding: 20px 5%;
+    padding: 12px 5%;
     top: 0;
     display: block;
     z-index: 2000;
@@ -106,6 +106,42 @@ li a {
     }
 }
 
+.sale-container {
+    position: relative;
+    width: 100%;
+    z-index: 2;
+}
+
+.sale-icon {
+    top: -30px;
+    left: -50px;
+    position: absolute;
+    width: 110px;
+    box-sizing: border-box;
+    overflow: hidden;
+    animation: float 2s ease-in-out infinite;
+}
+
+#sale1 {
+    animation: float 2.5s ease-in-out infinite;
+}
+
+#sale2 {
+    animation: float 1.5s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }    
+    50% {
+        transform: translateY(-20px);
+    }    
+    100% {
+        transform: translateY(0px);
+    }
+}
+
 /* 
 .banner-1 {
     display: block;
@@ -132,6 +168,10 @@ li a {
     margin: 15px 15px;
 }
 .box-1 h1{
+    padding: 10px 0;
+    color: white;
+    font-weight: 600;
+    font-size: 30px;
     text-align: center;
 }
 
@@ -157,9 +197,10 @@ li a {
 }
 
 .box-1-1 {
-    padding-top: 20px;
     background-color: #f2f2f2;
-    padding-bottom: 40px;
+    margin-top: 25px;
+    padding: 50px 10%;
+
 }
 
 .box-1-1 ul{
@@ -269,11 +310,13 @@ footer {
 }
 
 footer h4 {
+    padding-top: 10px;
+    margin-bottom: 10px;
     margin-left: 50px;
 }
 
 .box-2 {
-    margin-top: -25px;
+    /* margin-top: -25px; */
     display: flex;
 }
 
@@ -285,4 +328,12 @@ footer h4 {
 
 .copy-text {
     margin-left: 50px;
+}
+
+footer {
+    background-color: red;
+}
+
+#footer-1 {
+    margin-left: 40px;
 }
