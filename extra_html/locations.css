@@ -16,7 +16,7 @@ header {
     width: 100%;
     position: fixed;
     align-items: center;
-    padding: 12px 5%;
+    padding: 12px 0;
     top: 0;
     display: block;
     z-index: 2000;
@@ -73,11 +73,13 @@ li a {
 .location {
     position: relative;
     width: 100%;
-    height: 100vh;
-    background: rgb(150, 44, 44);
+    /* height: 100vh; */
+    /* background: rgb(150, 44, 44); */
     background-size: cover;
-    margin-top: 25px;
-    padding: 50px 10%;
+    /* margin-top: 25px; */
+    /* margin: 50px 10%; */
+    margin: 0 auto;
+    /* padding: 0 auto; */
 }
 
 .location .header {
@@ -88,9 +90,10 @@ li a {
 
 .location .map-container {
     display: flex;
-    align-content: center;
+    /* align-content: center; */
     width: 100%;
-    
+    background: rgb(150, 44, 44);
+    justify-content: center;
 }
 
 .location .map-container .map1 {
@@ -190,7 +193,7 @@ li a {
 
 
 footer {
-    margin-top: 40rem;
+    /* margin-top: 40rem; */
     bottom: 0;
     width: 100%;
     background-color: rgb(150, 44, 44);
