@@ -5,9 +5,10 @@
     <title>Order - McDini</title>
     <link rel="stylesheet" href="order.css">
     <link href="../assets/mcdpng.png" rel="shortcut icon">
+    
 </head>
-<body>
-    <header id="navbar"><span class="animation" style="--i:1;"></span>
+<body class="">
+    <header id="navbar">
         <div class="navbar">
             <a href="#" class="logo">
                 <img src="../assets/logo_mcd.png">
@@ -34,650 +35,700 @@
                     </a>
                 </li>
             </ul>
+            <div class="container">
+                <div class="icon-cart">
+                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10V6a3 3 0 0 1 3-3v0a3 3 0 0 1 3 3v4m3-2 1 12c0 .5-.5 1-1 1H6a1 1 0 0 1-1-1L6 8h12Z"/>
+                        </svg>
+                        <span>0</span>
+                </div>
+            </div>
         </div>
     </header>
 
     <!-- PROMOTION MENU -->
 
-    <div class="box-1-1">
-        <h1>Promotion Menu</h1>
-        <ul>
-            <li>
-                <div class="card">
-                    <div class="card-content">
+    <!-- <div class="container"> -->
+
+        <div class="box-1-1">
+            <h1>Promotion Menu</h1>
+            <ul>
+                <li>
+                    <div class="card">
+                        <div class="card-content">
+                            <img src="../assets/menu/1-1.png">
+                            <h3>Paket Kenyang</h3>
+                            <!-- <p>Rp 150.000</p> -->
+                            <div class="price">Rp 150.000</div>
+                            <button class="addCart">
+                                Add To Cart
+                            </button>
+                        </div>
+                    </div>
+                </li>
+    
+                <li>
+                    <div class="card">
+                        <div class="card-content">
+                            <img src="../assets/menu/1-2.png">
+                            <h3>Paket Ngemil</h3>
+                            <!-- <p>Rp 110.000</p> -->
+                            <div class="price">Rp 110.000</div>
+                            <button class="addCart">
+                                Add To Cart
+                            </button>
+                        </div>
+                    </div>
+                    
+                </li>
+    
+                <li>
+                    <div class="card">
+                        <div class="card-content">
+                            <img src="../assets/menu/1-3.png">
+                            <h3>Paket Manis</h3>
+                            <!-- <p>Rp 71.500</p> -->
+                            <div class="price">Rp 70.000</div>
+                            <button class="addCart">
+                                Add To Cart
+                            </button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    
+        <div class="cartTab">
+            <h1>Shopping Cart</h1>
+            <div class="listCart">
+                <div class="item">
+                    <div class="image">
                         <img src="../assets/menu/1-1.png">
-                        <h3>Paket Kenyang</h3>
-                        <p>Rp 150.000</p>
+                    </div>
+                    <div class="name">
+                        NAME
+                    </div>
+                    <div class="totalPrice">
+                        $200
+                    </div>
+                    <div class="quantity">
+                        <span class="minus"><</span>
+                        <span>1</span>
+                        <span class="plus">></span>
                     </div>
                 </div>
-            </li>
-
-            <li>
-                <div class="card">
-                    <div class="card-content">
-                        <img src="../assets/menu/1-2.png">
-                        <h3>Paket Ngemil</h3>
-                        <p>Rp 110.000</p>
-                    </div>
-                </div>
-            </li>
-
-            <li>
-                <div class="card">
-                    <div class="card-content">
-                        <img src="../assets/menu/1-3.png">
-                        <h3>Paket Manis</h3>
-                        <p>Rp 71.500</p>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </div>
-
-    <!-- ALA CARTE & VALUE MEALS -->
-
-    <div class="box-1-2">
-        <h1>Ala Carte & Value Meals</h1>
-
-        <div class="box-1-2-1">
-            <ul>
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/2-1.png">
-                            <h3>9pcs Spicy McNuggets ALC</h3>
-                            <p>Rp 60.000</p>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/2-2.png">
-                            <h3>McNuggets® 9pcs</h3>
-                            <p>Rp 55.000</p>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/2-3.png">
-                            <h3>6pcs Spicy McNuggets</h3>
-                            <p>Rp 40.500</p>
-                        </div>
-                    </div>
-                </li>
-            </ul>
+            </div>
+            <div class="btn">
+                <button class="close">CLOSE</button>
+                <button class="checkOut">CHECK OUT</button>
+            </div>
         </div>
-
-        <div class="box-1-2-1">
-            <ul>
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/2-4.png">
-                            <h3>McNuggets® 6pcs</h3>
-                            <p>Rp 40.000</p>
+    
+        <!-- ALA CARTE & VALUE MEALS -->
+    
+        <div class="box-1-2">
+            <h1>Ala Carte & Value Meals</h1>
+    
+            <div class="box-1-2-1">
+                <ul>
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/2-1.png">
+                                <h3>9pcs Spicy McNuggets ALC</h3>
+                                <p>Rp 60.000</p>
+                            </div>
                         </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/2-5.png">
-                            <h3>Paket Big Order</h3>
-                            <p>Rp 587.500</p>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/2-2.png">
+                                <h3>McNuggets® 9pcs</h3>
+                                <p>Rp 55.000</p>
+                            </div>
                         </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/2-6.png">
-                            <h3>Big Mac®</h3>
-                            <p>Rp 43.500</p>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/2-3.png">
+                                <h3>6pcs Spicy McNuggets</h3>
+                                <p>Rp 40.500</p>
+                            </div>
                         </div>
-                    </div>
-                </li>
-            </ul>
+                    </li>
+                </ul>
+            </div>
+    
+            <div class="box-1-2-1">
+                <ul>
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/2-4.png">
+                                <h3>McNuggets® 6pcs</h3>
+                                <p>Rp 40.000</p>
+                            </div>
+                        </div>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/2-5.png">
+                                <h3>Paket Big Order</h3>
+                                <p>Rp 587.500</p>
+                            </div>
+                        </div>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/2-6.png">
+                                <h3>Big Mac®</h3>
+                                <p>Rp 43.500</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+    
+            <div class="box-1-2-1">
+                <ul>
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/2-7.png">
+                                <h3>Triple Cheeseburger</h3>
+                                <p>Rp 62.500</p>
+                            </div>
+                        </div>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/2-8.png">
+                                <h3>Double Cheeseburger</h3>
+                                <p>Rp 41.500</p>
+                            </div>
+                        </div>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/2-9.png">
+                                <h3>Cheeseburger Deluxe</h3>
+                                <p>Rp 34.500</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+    
+            <div class="box-1-2-1">
+                <ul>
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/2-10.png">
+                                <h3>PaMer 7</h3>
+                                <p>Rp 184.000</p>
+                            </div>
+                        </div>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/2-11.png">
+                                <h3>PaMer 5</h3>
+                                <p>Rp 131.500</p>
+                            </div>
+                        </div>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/2-12.png">
+                                <h3>PaNas Spesial</h3>
+                                <p>Rp 47.000</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+    
+            <div class="box-1-2-1">
+                <ul>
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/2-13.png">
+                                <h3>PaNas 1</h3>
+                                <p>Rp 39.000</p>
+                            </div>
+                        </div>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/2-14.png">
+                                <h3>PaNas 2 with Rice</h3>
+                                <p>Rp 51.500</p>
+                            </div>
+                        </div>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/2-15.png">
+                                <h3>Nasi Uduk McD</h3>
+                                <p>Rp 21.500</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
-
-        <div class="box-1-2-1">
-            <ul>
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/2-7.png">
-                            <h3>Triple Cheeseburger</h3>
-                            <p>Rp 62.500</p>
+    
+        <!-- SIDES -->
+    
+        <div class="box-1-1">
+            <div class="box-1-1-1">
+                <h1>Sides</h1>
+                <ul>
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/3-1.png">
+                                <h3>Apple Pie</h3>
+                                <p>Rp 12.500</p>
+                            </div>
                         </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/2-8.png">
-                            <h3>Double Cheeseburger</h3>
-                            <p>Rp 41.500</p>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/3-2.png">
+                                <h3>Honey Garlic Fish Rice</h3>
+                                <p>Rp 24.500</p>
+                            </div>
                         </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/2-9.png">
-                            <h3>Cheeseburger Deluxe</h3>
-                            <p>Rp 34.500</p>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/3-3.png">
+                                <h3>Honey Garlic Chicken Rice</h3>
+                                <p>Rp 24.500</p>
+                            </div>
                         </div>
-                    </div>
-                </li>
-            </ul>
+                    </li>
+                </ul>
+            </div>
+    
+            <div class="box-1-1-1">
+                <ul>
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/3-4.png">
+                                <h3>Rica Rica Fish Rice</h3>
+                                <p>Rp 24.500</p>
+                            </div>
+                        </div>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/3-5.png">
+                                <h3>Rica Rica Chicken Rice</h3>
+                                <p>Rp 24.500</p>
+                            </div>
+                        </div>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/3-6.png">
+                                <h3>Fish Snack Wrap</h3>
+                                <p>Rp 17.500</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+    
+            <div class="box-1-1-1">
+                <ul>
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/3-7.png">
+                                <h3>Chicken Snack Wrap™</h3>
+                                <p>Rp 17.500</p>
+                            </div>
+                        </div>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/3-8.png">
+                                <h3>Spicy Chicken Bites</h3>
+                                <p>Rp 13.000</p>
+                            </div>
+                        </div>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/3-9.png">
+                                <h3>Chicken Fingers 5pcs</h3>
+                                <p>Rp 14.500</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+    
+            <div class="box-1-1-1">
+                <ul>
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/3-10.png">
+                                <h3>French Fries</h3>
+                                <p>Rp 20.500</p>
+                            </div>
+                        </div>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/3-11.png">
+                                <h3>Sweet Corn</h3>
+                                <p>Rp 13.000</p>
+                            </div>
+                        </div>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/3-12.png">
+                                <h3>Rice</h3>
+                                <p>Rp 10.000</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
-
-        <div class="box-1-2-1">
-            <ul>
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/2-10.png">
-                            <h3>PaMer 7</h3>
-                            <p>Rp 184.000</p>
+    
+        <!-- DESSERTS -->
+    
+        <div class="box-1-2">
+            <h1>Desserts</h1>
+    
+            <div class="box-1-2-1">
+                <ul>
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/4-1.png">
+                                <h3>Tiramisu McFlurry®</h3>
+                                <p>Rp 18.000</p>
+                            </div>
                         </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/2-11.png">
-                            <h3>PaMer 5</h3>
-                            <p>Rp 131.500</p>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/4-2.png">
+                                <h3>Oreo McFlurry®</h3>
+                                <p>Rp 14.000</p>
+                            </div>
                         </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/2-12.png">
-                            <h3>PaNas Spesial</h3>
-                            <p>Rp 47.000</p>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/4-3.png">
+                                <h3>Choco McFlurry®</h3>
+                                <p>Rp 14.000</p>
+                            </div>
                         </div>
-                    </div>
-                </li>
-            </ul>
+                    </li>
+                </ul>
+            </div>
+    
+            <div class="box-1-2-1">
+                <ul>
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/4-4.png">
+                                <h3>Double Choco Sundae</h3>
+                                <p>Rp 13.500</p>
+                            </div>
+                        </div>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/4-5.png">
+                                <h3>Chocolate Sundae</h3>
+                                <p>Rp 12.000</p>
+                            </div>
+                        </div>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/4-6.png">
+                                <h3>Strawberry Sundae</h3>
+                                <p>Rp 12.000</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
-
-        <div class="box-1-2-1">
-            <ul>
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/2-13.png">
-                            <h3>PaNas 1</h3>
-                            <p>Rp 39.000</p>
+    
+        <!-- BEVERAGES -->
+    
+        <div class="box-1-1">
+            <div class="box-1-1-1">
+                <h1>Beverages</h1>
+                <ul>
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/5-1.png">
+                                <h3>Iced Coffee Matcha</h3>
+                                <p>Rp 23.000</p>
+                            </div>
                         </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/2-14.png">
-                            <h3>PaNas 2 with Rice</h3>
-                            <p>Rp 51.500</p>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/5-2.png">
+                                <h3>Iced Lychee Tea</h3>
+                                <p>Rp 20.000</p>
+                            </div>
                         </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/2-15.png">
-                            <h3>Nasi Uduk McD</h3>
-                            <p>Rp 21.500</p>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/5-3.png">
+                                <h3>Iced Coffee</h3>
+                                <p>Rp 23.000</p>
+                            </div>
                         </div>
-                    </div>
-                </li>
-            </ul>
+                    </li>
+                </ul>
+            </div>
+    
+            <div class="box-1-1-1">
+                <ul>
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/5-4.png">
+                                <h3>Coca Cola®</h3>
+                                <p>Rp 10.000</p>
+                            </div>
+                        </div>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/5-5.png">
+                                <h3>Receh - McFloat Coke</h3>
+                                <p>Rp 12.000</p>
+                            </div>
+                        </div>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/5-6.png">
+                                <h3>Fanta®</h3>
+                                <p>Rp 10.000</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+    
+            <div class="box-1-1-1">
+                <ul>
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/5-7.png">
+                                <h3>Receh - McFloat Fanta</h3>
+                                <p>Rp 12.000</p>
+                            </div>
+                        </div>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/5-8.png">
+                                <h3>Sprite®</h3>
+                                <p>Rp 10.000</p>
+                            </div>
+                        </div>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/5-9.png">
+                                <h3>Fruit Tea Lemon</h3>
+                                <p>Rp 10.000</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+    
+            <div class="box-1-1-1">
+                <ul>
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/5-10.png">
+                                <h3>Milo</h3>
+                                <p>Rp 19.500</p>
+                            </div>
+                        </div>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/5-11.png">
+                                <h3>Hot Tea</h3>
+                                <p>Rp 12.000</p>
+                            </div>
+                        </div>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/5-12.png">
+                                <h3>Mineral Water 600ml.</h3>
+                                <p>Rp 11.500</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-
-    <!-- SIDES -->
-
-    <div class="box-1-1">
-        <div class="box-1-1-1">
-            <h1>Sides</h1>
-            <ul>
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/3-1.png">
-                            <h3>Apple Pie</h3>
-                            <p>Rp 12.500</p>
+    
+        <!-- McCafé Pastries -->
+    
+        <div class="box-1-2">
+            <h1>McCafé Pastries</h1>
+    
+            <div class="box-1-2-1">
+                <ul>
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/6-1.png">
+                                <h3>Combo Cheese Croissant</h3>
+                                <p>Rp 48.500</p>
+                            </div>
                         </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/3-2.png">
-                            <h3>Honey Garlic Fish Rice</h3>
-                            <p>Rp 24.500</p>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/6-2.png">
+                                <h3>Combo Tuna Pastry</h3>
+                                <p>Rp 48.500</p>
+                            </div>
                         </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/3-3.png">
-                            <h3>Honey Garlic Chicken Rice</h3>
-                            <p>Rp 24.500</p>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/6-3.png">
+                                <h3>Combo Chicken Curry Puff</h3>
+                                <p>Rp 48.500</p>
+                            </div>
                         </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="box-1-1-1">
-            <ul>
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/3-4.png">
-                            <h3>Rica Rica Fish Rice</h3>
-                            <p>Rp 24.500</p>
+                    </li>
+                </ul>
+            </div>
+    
+            <div class="box-1-2-1">
+                <ul>
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/6-4.png">
+                                <h3>Lemon Cake</h3>
+                                <p>Rp 36.000</p>
+                            </div>
                         </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/3-5.png">
-                            <h3>Rica Rica Chicken Rice</h3>
-                            <p>Rp 24.500</p>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/6-5.png">
+                                <h3>Klepon Cake</h3>
+                                <p>Rp 36.000</p>
+                            </div>
                         </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/3-6.png">
-                            <h3>Fish Snack Wrap</h3>
-                            <p>Rp 17.500</p>
+                    </li>
+    
+                    <li>
+                        <div class="card">
+                            <div class="card-content">
+                                <img src="../assets/menu/6-6.png">
+                                <h3>Cheese Stick</h3>
+                                <p>Rp 24.500</p>
+                            </div>
                         </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="box-1-1-1">
-            <ul>
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/3-7.png">
-                            <h3>Chicken Snack Wrap™</h3>
-                            <p>Rp 17.500</p>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/3-8.png">
-                            <h3>Spicy Chicken Bites</h3>
-                            <p>Rp 13.000</p>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/3-9.png">
-                            <h3>Chicken Fingers 5pcs</h3>
-                            <p>Rp 14.500</p>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="box-1-1-1">
-            <ul>
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/3-10.png">
-                            <h3>French Fries</h3>
-                            <p>Rp 20.500</p>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/3-11.png">
-                            <h3>Sweet Corn</h3>
-                            <p>Rp 13.000</p>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/3-12.png">
-                            <h3>Rice</h3>
-                            <p>Rp 10.000</p>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- DESSERTS -->
-
-    <div class="box-1-2">
-        <h1>Desserts</h1>
-
-        <div class="box-1-2-1">
-            <ul>
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/4-1.png">
-                            <h3>Tiramisu McFlurry®</h3>
-                            <p>Rp 18.000</p>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/4-2.png">
-                            <h3>Oreo McFlurry®</h3>
-                            <p>Rp 14.000</p>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/4-3.png">
-                            <h3>Choco McFlurry®</h3>
-                            <p>Rp 14.000</p>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="box-1-2-1">
-            <ul>
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/4-4.png">
-                            <h3>Double Choco Sundae</h3>
-                            <p>Rp 13.500</p>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/4-5.png">
-                            <h3>Chocolate Sundae</h3>
-                            <p>Rp 12.000</p>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/4-6.png">
-                            <h3>Strawberry Sundae</h3>
-                            <p>Rp 12.000</p>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- BEVERAGES -->
-
-    <div class="box-1-1">
-        <div class="box-1-1-1">
-            <h1>Beverages</h1>
-            <ul>
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/5-1.png">
-                            <h3>Iced Coffee Matcha</h3>
-                            <p>Rp 23.000</p>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/5-2.png">
-                            <h3>Iced Lychee Tea</h3>
-                            <p>Rp 20.000</p>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/5-3.png">
-                            <h3>Iced Coffee</h3>
-                            <p>Rp 23.000</p>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="box-1-1-1">
-            <ul>
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/5-4.png">
-                            <h3>Coca Cola®</h3>
-                            <p>Rp 10.000</p>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/5-5.png">
-                            <h3>Receh - McFloat Coke</h3>
-                            <p>Rp 12.000</p>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/5-6.png">
-                            <h3>Fanta®</h3>
-                            <p>Rp 10.000</p>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="box-1-1-1">
-            <ul>
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/5-7.png">
-                            <h3>Receh - McFloat Fanta</h3>
-                            <p>Rp 12.000</p>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/5-8.png">
-                            <h3>Sprite®</h3>
-                            <p>Rp 10.000</p>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/5-9.png">
-                            <h3>Fruit Tea Lemon</h3>
-                            <p>Rp 10.000</p>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="box-1-1-1">
-            <ul>
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/5-10.png">
-                            <h3>Milo</h3>
-                            <p>Rp 19.500</p>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/5-11.png">
-                            <h3>Hot Tea</h3>
-                            <p>Rp 12.000</p>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/5-12.png">
-                            <h3>Mineral Water 600ml.</h3>
-                            <p>Rp 11.500</p>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- McCafé Pastries -->
-
-    <div class="box-1-2">
-        <h1>McCafé Pastries</h1>
-
-        <div class="box-1-2-1">
-            <ul>
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/6-1.png">
-                            <h3>Combo Cheese Croissant</h3>
-                            <p>Rp 48.500</p>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/6-2.png">
-                            <h3>Combo Tuna Pastry</h3>
-                            <p>Rp 48.500</p>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/6-3.png">
-                            <h3>Combo Chicken Curry Puff</h3>
-                            <p>Rp 48.500</p>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="box-1-2-1">
-            <ul>
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/6-4.png">
-                            <h3>Lemon Cake</h3>
-                            <p>Rp 36.000</p>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/6-5.png">
-                            <h3>Klepon Cake</h3>
-                            <p>Rp 36.000</p>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <div class="card-content">
-                            <img src="../assets/menu/6-6.png">
-                            <h3>Cheese Stick</h3>
-                            <p>Rp 24.500</p>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
+                    </li>
+                </ul>
+            </div>
+        <!-- </div> -->
     </div>
 
     <footer>
@@ -699,3 +750,30 @@
         <div class="copy"><span class="copy-text">&copy;McDini's Tarumanagara</span></div>
     </footer>
 </body>
+
+<script>
+    let iconCart = document.querySelector('.icon-cart');
+    let closeCart = document.querySelector('.close');
+    let body = document.querySelector('body');
+    // let listProductHTML = document.querySelector('.listProduct');
+
+    let listProducts = [];
+
+    iconCart.addEventListener('click', () => {
+        body.classList.toggle('showCart')
+    })
+
+    closeCart.addEventListener('click', () => {
+        body.classList.toggle('showCart')
+    })
+
+    // const initApp = () => {
+    //     fetch('products.json')
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         listProducts = data;
+    //         addDataToHTML();
+    //     })
+    // }
+    // initApp();
+</script>
