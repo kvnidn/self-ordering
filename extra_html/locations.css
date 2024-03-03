@@ -228,6 +228,10 @@ footer .footer-container ul li a {
     text-decoration: none;
 }
 
+footer .footer-container ul li a:hover {
+    color: rgb(255,199,44);
+}
+
 footer .copy {
     margin-left: 50px;
     margin-top: 20px;
