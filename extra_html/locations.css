@@ -232,6 +232,29 @@ footer .footer-container ul li a:hover {
     color: rgb(255,199,44);
 }
 
+footer .footer-container {
+    justify-content: space-between;
+    margin-right: 10%;
+}
+
+footer .footer-container .footer-link {
+    display: flex;
+}
+
+footer .footer-container img {
+    width: 30%;
+    height: auto;
+}
+
+footer .footer-container h1 {
+    align-items: center;
+}
+
+footer .footer-logo {
+    display: flex; 
+    justify-content: space-evenly;
+}
+
 footer .copy {
     margin-left: 50px;
     margin-top: 20px;

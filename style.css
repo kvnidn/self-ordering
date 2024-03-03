@@ -354,3 +354,26 @@ footer {
     margin-left: 40px;
 }
 
+footer .box-2 {
+    justify-content: space-between;
+    margin-right: 10%;
+}
+
+footer .box-2 .footer-link {
+    display: flex;
+}
+
+footer .box-2 img {
+    width: 30%;
+    height: auto;
+}
+
+footer .box-2 h1 {
+    align-items: center;
+}
+
+footer .footer-logo {
+    display: flex; 
+    justify-content: space-evenly;
+}
+
