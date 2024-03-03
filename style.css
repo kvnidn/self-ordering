@@ -72,6 +72,10 @@ li a:hover {
     color: rgb(255,199,44);
 }
 
+.coloring-mac a:hover {
+    color: black;
+}
+
 /* masih ragu mau buat slider atau enggak */
 .home {
     position: relative;
