@@ -298,3 +298,122 @@ footer .copy {
 .card:hover {
     box-shadow: 0 0 10px 2px gray;
 }
+
+.container {
+    transition: transform .5s;
+    max-width: 90vw;
+    text-align: center;
+    padding: 10px;
+}
+
+svg {
+    width: 30px;
+}
+
+.icon-cart {
+    position: relative;
+}
+
+.container span {
+    display: flex;
+    margin-left: 5px;
+    height: 20px;
+    width: 20px;
+    background-color: red;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    right: -20%;
+}
+
+/* .header-shopping {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    padding: 20px 0;
+} */
+
+.cartTab {
+    padding-top: 60px;
+    width: 400px;
+    background-color: #353432;
+    color: white;
+    position: fixed;
+    inset: 0 -400px 0 auto;
+    display: grid;
+    grid-template-rows: 70px 1fr 70px;
+    transition: .5s;
+}
+
+body.showCart .cartTab {
+    inset: 0 0 0 auto;
+}
+
+body.showCart .container{
+    transform: translateX(-250px);
+}
+
+.cartTab h1 {
+    padding: 20px;
+    margin: 0;
+    font-weight: 300;
+}
+
+.cartTab .btn {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.cartTab .btn button {
+    background-color: yellow;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.cartTab .btn .close {
+    background-color: #eee;
+}
+
+.listCart img{
+    width: 100%;
+}
+
+.listCart .item {
+    display: grid;
+    grid-template-columns: 70px 150px 50px 1fr;
+    gap: 10px;
+    text-align: center;
+    align-items: center;
+}
+
+.listCart .quantity span{
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-color: #eee;
+    color: #555;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.listCart .quantity span:nth-child(2){
+    background-color: transparent;
+    color: #eee;
+}
+
+.listCart .item:nth-child(even){
+    background-color: #eee1;
+}
+
+.listCart {
+    overflow: auto;
+}
+
+.listCart::-webkit-scrollbar{
+    width: 0;
+}
+
