@@ -244,6 +244,7 @@ li a:hover {
 }
 
 .card {
+    height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -251,7 +252,6 @@ li a:hover {
     padding-bottom: 5px;
     transition: box-shadow 0.3s ease;
     background-color: white;
-    margin: 0 auto;
 }
 
 .card img{
@@ -269,12 +269,14 @@ li a:hover {
 }
 
 .card .card-content h3{
-    margin: 0px 0px;
+    height: 1.5em;
     margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .card .card-content p{
-    margin-top: 5px
+    font-size: 18px;;
+    margin-top: 5px;
 }
 
 .card:hover {

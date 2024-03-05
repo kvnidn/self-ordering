@@ -1,0 +1,342 @@
+[
+    {
+        "name": "Paket Kenyang",
+        "price": 150000,
+        "image": "../assets/menu/1-1.png",
+        "type": "Promotion"
+    },
+    {
+        "name": "Paket Ngemil",
+        "price": 110000,
+        "image": "../assets/menu/1-2.png",
+        "type": "Promotion"
+    },
+    {
+        "name": "Paket Manis",
+        "price": 70000,
+        "image": "../assets/menu/1-3.png",
+        "type": "Promotion"
+    },
+
+
+
+    { 
+        "name": "9pcs Spicy McNuggets ALC", 
+        "price": 60000, 
+        "image": "../assets/menu/2-1.png",
+        "type": "alacarte"
+    },
+    { 
+        "name": "McNuggets® 9pcs",
+        "price": 55000, 
+        "image": "../assets/menu/2-2.png",
+        "type": "alacarte" 
+    },
+    { 
+        "name": "6pcs Spicy McNuggets", 
+        "price": 40500, 
+        "image": "../assets/menu/2-3.png",
+        "type": "alacarte" 
+    },
+    { 
+        "name": "McNuggets® 6pcs", 
+        "price": 40000, 
+        "image": "../assets/menu/2-4.png",
+        "type": "alacarte" 
+    },
+    { 
+        "name": "Paket Big Order", 
+        "price": 587500, 
+        "image": "../assets/menu/2-5.png",
+        "type": "alacarte"
+    },
+    { 
+        "name": "Big Mac®", 
+        "price": 43500, 
+        "image": "../assets/menu/2-6.png",
+        "type": "alacarte" 
+    },
+    { 
+        "name": "Triple Cheeseburger", 
+        "price": 62500, 
+        "image": "../assets/menu/2-7.png",
+        "type": "alacarte" 
+    },
+    { 
+        "name": "Double Cheeseburger", 
+        "price": 41500, 
+        "image": "../assets/menu/2-8.png",
+        "type": "alacarte" 
+    },
+    { 
+        "name": "Cheeseburger Deluxe", 
+        "price": 34500, 
+        "image": "../assets/menu/2-9.png",
+        "type": "alacarte" 
+    },
+    { 
+        "name": "PaMer 7", 
+        "price": 184000, 
+        "image": "../assets/menu/2-10.png",
+        "type": "alacarte"
+    },
+    { 
+        "name": "PaMer 5", 
+        "price": 131500, 
+        "image": "../assets/menu/2-11.png",
+        "type": "alacarte" 
+    },
+    { 
+        "name": "PaNas Spesial", 
+        "price": 47000, 
+        "image": "../assets/menu/2-12.png",
+        "type": "alacarte" 
+    },
+    { 
+        "name": "PaNas 1", 
+        "price": 39000, 
+        "image": "../assets/menu/2-13.png",
+        "type": "alacarte" 
+    },
+    { 
+        "name": "PaNas 2 with Rice", 
+        "price": 51500, 
+        "image": "../assets/menu/2-14.png",
+        "type": "alacarte" 
+    },
+    { 
+        "name": "Nasi Uduk McD", 
+        "price": 21500, 
+        "image": "../assets/menu/2-15.png" ,
+        "type": "alacarte"
+    },
+
+
+
+    { 
+        "name": "Apple Pie", 
+        "price": 12500, 
+        "image": "../assets/menu/3-1.png",
+        "type": "sides" 
+    },
+    { 
+        "name": "Honey Garlic Fish Rice", 
+        "price": 24500, 
+        "image": "../assets/menu/3-2.png" ,
+        "type": "sides"
+    },
+    { 
+        "name": "Honey Garlic Chicken Rice", 
+        "price": 24500, 
+        "image": "../assets/menu/3-3.png" ,
+        "type": "sides"
+    },
+    { 
+        "name": "Rica Rica Fish Rice", 
+        "price": 24500, 
+        "image": "../assets/menu/3-4.png",
+        "type": "sides" 
+    },
+    { 
+        "name": "Rica Rica Chicken Rice", 
+        "price": 24500, 
+        "image": "../assets/menu/3-5.png",
+        "type": "sides" 
+    },
+    { 
+        "name": "Fish Snack Wrap", 
+        "price": 17500, 
+        "image": "../assets/menu/3-6.png",
+        "type": "sides" 
+    },
+    { 
+        "name": "Chicken Snack Wrap™", 
+        "price": 17500, 
+        "image": "../assets/menu/3-7.png",
+        "type": "sides" 
+    },
+    { 
+        "name": "Spicy Chicken Bites", 
+        "price": 13000, 
+        "image": "../assets/menu/3-8.png",
+        "type": "sides" 
+    },
+    { 
+        "name": "Chicken Fingers 5pcs", 
+        "price": 14500, 
+        "image": "../assets/menu/3-9.png",
+        "type": "sides" 
+    },
+    { 
+        "name": "French Fries", 
+        "price": 20500, 
+        "image": "../assets/menu/3-10.png",
+        "type": "sides" 
+    },
+    { 
+        "name": "Sweet Corn", 
+        "price": 13000, 
+        "image": "../assets/menu/3-11.png",
+        "type": "sides" 
+    },
+    { 
+        "name": "Rice", 
+        "price": 10000, 
+        "image": "../assets/menu/3-12.png",
+        "type": "sides"
+    },
+
+    
+
+    { 
+        "name": "Tiramisu McFlurry®", 
+        "price": 18000, 
+        "image": "../assets/menu/4-1.png",
+        "type": "desserts"
+    },
+    { 
+        "name": "Oreo McFlurry®", 
+        "price": 14000, 
+        "image": "../assets/menu/4-2.png",
+        "type": "desserts" 
+    },
+    { 
+        "name": "Choco McFlurry®", 
+        "price": 14000, 
+        "image": "../assets/menu/4-3.png",
+        "type": "desserts" 
+    },
+    {
+        "name": "Double Choco Sundae", 
+        "price": 13500, 
+        "image": "../assets/menu/4-4.png",
+        "type": "desserts"
+    },
+    { 
+        "name": "Chocolate Sundae", 
+        "price": 12000, 
+        "image": "../assets/menu/4-5.png",
+        "type": "desserts" 
+    },
+    { 
+        "name": "Strawberry Sundae", 
+        "price": 12000, 
+        "image": "../assets/menu/4-6.png",
+        "type": "desserts"
+    },
+
+    
+
+    { 
+        "name": "Iced Coffee Matcha",
+        "price": 23000,
+        "image": "../assets/menu/5-1.png",
+        "type": "beverages"
+    },
+    { 
+        "name": "Iced Lychee Tea",
+        "price": 20000,
+        "image": "../assets/menu/5-2.png",
+        "type": "beverages"
+    },
+    { 
+        "name": "Iced Coffee", 
+        "price": 23000,
+        "image": "../assets/menu/5-3.png" ,
+        "type": "beverages"
+     },
+    { 
+        "name": "Coca Cola®", 
+        "price": 10000,
+        "image": "../assets/menu/5-4.png",
+        "type": "beverages"
+    },
+    { 
+        "name": "Receh - McFloat Coke", 
+        "price": 12000, 
+        "image": "../assets/menu/5-5.png",
+        "type": "beverages" 
+    },
+    { 
+        "name": "Fanta®",
+        "price": 10000,
+        "image": "../assets/menu/5-6.png",
+        "type": "beverages" 
+    },
+    {
+        "name": "Receh - McFloat Fanta", 
+        "price": 12000, 
+        "image": "../assets/menu/5-7.png",
+        "type": "beverages" 
+    },
+    {
+        "name": "Sprite®",
+        "price": 10000, 
+        "image": "../assets/menu/5-8.png",
+        "type": "beverages" 
+    },
+    {
+        "name": "Fruit Tea Lemon", 
+        "price": 10000, 
+        "image": "../assets/menu/5-9.png",
+        "type": "beverages" 
+    },
+    {
+        "name": "Milo", 
+        "price": 19500, 
+        "image": "../assets/menu/5-10.png",
+        "type": "beverages"
+        },
+    {
+        "name": "Hot Tea",
+        "price": 12000,
+        "image": "../assets/menu/5-11.png",
+        "type": "beverages" 
+    },
+    {
+        "name": "Mineral Water 600ml",
+        "price": 11500,
+        "image": "../assets/menu/5-12.png",
+        "type": "beverages"
+    },
+
+    
+
+    {
+        "name": "Combo Cheese Croissant",
+        "image": "../assets/menu/6-1.png",
+        "price": 48500,
+        "type": "cafe"
+    },
+    {
+        "name": "Combo Tuna Pastry",
+        "image": "../assets/menu/6-2.png",
+        "price": 48500,
+        "type": "cafe"
+    },
+    {
+        "name": "Combo Chicken Curry Puff",
+        "image": "../assets/menu/6-3.png",
+        "price": 48500,
+        "type": "cafe"
+    },
+    {
+        "name": "Lemon Cake",
+        "image": "../assets/menu/6-4.png",
+        "price": 36000,
+        "type": "cafe"
+    },
+    {
+        "name": "Klepon Cake",
+        "image": "../assets/menu/6-5.png",
+        "price": 36000,
+        "type": "cafe"
+    },
+    {
+        "name": "Cheese Stick",
+        "image": "../assets/menu/6-6.png",
+        "price": 24500,
+        "type": "cafe"
+    }
+    
+]
