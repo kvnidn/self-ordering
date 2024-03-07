@@ -2,9 +2,14 @@ let iconCart = document.querySelector('.icon-cart');
 let closeCart = document.querySelector('.close');
 let body = document.querySelector('body');
 
+let listCartHTML = document.querySelector('.listCart');
+let iconCartSpan = document.querySelector('.icon-cart span')
+
 let cartCount = 0;
 
 let listProducts = [];
+
+let carts = [];
 
 iconCart.addEventListener('click', () => {
     body.classList.toggle('showCart')
@@ -14,15 +19,28 @@ closeCart.addEventListener('click', () => {
     body.classList.toggle('showCart')
 })
 
-function showAlert(message) {
-    cartCount++;
-
-    document.getElementById('cartCount').textContent = cartCount;
-
-    alert(message + 'added to cart!');
+const checkout = () => {
+    if (cartCount === 0) {
+        alert("Nothing to purchase");
+    } else {
+        removeItem();
+    }
 }
 
+const removeItem = () => {
+    alert("Processing......");
+    alert("Done");
+    cartCount = 0;
+    document.getElementById('cartCount').textContent = cartCount;
+};
 
+// function showAlert(message) {
+//     cartCount++;
+
+//     document.getElementById('cartCount').textContent = cartCount;
+
+//     alert(message + 'added to cart!');
+// }
 
 // const menuPromotion = [
 //     {
@@ -73,21 +91,35 @@ fetch('data_menu.json')
         const typePromotion = menuPromotionData.filter(item => item.type === "Promotion");
 
         typePromotion.forEach(item => {
-            const list = document.createElement("li");
-            list.innerHTML =
+            const listItem = document.createElement("li");
+            
+            listItem.dataset.name = item.name;
+
+            listItem.innerHTML =
             `
             <div class="card">
                 <div class="card-content">
                     <img src="${item.image}" alt="${item.name}">
                     <h3>${item.name}</h3>
                     <div class="price">Rp ${item.price.toLocaleString()}</div>
-                    <button class="addCart" onClick="showAlert('${item.name} - Rp ${item.price.toLocaleString()} ')">
+                    <button class="addCart">
                         Add to Cart
                     </button>
                 </div>
             </div>
             `
-            menuPromotion.appendChild(list);
+            menuPromotion.appendChild(listItem);
+
+            
+            listItem.addEventListener('click', (event) => {
+                let positionClick = event.target;
+                if(positionClick.classList.contains('addCart')){
+                    let item_name = positionClick.closest('li').dataset.name;
+                    showAlert(item_name);
+                }
+            })
+
+
         });
     })
     .catch(error => console.error('Error fetching menu data:', error));
@@ -110,6 +142,8 @@ fetch('data_menu.json')
             }
 
             const listItem = document.createElement("li");
+            listItem.dataset.name = item.name;
+
             listItem.innerHTML =
             `
             <div class="card">
@@ -117,7 +151,7 @@ fetch('data_menu.json')
                     <img src="${item.image}" alt="${item.name}">
                     <h3>${item.name}</h3>
                     <div class="price">Rp ${item.price.toLocaleString()}</div>
-                    <button class="addCart" onClick="showAlert('${item.name} - Rp ${item.price.toLocaleString()} ')">
+                    <button class="addCart">
                         Add to Cart
                     </button>
                 </div>
@@ -125,6 +159,16 @@ fetch('data_menu.json')
             `;
             const current = menuAlaCarte.lastChild;
             current.appendChild(listItem);
+            
+            listItem.addEventListener('click', (event) => {
+                let positionClick = event.target;
+                if(positionClick.classList.contains('addCart')){
+                    let item_name = positionClick.closest('li').dataset.name;
+                    showAlert(item_name);
+                }
+            })
+
+
         });
     })
     .catch(error => console.error('Error fetching menu data:', error));
@@ -147,6 +191,8 @@ fetch('data_menu.json')
             }
 
             const listItem = document.createElement("li");
+            listItem.dataset.name = item.name;
+
             listItem.innerHTML =
             `
             <div class="card">
@@ -154,7 +200,7 @@ fetch('data_menu.json')
                     <img src="${item.image}" alt="${item.name}">
                     <h3>${item.name}</h3>
                     <div class="price">Rp ${item.price.toLocaleString()}</div>
-                    <button class="addCart" onClick="showAlert('${item.name} - Rp ${item.price.toLocaleString()} ')">
+                    <button class="addCart">
                         Add to Cart
                     </button>
                 </div>
@@ -162,6 +208,16 @@ fetch('data_menu.json')
             `;
             const current = menuSides.lastChild;
             current.appendChild(listItem);
+            
+            listItem.addEventListener('click', (event) => {
+                let positionClick = event.target;
+                if(positionClick.classList.contains('addCart')){
+                    let item_name = positionClick.closest('li').dataset.name;
+                    showAlert(item_name);
+                }
+            })
+
+
         });
     })
     .catch(error => console.error('Error fetching menu data:', error));
@@ -184,6 +240,8 @@ fetch('data_menu.json')
             }
 
             const listItem = document.createElement("li");
+            listItem.dataset.name = item.name;
+
             listItem.innerHTML =
             `
             <div class="card">
@@ -191,7 +249,7 @@ fetch('data_menu.json')
                     <img src="${item.image}" alt="${item.name}">
                     <h3>${item.name}</h3>
                     <div class="price">Rp ${item.price.toLocaleString()}</div>
-                    <button class="addCart" onClick="showAlert('${item.name} - Rp ${item.price.toLocaleString()} ')">
+                    <button class="addCart">
                         Add to Cart
                     </button>
                 </div>
@@ -199,6 +257,16 @@ fetch('data_menu.json')
             `;
             const current = menuDesserts.lastChild;
             current.appendChild(listItem);
+            
+            listItem.addEventListener('click', (event) => {
+                let positionClick = event.target;
+                if(positionClick.classList.contains('addCart')){
+                    let item_name = positionClick.closest('li').dataset.name;
+                    showAlert(item_name);
+                }
+            })
+
+
         });
     })
     .catch(error => console.error('Error fetching menu data:', error));
@@ -220,6 +288,8 @@ fetch('data_menu.json')
             }
 
             const listItem = document.createElement("li");
+            listItem.dataset.name = item.name;
+
             listItem.innerHTML =
             `
             <div class="card">
@@ -227,7 +297,7 @@ fetch('data_menu.json')
                     <img src="${item.image}" alt="${item.name}">
                     <h3>${item.name}<h3>
                     <div class="price">Rp ${item.price.toLocaleString()}<div>
-                    <button class="addCart" onClick="showAlert('${item.name} - Rp ${item.price.toLocaleString()} ')">
+                    <button class="addCart">
                         Add to Cart
                     </button>
                 </div>
@@ -235,6 +305,17 @@ fetch('data_menu.json')
             `
             const current = menuBeverages.lastChild;
             current.appendChild(listItem);
+
+            
+            listItem.addEventListener('click', (event) => {
+                let positionClick = event.target;
+                if(positionClick.classList.contains('addCart')){
+                    let item_name = positionClick.closest('li').dataset.name;
+                    showAlert(item_name);
+                }
+            })
+
+
         });
     })
     .catch(error => console.error('Error fetching menu data:', error));
@@ -259,6 +340,8 @@ fetch('data_menu.json')
             }
 
             const listItem = document.createElement("li");
+            listItem.dataset.name = item.name;
+
             listItem.innerHTML =
             `
             <div class="card">
@@ -266,7 +349,7 @@ fetch('data_menu.json')
                     <img src="${item.image}" alt="${item.name}">
                     <h3>${item.name}</h3>
                     <div class="price">Rp ${item.price.toLocaleString()}</div>
-                    <button class="addCart" onClick="showAlert('${item.name} - Rp ${item.price.toLocaleString()} ')">
+                    <button class="addCart">
                         Add to Cart
                     </button>
                 </div>
@@ -274,9 +357,29 @@ fetch('data_menu.json')
             `;
             const current = menuCafe.lastChild;
             current.appendChild(listItem);
+
+            listItem.addEventListener('click', (event) => {
+                let positionClick = event.target;
+                if(positionClick.classList.contains('addCart')){
+                    let item_name = positionClick.closest('li').dataset.name;
+                    showAlert(item_name);
+                }
+            })
+
         });
     })
     .catch(error => console.error('Error fetching menu data:', error));
+
+
+const showAlert = (item_name) => {
+    alert(item_name + " - added to cart");
+    cartCount++;
+
+    document.getElementById('cartCount').textContent = cartCount;
+}
+
+
+
 
 
 
