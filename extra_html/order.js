@@ -9,7 +9,7 @@ let cartCount = 0;
 
 let listProducts = [];
 
-let carts = [];
+let cartItems = [];
 
 iconCart.addEventListener('click', () => {
     body.classList.toggle('showCart')
@@ -32,6 +32,7 @@ const removeItem = () => {
     alert("Done");
     cartCount = 0;
     document.getElementById('cartCount').textContent = cartCount;
+    listCartHTML.innerHTML = '';
 };
 
 // function showAlert(message) {
@@ -111,14 +112,30 @@ fetch('data_menu.json')
             menuPromotion.appendChild(listItem);
 
             
+            // listItem.addEventListener('click', (event) => {
+            //     let positionClick = event.target;
+            //     if(positionClick.classList.contains('addCart')){
+            //         let item_name = positionClick.closest('li').dataset.name;
+            //         showAlert(item_name);
+            //     }
+            // })
+
             listItem.addEventListener('click', (event) => {
                 let positionClick = event.target;
-                if(positionClick.classList.contains('addCart')){
-                    let item_name = positionClick.closest('li').dataset.name;
-                    showAlert(item_name);
+                if (positionClick.classList.contains('addCart')) {
+                    let selectedItemName = positionClick.closest('li').dataset.name;
+                    let selectedItem = typePromotion.find(item => item.name === selectedItemName);
+            
+                    if (selectedItem) {
+                        let item = {
+                            name: selectedItem.name,
+                            image: selectedItem.image,
+                            price: selectedItem.price
+                        };
+                        showAlert(item);
+                    }
                 }
-            })
-
+            });
 
         });
     })
@@ -160,13 +177,30 @@ fetch('data_menu.json')
             const current = menuAlaCarte.lastChild;
             current.appendChild(listItem);
             
+            // listItem.addEventListener('click', (event) => {
+            //     let positionClick = event.target;
+            //     if(positionClick.classList.contains('addCart')){
+            //         let item_name = positionClick.closest('li').dataset.name;
+            //         showAlert(item_name);
+            //     }
+            // })
+
             listItem.addEventListener('click', (event) => {
                 let positionClick = event.target;
-                if(positionClick.classList.contains('addCart')){
-                    let item_name = positionClick.closest('li').dataset.name;
-                    showAlert(item_name);
+                if (positionClick.classList.contains('addCart')) {
+                    let selectedItemName = positionClick.closest('li').dataset.name;
+                    let selectedItem = typeAlaCarte.find(item => item.name === selectedItemName);
+            
+                    if (selectedItem) {
+                        let item = {
+                            name: selectedItem.name,
+                            image: selectedItem.image,
+                            price: selectedItem.price
+                        };
+                        showAlert(item);
+                    }
                 }
-            })
+            });
 
 
         });
@@ -209,13 +243,30 @@ fetch('data_menu.json')
             const current = menuSides.lastChild;
             current.appendChild(listItem);
             
+            // listItem.addEventListener('click', (event) => {
+            //     let positionClick = event.target;
+            //     if(positionClick.classList.contains('addCart')){
+            //         let item_name = positionClick.closest('li').dataset.name;
+            //         showAlert(item_name);
+            //     }
+            // })
+
             listItem.addEventListener('click', (event) => {
                 let positionClick = event.target;
-                if(positionClick.classList.contains('addCart')){
-                    let item_name = positionClick.closest('li').dataset.name;
-                    showAlert(item_name);
+                if (positionClick.classList.contains('addCart')) {
+                    let selectedItemName = positionClick.closest('li').dataset.name;
+                    let selectedItem = typeSides.find(item => item.name === selectedItemName);
+            
+                    if (selectedItem) {
+                        let item = {
+                            name: selectedItem.name,
+                            image: selectedItem.image,
+                            price: selectedItem.price
+                        };
+                        showAlert(item);
+                    }
                 }
-            })
+            });
 
 
         });
@@ -258,13 +309,30 @@ fetch('data_menu.json')
             const current = menuDesserts.lastChild;
             current.appendChild(listItem);
             
+            // listItem.addEventListener('click', (event) => {
+            //     let positionClick = event.target;
+            //     if(positionClick.classList.contains('addCart')){
+            //         let item_name = positionClick.closest('li').dataset.name;
+            //         showAlert(item_name);
+            //     }
+            // })
+            
             listItem.addEventListener('click', (event) => {
                 let positionClick = event.target;
-                if(positionClick.classList.contains('addCart')){
-                    let item_name = positionClick.closest('li').dataset.name;
-                    showAlert(item_name);
+                if (positionClick.classList.contains('addCart')) {
+                    let selectedItemName = positionClick.closest('li').dataset.name;
+                    let selectedItem = typeSides.find(item => item.name === selectedItemName);
+            
+                    if (selectedItem) {
+                        let item = {
+                            name: selectedItem.name,
+                            image: selectedItem.image,
+                            price: selectedItem.price
+                        };
+                        showAlert(item);
+                    }
                 }
-            })
+            });
 
 
         });
@@ -307,13 +375,30 @@ fetch('data_menu.json')
             current.appendChild(listItem);
 
             
+            // listItem.addEventListener('click', (event) => {
+            //     let positionClick = event.target;
+            //     if(positionClick.classList.contains('addCart')){
+            //         let item_name = positionClick.closest('li').dataset.name;
+            //         showAlert(item_name);
+            //     }
+            // })
+
             listItem.addEventListener('click', (event) => {
                 let positionClick = event.target;
-                if(positionClick.classList.contains('addCart')){
-                    let item_name = positionClick.closest('li').dataset.name;
-                    showAlert(item_name);
+                if (positionClick.classList.contains('addCart')) {
+                    let selectedItemName = positionClick.closest('li').dataset.name;
+                    let selectedItem = typeBeverages.find(item => item.name === selectedItemName);
+            
+                    if (selectedItem) {
+                        let item = {
+                            name: selectedItem.name,
+                            image: selectedItem.image,
+                            price: selectedItem.price
+                        };
+                        showAlert(item);
+                    }
                 }
-            })
+            });
 
 
         });
@@ -358,25 +443,85 @@ fetch('data_menu.json')
             const current = menuCafe.lastChild;
             current.appendChild(listItem);
 
+            // listItem.addEventListener('click', (event) => {
+            //     let positionClick = event.target;
+            //     if(positionClick.classList.contains('addCart')){
+            //         let item_name = positionClick.closest('li').dataset.name;
+            //         showAlert(item_name);
+            //     }
+            // })
+
             listItem.addEventListener('click', (event) => {
                 let positionClick = event.target;
-                if(positionClick.classList.contains('addCart')){
-                    let item_name = positionClick.closest('li').dataset.name;
-                    showAlert(item_name);
+                if (positionClick.classList.contains('addCart')) {
+                    let selectedItemName = positionClick.closest('li').dataset.name;
+                    let selectedItem = typeCafe.find(item => item.name === selectedItemName);
+            
+                    if (selectedItem) {
+                        let item = {
+                            name: selectedItem.name,
+                            image: selectedItem.image,
+                            price: selectedItem.price
+                        };
+                        showAlert(item);
+                    }
                 }
-            })
+            });
 
         });
     })
     .catch(error => console.error('Error fetching menu data:', error));
 
 
-const showAlert = (item_name) => {
-    alert(item_name + " - added to cart");
-    cartCount++;
+// const showAlert = (item_name) => {
+//     alert(item_name + " - added to cart");
+//     cartCount++;
 
+//     document.getElementById('cartCount').textContent = cartCount;
+// }
+
+const showAlert = (item) => {
+    console.log(item);
+    alert(item.name + " - added to cart");
+    cartCount++;
     document.getElementById('cartCount').textContent = cartCount;
+
+    // Add the item to the cartItems array
+    cartItems.push(item);
+
+    // Update the shopping cart display
+    updateCartDisplay();
 }
+
+const updateCartDisplay = () => {
+    // listCartHTML.innerHTML = ''; // Clear the existing cart items
+
+    // Loop through the cartItems array and create HTML for each item
+    cartItems.forEach(item => {
+        const cartItemHTML = document.createElement('div');
+        cartItemHTML.classList.add('item');
+
+        cartItemHTML.innerHTML = `
+            <div class="image">
+                <img src="${item.image}">
+            </div>
+            <div class="name">
+                ${item.name}
+            </div>
+            <div class="totalPrice">
+                Rp ${item.price.toLocaleString()}
+            </div>
+            <div class="quantity">
+                <span class="minus"><</span>
+                <span>1</span>
+                <span class="plus">></span>
+            </div>
+        `;
+
+        listCartHTML.appendChild(cartItemHTML);
+        cartItems = []
+    });
+};
 
 
 
