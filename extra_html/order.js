@@ -33,6 +33,7 @@ const removeItem = () => {
     cartCount = 0;
     cartItems = []
     document.getElementById('cartCount').textContent = cartCount;
+    document.getElementById('cartTotal').textContent = 0;
     listCartHTML.innerHTML = '';
 };
 
@@ -566,10 +567,8 @@ const updateCartDisplay = () => {
 
             // Use filter to exclude items with quantity 0 or less
             cartItems = cartItems.filter(cartItem => cartItem.quantity > 0);
-            console.log('before update' + cartCount +' item: '+item.quantity);
             // Update the shopping cart display
-            updateCartDisplay();
-            console.log('after update' + cartCount +' item: '+item.quantity);
+            updateCartDisplay()
         });
 
         listCartHTML.appendChild(cartItemHTML);
