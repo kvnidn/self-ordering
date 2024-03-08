@@ -291,7 +291,7 @@ footer .copy {
     padding-bottom: 5px;
     transition: box-shadow 0.3s ease;
     background-color: white;
-    margin: 0 auto;
+    margin: 15px auto;
 }
 
 .card img{
@@ -375,9 +375,9 @@ body.showCart .cartTab {
     inset: 0 0 0 auto;
 }
 
-body.showCart .container{
+/* body.showCart .container{
     transform: translateX(-250px);
-}
+} */
 
 .cartTab h1 {
     padding: 20px;
@@ -391,10 +391,12 @@ body.showCart .container{
 }
 
 .cartTab .btn button {
-    background-color: yellow;
+    background-color: rgb(218, 41, 28);
     border: none;
-    font-weight: 500;
+    font-weight: bold;
+    /* font-weight: 500; */
     cursor: pointer;
+    padding: 10px 0;
 }
 
 .cartTab .btn .close {

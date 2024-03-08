@@ -52,9 +52,14 @@
         <h1>Shopping Cart</h1>
         <div class="listCart">
         </div>
-        <div class="btn">
-            <button class="close">CLOSE</button>
-            <button class="checkOut" onclick="checkout()">CHECK OUT</button>
+        <div style="display: grid;">
+            <div id="totalPrice" style="background-color: rgb(255,199,44); padding: 10px 0; padding-left: 10px; color: black;">
+                Total Price: Rp <span id="cartTotal">0</span>
+            </div>
+            <div class="btn">
+                <button class="close">Close</button>
+                <button class="checkOut" onclick="checkout()">Check Out</button>
+            </div>
         </div>
     </div>
         <!-- PROMOTION MENU -->

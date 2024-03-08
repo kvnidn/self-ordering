@@ -31,6 +31,7 @@ const removeItem = () => {
     alert("Processing......");
     alert("Done");
     cartCount = 0;
+    cartItems = []
     document.getElementById('cartCount').textContent = cartCount;
     listCartHTML.innerHTML = '';
 };
@@ -481,20 +482,45 @@ fetch('data_menu.json')
 // }
 
 const showAlert = (item) => {
-    console.log(item);
     alert(item.name + " - added to cart");
-    cartCount++;
-    document.getElementById('cartCount').textContent = cartCount;
+    
+    // Check if the item is already in the cart
+    const existingItem = cartItems.find(cartItem => cartItem.name === item.name);
 
-    // Add the item to the cartItems array
-    cartItems.push(item);
+    if (existingItem) {
+        // If the item is already in the cart, update the quantity
+        existingItem.quantity++;
+    } else {
+        // If the item is not in the cart, add it with quantity 1
+        item.quantity = 1;
+        cartItems.push(item);
+    }
 
     // Update the shopping cart display
     updateCartDisplay();
-}
+
+    // Update the total cartCount based on the total quantity of items in the cart
+    cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+    document.getElementById('cartCount').textContent = cartCount;
+};
 
 const updateCartDisplay = () => {
-    // listCartHTML.innerHTML = ''; // Clear the existing cart items
+    listCartHTML.innerHTML = ''; // Clear the existing cart items
+
+    // Calculate and display the total price
+    const totalPriceElement = document.getElementById('cartTotal');
+    const cartCountElement = document.getElementById('cartCount');
+
+    if (cartItems.length === 0) {
+        totalPriceElement.textContent = '0';
+        cartCountElement.textContent = '0';
+    } else {
+        const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
+        const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+
+        totalPriceElement.textContent = totalPrice.toLocaleString();
+        cartCountElement.textContent = totalQuantity.toString(); // Dynamically calculate cartCount
+    }
 
     // Loop through the cartItems array and create HTML for each item
     cartItems.forEach(item => {
@@ -512,19 +538,63 @@ const updateCartDisplay = () => {
                 Rp ${item.price.toLocaleString()}
             </div>
             <div class="quantity">
-                <span class="minus"><</span>
-                <span>1</span>
-                <span class="plus">></span>
+                <span class="minus">-</span>
+                <span>${item.quantity}</span>
+                <span class="plus">+</span>
             </div>
         `;
 
+        // Add event listeners for +/- buttons
+        const plusButton = cartItemHTML.querySelector('.plus');
+        const minusButton = cartItemHTML.querySelector('.minus');
+
+        plusButton.addEventListener('click', () => {
+            item.quantity++;
+            cartCount++;
+            updateCartDisplay();
+        });
+
+        minusButton.addEventListener('click', () => {
+            if (item.quantity > 1) {
+                item.quantity--;
+                cartCount--;
+            } else {
+                // Set quantity to 0 to avoid negative values
+                item.quantity = 0;
+                cartCount--;
+            }
+
+            // Use filter to exclude items with quantity 0 or less
+            cartItems = cartItems.filter(cartItem => cartItem.quantity > 0);
+            console.log('before update' + cartCount +' item: '+item.quantity);
+            // Update the shopping cart display
+            updateCartDisplay();
+            console.log('after update' + cartCount +' item: '+item.quantity);
+        });
+
         listCartHTML.appendChild(cartItemHTML);
-        cartItems = []
     });
 };
 
 
+const updateQuantity = (itemName, change) => {
+    const itemToUpdate = cartItems.find(item => item.name === itemName);
 
+    if (itemToUpdate) {
+        // Update the quantity based on the change value (+1 or -1)
+        itemToUpdate.quantity += change;
 
+        // Ensure the quantity does not go below 1
+        if (itemToUpdate.quantity < 1) {
+            // If quantity is 0 or less, remove the item from the cart
+            cartItems = cartItems.filter(item => item.name !== itemName);
+        }
 
+        // Update the shopping cart display
+        updateCartDisplay();
 
+        // Update the total cartCount based on the total quantity of items in the cart
+        cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+        document.getElementById('cartCount').textContent = cartCount;
+    }
+};
