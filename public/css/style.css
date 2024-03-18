@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     text-decoration: none;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -12,7 +13,6 @@ body {
 
 header {
     background-color: white;
-    box-sizing: border-box;
     width: 100%;
     position: fixed;
     align-items: center;
@@ -68,9 +68,11 @@ li a {
     transition: color 0.3s ease;
 }
 
+/* ===== style.css ===== */
 li a:hover {
     color: rgb(255,199,44);
 }
+/* ===== style.css ===== */
 
 .coloring-mac a:hover {
     color: black;
@@ -216,15 +218,26 @@ li a:hover {
     padding: 50px 10%;
 
 }
+.box-1-1#order {
+    background-color: #ffbc0d;
+}
 
 .box-1-1 ul{
     display: flex;
     justify-content: center;
 }
 
+/* .box-1-1 h1{
+    text-align: center;
+} */
+
+/* ===== order.css ===== */
 .box-1-1 h1{
     text-align: center;
+    padding-top: 80px;
+    padding-bottom: 20px;
 }
+/*  */
 
 .box-1-1 button {
     display: flex;
@@ -243,6 +256,45 @@ li a:hover {
 }
 
 .box-1-1 button:hover {
+    background-color: rgb(174, 32, 22);;
+}
+
+.box-1-1-1 {
+    background-color: #ffbc0d;
+}
+
+/* .box-1-1-1 img {
+    margin: 30px 40px;
+} */
+
+.box-1-1-1 ul{
+    display: flex;
+    justify-content: center;
+}
+
+.box-1-1-1 h1{
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.box-1-1-1 button {
+    display: flex;
+    margin: 0 auto;
+    margin-top: 5px;
+    background-color: rgb(218,41,28);
+    border: none;
+    color: white;
+    height: 40px;
+    width: auto;
+    font-weight: bold;
+    border-radius: 3px;
+    line-height: 35px;
+    padding: 0 10px;
+    transition: background-color 0.5s ease;
+}
+
+.box-1-1-1 button:hover {
     background-color: rgb(174, 32, 22);;
 }
 
@@ -265,6 +317,10 @@ li a:hover {
     margin-top: 5px;
 }
 
+.card img#order {
+    width: 300px;
+}
+
 .card .card-content {
     margin: 10px 10px;
     background-color: white;
@@ -277,6 +333,11 @@ li a:hover {
     margin-bottom: 20px;
 }
 
+/* .card .card-content h3#order{
+    margin: 0px 0px;
+    margin-top: 10px;
+} */
+
 .card .card-content p{
     font-size: 18px;;
     margin-top: 5px;
@@ -287,15 +348,31 @@ li a:hover {
 }
 
 .box-1-2 {
+    background-color: #f2f2f2;
+    padding: 50px 10%;
+
+}
+
+.box-1-2#index{
     background-color: #ffbc0d;
     display: flex;
-    padding-left: 20px;
+    padding: 0 0 0 20px;
+}
+
+.box-1-2 ul{
+    display: flex;
+    justify-content: center;
+}
+
+.box-1-2 h1{
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .box-1-2 img {
     width: 40%;
     height: auto;
-    margin: 30px 70px;
 }
 
 .box-1-2 .content {
@@ -323,8 +400,36 @@ li a:hover {
     background-color: rgb(174, 32, 22);;
 }
 
-/* FOOTER */
+.box-1-2-1 {
+    background-color: #f2f2f2;
+}
 
+.box-1-2-1 ul{
+    display: flex;
+    justify-content: center;
+}
+
+.box-1-2-1 button {
+    display: flex;
+    margin: 0 auto;
+    margin-top: 5px;
+    background-color: rgb(218,41,28);
+    border: none;
+    color: white;
+    height: 40px;
+    width: auto;
+    font-weight: bold;
+    border-radius: 3px;
+    line-height: 35px;
+    padding: 0 10px;
+    transition: background-color 0.5s ease;
+}
+
+.box-1-2-1 button:hover {
+    background-color: rgb(174, 32, 22);;
+}
+
+/* FOOTER */
 footer {
     /* margin-top: 40rem; */
     bottom: 0;
@@ -390,4 +495,302 @@ footer .copy {
     margin-left: 50px;
     margin-top: 20px;
     padding-bottom: 20px;
+}
+
+/* ====== about.css ====== */
+
+.about {
+    position: relative;
+    width: 100%;
+    background-size: cover;
+    margin: 0 auto;
+}
+
+.about .header {
+    background-color: white;
+    color: black;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    text-align: center;
+}
+
+.container#about {
+    display: flex;
+    width: 100%;
+    background: white;
+    justify-content: center;
+}
+
+/* ===== order.css ===== */
+.container#order {
+    transition: transform .5s;
+    max-width: 90vw;
+    text-align: center;
+    padding: 15px;
+    bottom: 20px;
+    right: 20px;
+    position: fixed;
+    box-shadow: 0 0 10px 2px gray;
+    border-radius: 10px;
+    background-color: white;
+}
+/*  */
+
+svg {
+    width: 30px;
+}
+
+.icon-cart {
+    position: relative;
+}
+
+.cartTab {
+    padding-top: 60px;
+    width: 400px;
+    background-color: #353432;
+    color: white;
+    position: fixed;
+    inset: 0 -400px 0 auto;
+    display: grid;
+    grid-template-rows: 70px 1fr 70px;
+    transition: .5s;
+}
+
+body.showCart .cartTab {
+    inset: 0 0 0 auto;
+    z-index: 2;
+}
+
+.cartTab h1 {
+    padding: 20px;
+    margin: 0;
+    font-weight: 300;
+}
+
+.cartTab .btn {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.cartTab .btn button {
+    background-color: rgb(218, 41, 28);
+    border: none;
+    font-weight: bold;
+    /* font-weight: 500; */
+    cursor: pointer;
+    padding: 10px 0;
+}
+
+.cartTab .btn .close {
+    background-color: #eee;
+}
+
+.listCart img{
+    width: 100%;
+}
+
+.listCart .item {
+    display: grid;
+    grid-template-columns: 70px 150px 50px 1fr;
+    gap: 10px;
+    text-align: center;
+    align-items: center;
+}
+
+.listCart .quantity span{
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-color: #eee;
+    color: #555;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.listCart .quantity span:nth-child(2){
+    background-color: transparent;
+    color: #eee;
+}
+
+.listCart .item:nth-child(even){
+    background-color: #eee1;
+}
+
+.listCart {
+    overflow: auto;
+}
+
+.listCart::-webkit-scrollbar{
+    width: 0;
+}
+
+
+.container span {
+    display: flex;
+    margin-left: 5px;
+    height: 20px;
+    width: 20px;
+    background-color: red;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    right: -20%;
+}
+
+.container .creator{
+    margin: auto 0;
+    padding-left: 4rem;
+}
+
+.container .creator p {
+    padding: 1rem 0;
+    margin-right: 12rem;
+}
+
+.container .creator td:nth-child(2) {
+    color: rgb(150, 44, 44);
+    font-weight: 800;
+}
+
+.container .creator td {
+    padding-right: 40px;
+    font-size: 16px;
+    text-transform: none;
+}
+
+.container .creator b {
+    font-size: large;
+}
+
+.container img {
+    padding: 4rem 0 4rem 4rem;
+    float: right;
+    width: 40%;
+    object-fit: cover;
+}
+
+/* ===== location.css ===== */
+.location {
+    position: relative;
+    width: 100%;
+    /* height: 100vh; */
+    /* background: rgb(150, 44, 44); */
+    background-size: cover;
+    /* margin-top: 25px; */
+    /* margin: 50px 10%; */
+    margin: 0 auto;
+    /* padding: 0 auto; */
+}
+
+.location .header {
+    background-color: rgb(150, 44, 44);
+    color: white;
+    margin-top: 4rem;
+    padding-top: 5.2rem;
+    text-align: center;
+}
+
+.location .map-container {
+    display: flex;
+    /* align-content: center; */
+    width: 100%;
+    background: rgb(150, 44, 44);
+    justify-content: center;
+}
+
+.location .map-container .map1 {
+    margin: 4rem 4rem 4rem 2rem;
+}
+
+.location .map-container .map-desc1 {
+    margin: 4rem 4rem 4rem 2rem;
+}
+
+.location .map-container .map-desc1 h3 {
+    color: white;
+    font-size: 30px;
+    font-weight: 600;
+    padding-bottom: 2rem;
+}
+
+.location .map-container .map-desc1 h4 {
+    color: white;
+    font-size: 18px;
+    padding-bottom: 1rem;
+}
+
+.location .map-container .map-desc1 p {
+    color: white;
+    padding-bottom: 2rem;
+}
+
+.location .map-container .map-desc1 .button {
+    font-size: 14px;
+    display: flex;
+    margin: 0;
+    background-color: rgb(218,41,28);
+    border: none;
+    color: white;
+    height: 50px;
+    width: 80%;
+    font-weight: bold;
+    border-radius: 3px;
+    line-height: 35px;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.5s ease;
+}
+
+.location .map-container .map-desc1 a.button:hover {
+    background-color: rgb(174, 32, 22);
+}
+
+.location .map-container .map2 {
+    margin: 8rem 2rem 10rem 6rem;
+}
+
+.location .map-container .map-desc2 {
+    margin: 8rem 0rem 10rem 2rem;
+}
+
+.location .map-container .map-desc2 h3 {
+    color: black;
+    font-size: 30px;
+    font-weight: 600;
+    padding-bottom: 2rem;
+}
+
+.location .map-container .map-desc2 h4 {
+    color: black;
+    font-size: 18px;
+    padding-bottom: 1rem;
+}
+
+.location .map-container .map-desc2 p {
+    color: black;
+    padding-bottom: 2rem;
+}
+
+.location .map-container .map-desc2 .button {
+    font-size: 14px;
+    display: flex;
+    margin: 0;
+    background-color: rgb(218,41,28);
+    border: none;
+    color: white;
+    height: 50px;
+    width: 80%;
+    font-weight: bold;
+    border-radius: 3px;
+    line-height: 35px;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.5s ease;
+}
+
+.location .map-container .map-desc2 a.button:hover {
+    background-color: rgb(174, 32, 22);
 }

@@ -19,17 +19,17 @@ app.listen(port, () => {
 })
 
 app.get("/", (req, res) => {
-    res.render("index.ejs", {title: "McDini - Home", css:"../css/style.css", script: "../scripts/script.js", layout: "layouts/main-layout.ejs"})
+    res.render("index.ejs", {title: "McDini - Home", script: "../scripts/script.js", layout: "layouts/main-layout.ejs"})
 })
 
 app.get("/order", (req, res) => {
-    res.render("order.ejs", {title: "McDini - Order", css:"../css/order.css", script: "../scripts/order.js", layout: "layouts/main-layout.ejs"})
+    res.render("order.ejs", {title: "McDini - Order", script: "../scripts/order.js", layout: "layouts/main-layout.ejs"})
 })
 
 app.get("/locations", (req, res) => {
-    res.render("locations.ejs", {title: "McDini - Locations", css:"../css/locations.css", script: "", layout: "layouts/main-layout.ejs"})
+    res.render("locations.ejs", {title: "McDini - Locations", script: "", layout: "layouts/main-layout.ejs"})
 })
 
 app.get("/about", (req, res) => {
-    res.render("about.ejs", {title: "McDini - About Us", css:"../css/about.css", script: "", layout: "layouts/main-layout.ejs"})
+    res.render("about.ejs", {title: "McDini - About Us", script: "", layout: "layouts/main-layout.ejs"})
 })

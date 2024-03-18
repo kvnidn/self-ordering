@@ -62,10 +62,10 @@ menuTypes.forEach(type => {
 
                 listItem.innerHTML =
                 `
-                <div class="card">
+                <div class="card" id="order">
                     <div class="card-content">
-                        <img src="${item.image}" alt="${item.name}">
-                        <h3>${item.name}</h3>
+                        <img id="order" src="${item.image}" alt="${item.name}">
+                        <h3 id="order">${item.name}</h3>
                         <div class="price">Rp ${item.price.toLocaleString()}</div>
                         <button class="addCart">
                             Add to Cart
