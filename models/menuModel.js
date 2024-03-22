@@ -3,16 +3,20 @@ const {Schema, model} = require('mongoose')
 const menuSchema = new Schema(
     {
         name: {
-            type: String
+            type: String,
+            required: true
         },
         image: {
-            type: String
+            type: String,
+            required: true
         },
         price: {
-            type: Number
+            type: Number,            
+            required: true
         },
         type: {
-            type: String
+            type: String,
+            required: true
         }
 
     },

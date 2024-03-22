@@ -307,6 +307,16 @@ li a:hover {
     padding-bottom: 5px;
     transition: box-shadow 0.3s ease;
     background-color: white;
+    margin-bottom: 15px;
+}
+
+.card img#order{
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-top: 5px;
+    width: 300px;
 }
 
 .card img{
@@ -315,10 +325,6 @@ li a:hover {
     object-fit: cover;
     border-radius: 10px;
     margin-top: 5px;
-}
-
-.card img#order {
-    width: 300px;
 }
 
 .card .card-content {
@@ -371,8 +377,14 @@ li a:hover {
 }
 
 .box-1-2 img {
-    width: 40%;
+    /* width: 40%; */
     height: auto;
+}
+
+.box-1-2 img#index{
+    width: 50%;
+    height: auto;
+    margin: 20px;
 }
 
 .box-1-2 .content {
