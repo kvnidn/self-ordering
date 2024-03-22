@@ -40,20 +40,28 @@ const removeItem = () => {
 
 // PROMOTION
 
-const menuTypes = ["promotion", "alacarte", "sides", "desserts", "beverages", "cafe"];
+const menuTypes = ['Promotion', 'Alacarte', 'Sides', 'Beverages', 'Desserts', 'Cafe'];
 
 menuTypes.forEach(type => {
     const menuElement = document.getElementById(`menu-${type.toLowerCase()}`);
-    
-    fetch('data/data_menu.json')
-        .then(response => response.json())
+
+    fetch('/api/menuRoute') // Assuming this endpoint returns menu data
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(menuData => {
+            console.log("Menu data fetched successfully:", menuData);
             const typeData = menuData.filter(item => item.type.toLowerCase() === type.toLowerCase());
 
+            console.log("Type Data for", type, ":", typeData);
+
             typeData.forEach((item, index) => {
-                if (index % (type === "promotion" ? 1 : type === "alacarte" ? 5 : type === "sides" || type === "beverages" ? 4 : 2) === 0){
+                if (index % (type === "Promotion" ? 1 : type === "Alacarte" ? 5 : type === "Sides" || type === "Beverages" ? 4 : 2) === 0) {
                     const newLine = document.createElement("div");
-                    newLine.classList.add(type === "promotion" || type === "sides" || type === "beverages" ? "box-1-1-1" : "box-1-2-1");
+                    newLine.classList.add(type === "Promotion" || type === "Sides" || type === "Beverages" ? "box-1-1-1" : "box-1-2-1");
                     menuElement.appendChild(newLine);
                 }
 
@@ -61,11 +69,11 @@ menuTypes.forEach(type => {
                 listItem.dataset.name = item.name;
 
                 listItem.innerHTML =
-                `
-                <div class="card" id="order">
+                    `
+                <div class="card">
                     <div class="card-content">
-                        <img id="order" src="${item.image}" alt="${item.name}">
-                        <h3 id="order">${item.name}</h3>
+                        <img src="${item.image}" alt="${item.name}">
+                        <h3>${item.name}</h3>
                         <div class="price">Rp ${item.price.toLocaleString()}</div>
                         <button class="addCart">
                             Add to Cart
@@ -81,7 +89,7 @@ menuTypes.forEach(type => {
                     if (positionClick.classList.contains('addCart')) {
                         let selectedItemName = positionClick.closest('li').dataset.name;
                         let selectedItem = typeData.find(item => item.name === selectedItemName);
-                
+
                         if (selectedItem) {
                             let item = {
                                 name: selectedItem.name,
@@ -97,6 +105,8 @@ menuTypes.forEach(type => {
         })
         .catch(error => console.error('Error fetching menu data:', error));
 });
+
+
     
 
 const showAlert = (item) => {

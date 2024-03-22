@@ -2,7 +2,15 @@ const express = require("express");
 const app = express();
 const expressLayouts = require("express-ejs-layouts");
 // const path = require("path");
-const port = 3000;
+
+const mongoose = require('mongoose')
+const dotenv = require('dotenv')
+const morgan = require('morgan')
+
+dotenv.config()
+
+const port = process.env.port || 3000;
+const MONGO_URL = process.env.URI
 
 app.set("view engine", "ejs");
 // app.set("views", path.join(__dirname, "views"));
@@ -13,6 +21,14 @@ app.use(express.static("public"));
 
 // Layouts
 app.use(expressLayouts);
+
+app.use(morgan('dev'))
+
+app.use('/api/menuRoute', require('./routes/api/menuRoute'))
+
+mongoose.connect(MONGO_URL)
+    .then(() => console.log(`MongoDB connected ${MONGO_URL}`))
+    .catch(err => console.log(err))
 
 app.listen(port, () => {
     console.log(`Webserver listening on port ${port}`);
