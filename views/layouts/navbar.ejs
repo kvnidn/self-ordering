@@ -4,7 +4,7 @@
         <ul>
             <ul>
                 <% if(user) { %>
-                    <li>Welcome, <%= user.email %></li>
+                    <li><%= user.username %></li>
                     <li><a href="/logout">Logout</a></li>
                 <% } else { %>
                     <li><a href="/login">Login</a></li>

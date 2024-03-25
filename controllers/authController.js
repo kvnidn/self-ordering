@@ -8,9 +8,13 @@ const jwt = require('jsonwebtoken');
 const maxAge = 5 * 24 * 60 * 60;
 
 
-const handleError = (err) => {
+const handleError = (err, usernameExisted) => {
     console.error(err.message, err.code);
-    let errors = { email: "", password: "" };
+    let errors = { username: "", email: "", password: "" };
+
+    if (usernameExisted) {
+        errors.username = "Username is taken";
+    }
 
     if (err.message === "Incorrect email") { 
         errors.email = "Email not registered";
@@ -40,7 +44,7 @@ const createToken = (id) => {
 
 module.exports.signup_get = (req, res) => {
     const userData = req.user || res.locals.user;
-    res.render('signup', {title: "SignUp", script: "", layout: "layouts/main-layout.ejs", user: userData});
+    res.render('signup', {title: "SignUp", script: "../scripts/signup.js", layout: "layouts/main-layout.ejs", user: userData});
 }
 
 module.exports.login_get = (req, res) => {
@@ -49,22 +53,19 @@ module.exports.login_get = (req, res) => {
 }
 
 module.exports.signup_post = async (req, res) => {
-    const { email, password } = req.body;
+    const { username, email, password } = req.body;
 
     try {
-        const user = await User.create({ email: email, password: password });
+        const user = await User.create({ username:username, email: email, password: password });
         const token = createToken(user._id);
         res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
         res.status(201).json( { user: user._id});
     }
     catch (err) {
-        const errors = handleError(err);
+        const usernameExisted = await User.findOne({ username });
+        const errors = handleError(err, usernameExisted);
         res.status(400).json({ errors });
     }
-
-
-    // console.log(email, password);
-
     // res.send('new signup');
 }
 
