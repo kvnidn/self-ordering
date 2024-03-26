@@ -1,17 +1,97 @@
-<form>
-    <h1 id="test">Sign up</h1>
-    <label for="username">Username</label>
-    <input type="text" name="username" required/>
-    <div class="username error"></div>
+<section class="signup-section">
+    <div class="signup">
+        <button id="show-signup">Sign Up</button>
+    </div>
+    <div class="signup-popup">
+        <div class="signup-content">
+        <div class="signup-close-btn">&times;</div>
+            <div class="form">
+                <h2>Sign Up</h2>
+                <div class="form-element">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" placeholder="Enter username" required/>
+                    <div class="username error"></div>
+                </div>
+                <div class="form-element">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" placeholder="Enter email" required/>
+                    <div class="email error"></div>
+                </div>
+                <div class="form-element">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" placeholder="Enter password" required/>
+                    <div class="password error"></div>
+                </div>
+                <div class="form-element">
+                    <button>Sign up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <label for="email">Email</label>
-    <input type="text" name="email" required/>
-    <div class="email error"></div>
+<script>
+    const signupButton = document.querySelector('#show-signup');
+    const signupPopup = document.querySelector('.signup-popup');
+    const closesignupButton = document.querySelector('.signup-popup .signup-close-btn');
 
-    <label for="password">Password</label>
-    <input type="password" name="password" required/>
-    <div class="password error"></div>
+    signupButton.addEventListener("click", () => {
+        signupPopup.style.top = "0%";
+        signupPopup.style.opacity = "1";
+        signupPopup.classList.add("active");
+    });
 
-    <button>Sign up</button>
-    
-</form>
+    closesignupButton.addEventListener("click", () => {
+        signupPopup.style.top = "-150%";
+        signupPopup.style.opacity = "0";
+        signupPopup.classList.remove("active");
+    });
+
+
+    const signupform = document.querySelector('.signup-popup .form');
+
+    const signupusernameError = document.querySelector('.username.error');
+    const signupemailError = document.querySelector('.email.error');
+    const signuppasswordError = document.querySelector('.password.error');
+
+    signupform.addEventListener('submit', async (err) => {
+        err.preventDefault();
+
+        
+        // RESET 
+        signupusernameError.textContent = "";
+        signupemailError.textContent = "";
+        signuppasswordError.textContent = "";
+
+        const username = signupform.username.value;
+        const email = signupform.email.value;
+        const password = signupform.password.value;
+
+        try {
+            const res = await fetch('/signup', {
+                method: 'POST',
+                body: JSON.stringify({
+                    username: username,
+                    email: email,
+                    password: password 
+                }),
+                headers: { 'Content-Type': 'application/json' },
+            });
+            const data = await res.json();
+            console.log(data);
+            if (data.errors) {
+                signupusernameError.textContent = data.errors.username;
+                signupemailError.textContent = data.errors.email;
+                signuppasswordError.textContent = data.errors.password;
+            }
+            if (data.user) {
+                location.assign('/');
+            }
+        }
+        catch (err) {
+            console.log(err);
+        }
+
+        // console.log(username, email, password);
+    });
+</script>

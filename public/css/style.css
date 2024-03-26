@@ -53,6 +53,14 @@ header {
     display: flex;
 }
 
+.center-navbar {
+    justify-content: center;
+}
+
+.right-navbar {
+    justify-content: flex-end;
+}
+
 ul {
     list-style-type: none;
 }
@@ -192,10 +200,10 @@ li a:hover {
     text-align: center;
 }
 
-h1#test {
+/* h1#test {
     margin: 100px;
     font-size: 100px;
-}
+} */
 
 .box-1 button {
     display: flex;
@@ -816,4 +824,258 @@ body.showCart .cartTab {
 
 .location .map-container .map-desc2 a.button:hover {
     background-color: rgb(174, 32, 22);
+}
+
+
+/* Login Popup */
+section .login-section {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Raleway", sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: end;
+}
+
+.login button {
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+    background: rgb(150, 44, 44);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.login-popup {
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: -150%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    z-index: 999;
+}
+
+.login-popup .login-content {
+    background: #fff;
+    width: 380px;
+    padding: 20px 30px;
+    box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.login-popup .active {
+    opacity: 1;
+}
+
+.login-popup.active .login-content {
+    opacity: 1;
+    transform: translateY(20px);
+}
+
+.login-popup .login-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 15px;
+    height: 15px;
+    /* background: #888; */
+    color: #888;
+    text-align: center;
+    line-height: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.login-popup .form h2 {
+    text-align: center;
+    color: #222;
+    margin: 10px 0px 20px;
+    font-size: 25px;
+}
+
+.login-popup .form .form-element {
+    margin: 15px 0px;
+}
+
+.login-popup .form .form-element label {
+    font-size: 14px;
+    color: #222;
+}
+
+.login-popup .form .form-element input[type="text"],
+.login-popup .form .form-element input[type="password"] {
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+
+.login-popup .form .form-element input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.login-popup .form .form-element button {
+    width: 100%;
+    height: 40px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    background: rgb(150, 44, 44);
+    color: #f5f5f5;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.login-popup .form .form-element a {
+    display: block;
+    text-align: right;
+    font-size: 15px;
+    color: #1a79ca;
+    text-decoration: underline;
+    font-weight: 100;
+    margin: 0;
+}
+
+/* Sign Up Popup */
+section .signup-section {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Raleway", sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: end;
+}
+
+.signup button {
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: rgb(150, 44, 44);
+    background: transparent;
+    border: 2px solid rgb(150, 44, 44);
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.signup-popup {
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: -150%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    z-index: 999;
+}
+
+.signup-popup .signup-content {
+    background: #fff;
+    width: 380px;
+    padding: 20px 30px;
+    box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.signup-popup .active {
+    opacity: 1;
+}
+
+.signup-popup.active .signup-content {
+    opacity: 1;
+    transform: translateY(20px);
+}
+
+.signup-popup .signup-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 15px;
+    height: 15px;
+    /* background: #888; */
+    color: #888;
+    text-align: center;
+    line-height: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.signup-popup .form h2 {
+    text-align: center;
+    color: #222;
+    margin: 10px 0px 20px;
+    font-size: 25px;
+}
+
+.signup-popup .form .form-element {
+    margin: 15px 0px;
+}
+
+.signup-popup .form .form-element label {
+    font-size: 14px;
+    color: #222;
+}
+
+.signup-popup .form .form-element input[type="text"],
+.signup-popup .form .form-element input[type="password"] {
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+
+.signup-popup .form .form-element button {
+    width: 100%;
+    margin-top: 10px;
+    height: 40px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    background: rgb(150, 44, 44);
+    color: #f5f5f5;
+    border-radius: 10px;
+    cursor: pointer;
 }
