@@ -16,7 +16,7 @@ header {
     width: 100%;
     position: fixed;
     align-items: center;
-    padding: 12px 0;
+    /* padding: 12px 0; */
     top: 0;
     display: block;
     z-index: 2000;

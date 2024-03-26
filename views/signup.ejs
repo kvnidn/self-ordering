@@ -5,27 +5,27 @@
     <div class="signup-popup">
         <div class="signup-content">
         <div class="signup-close-btn">&times;</div>
-            <div class="form">
+            <form class="form">
                 <h2>Sign Up</h2>
                 <div class="form-element">
                     <label for="username">Username</label>
                     <input type="text" name="username" placeholder="Enter username" required/>
-                    <div class="username error"></div>
+                    <div class="username-error"></div>
                 </div>
                 <div class="form-element">
                     <label for="email">Email</label>
                     <input type="text" name="email" placeholder="Enter email" required/>
-                    <div class="email error"></div>
+                    <div class="email-error"></div>
                 </div>
                 <div class="form-element">
                     <label for="password">Password</label>
                     <input type="password" name="password" placeholder="Enter password" required/>
-                    <div class="password error"></div>
+                    <div class="password-error"></div>
                 </div>
                 <div class="form-element">
                     <button>Sign up</button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </section>
@@ -50,9 +50,9 @@
 
     const signupform = document.querySelector('.signup-popup .form');
 
-    const signupusernameError = document.querySelector('.username.error');
-    const signupemailError = document.querySelector('.email.error');
-    const signuppasswordError = document.querySelector('.password.error');
+    const signupusernameError = document.querySelector('.username-error');
+    const signupemailError = document.querySelector('.email-error');
+    const signuppasswordError = document.querySelector('.password-error');
 
     signupform.addEventListener('submit', async (err) => {
         err.preventDefault();

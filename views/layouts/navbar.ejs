@@ -7,15 +7,18 @@
             <li><a href="/locations">Locations</a></li>
             <li><a href="/about">About</a></li>
         </ul>
-        <ul class="right-navbar">
-            <% if(user) { %>
-                <li><%= user.username %></li>
-                <li><a href="/logout">Logout</a></li>
-            <% } else { %>
-                <li><%- include("../login") %></li>
-                <!-- <li><button id="show-login">Login</button></li> -->
-                <li><%- include("../signup") %></li>
-                <% } %>
-        </ul>         
+        <div style="padding-top: 40px;">
+
+            <ul class="right-navbar">
+                <% if(user) { %>
+                    <li><%= user.username %></li>
+                    <li><a href="/logout">Logout</a></li>
+                <% } else { %>
+                    <li><%- include("../login") %></li>
+                    <!-- <li><button id="show-login">Login</button></li> -->
+                    <li><%- include("../signup") %></li>
+                    <% } %>
+            </ul>         
+        </div>
     </div>
 </header>
