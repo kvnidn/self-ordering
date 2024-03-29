@@ -86,9 +86,5 @@ app.get("/about", (req, res) => {
 //     res.json(cookies);
 // })
 
-const bodyParser = require('body-parser');
-
-app.use(bodyParser.urlencoded({ extended: true }));
-
 // Menu Routers
 app.use('/', require('./routes/router'))
