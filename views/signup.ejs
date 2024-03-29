@@ -10,17 +10,17 @@
                 <div class="form-element">
                     <label for="username">Username</label>
                     <input type="text" name="username" placeholder="Enter username" required/>
-                    <div class="username-error"></div>
+                    <div class="usernameerror"></div>
                 </div>
                 <div class="form-element">
                     <label for="email">Email</label>
                     <input type="text" name="email" placeholder="Enter email" required/>
-                    <div class="email-error"></div>
+                    <div class="emailerror"></div>
                 </div>
                 <div class="form-element">
                     <label for="password">Password</label>
                     <input type="password" name="password" placeholder="Enter password" required/>
-                    <div class="password-error"></div>
+                    <div class="passworderror"></div>
                 </div>
                 <div class="form-element">
                     <button>Sign up</button>
@@ -50,9 +50,9 @@
 
     const signupform = document.querySelector('.signup-popup .form');
 
-    const signupusernameError = document.querySelector('.username-error');
-    const signupemailError = document.querySelector('.email-error');
-    const signuppasswordError = document.querySelector('.password-error');
+    const signupusernameError = document.querySelector('.usernameerror');
+    const signupemailError = document.querySelector('.emailerror');
+    const signuppasswordError = document.querySelector('.passworderror');
 
     signupform.addEventListener('submit', async (err) => {
         err.preventDefault();

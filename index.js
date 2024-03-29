@@ -6,7 +6,6 @@ const expressLayouts = require("express-ejs-layouts");
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const morgan = require('morgan')
-
 const cookieParser = require('cookie-parser');
 
 dotenv.config()
@@ -86,3 +85,10 @@ app.get("/about", (req, res) => {
 
 //     res.json(cookies);
 // })
+
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Menu Routers
+app.use('/', require('./routes/router'))

@@ -4,19 +4,19 @@ const menuSchema = new Schema(
     {
         name: {
             type: String,
-            required: true
+            required: [true, "Please enter the foods name !"]
         },
         image: {
             type: String,
-            required: true
+            required: [true, "Please enter a link"]
         },
         price: {
             type: Number,            
-            required: true
+            required: [true, "Please enter the price"]
         },
         type: {
             type: String,
-            required: true
+            required: [true, "Please choose the type"]
         }
 
     },
@@ -24,6 +24,5 @@ const menuSchema = new Schema(
         Collection: 'menus',
     }
 )
-
 
 module.exports = model('menus', menuSchema)

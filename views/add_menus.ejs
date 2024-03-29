@@ -1,0 +1,70 @@
+<main id="site-main">
+    <div class="dashboard-container">
+        <div class="box-nav d-flex justify-between">
+            <div class="filter">
+                <a href="/dashboard">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M459.5 440.6c9.5 7.9 22.8 9.7 34.1 4.4s18.4-16.6 18.4-29V96c0-12.4-7.2-23.7-18.4-29s-24.5-3.6-34.1 4.4L288 214.3V256v41.7L459.5 440.6zM256 352V256 128 96c0-12.4-7.2-23.7-18.4-29s-24.5-3.6-34.1 4.4l-192 160C4.2 237.5 0 246.5 0 256s4.2 18.5 11.5 24.6l192 160c9.5 7.9 22.8 9.7 34.1 4.4s18.4-16.6 18.4-29V352z"/></svg>
+                    All Menu
+                </a>
+            </div>
+        </div>
+        <div class="form-title text-center">
+            <h2 class="text-dark">New Menu</h2>
+            <span class="text-light">Use This Form to Create Menu</span>
+        </div>
+
+        <form action="/menus" method="POST" id="add_menus" class="form">
+            <div class="form-group">
+                <label for="name" class="text-light">Name</label>
+                <input type="hidden" name="id" value="">
+                <input type="text" name="name" value="<%= formData.name %>" placeholder="McDini enak" required>
+                
+                <div class="nameerror"><%= errors.name %></div>
+            </div>
+            <div class="form-group">
+                <label for="image_url" class="text-light">Image_URL</label>
+                <input type="text" name="image" value="<%= formData.image %>" placeholder="www.McDini.com" required>
+
+                
+                <div class="imageerror"><%= errors.image %></div>
+            </div>
+            <div class="form-group">
+                <label for="price" class="text-light">Price</label>
+                <input type="number" name="price" value="<%= formData.price %>" placeholder="99999" required>
+                
+                <div class="priceerror"><%= errors.price %></div>
+            </div>
+            <div class="form-group">
+                <label for="type" class="text-light">Type</label>
+                <div class="radio inline">
+                    <input type="radio" id="radio-2" name="type" value="Promotion" <%= formData.type === 'Promotion' ? 'checked' : '' %> required>
+                    <label for="radio-2" class="radio-label">Promotion</label>
+                </div>
+                <div class="radio inline">
+                    <input type="radio" id="radio-3" name="type" value="alacarte" <%= formData.type === 'alacarte' ? 'checked' : '' %>>
+                    <label for="radio-3" class="radio-label">Ala Carte</label>
+                </div>
+                <div class="radio inline">
+                    <input type="radio" id="radio-4" name="type" value="sides" <%= formData.type === 'sides' ? 'checked' : '' %>>
+                    <label for="radio-4" class="radio-label">Sides</label>
+                </div>
+                <div class="radio inline">
+                    <input type="radio" id="radio-5" name="type" value="desserts" <%= formData.type === 'desserts' ? 'checked' : '' %>>
+                    <label for="radio-5" class="radio-label">Desserts</label>
+                </div>
+                <div class="radio inline">
+                    <input type="radio" id="radio-6" name="type" value="beverages" <%= formData.type === 'beverages' ? 'checked' : '' %>>
+                    <label for="radio-6" class="radio-label">Beverages</label>
+                </div>
+                <div class="radio inline">
+                    <input type="radio" id="radio-7" name="type" value="cafe" <%= formData.type === 'cafe' ? 'checked' : '' %>>
+                    <label for="radio-7" class="radio-label">Cafe</label>
+                </div>
+                
+                <div class="typeerror"><%= errors.type %></div>
+            </div>
+            <button class="btn text-dark update">Save</button>
+        </form>
+    </div>
+</main>
+
