@@ -30,8 +30,12 @@ app.use(cookieParser());
 app.use(expressLayouts);
 
 app.use(morgan('dev'))
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/api/menuRoute', require('./routes/api/menuRoute'))
+app.use('/api/cartRoute', require('./routes/api/cartRoute'))
 
 mongoose.connect(MONGO_URL)
     .then(() => console.log(`MongoDB connected ${MONGO_URL}`))

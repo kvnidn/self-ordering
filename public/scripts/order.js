@@ -19,17 +19,47 @@ closeCart.addEventListener('click', () => {
     body.classList.toggle('showCart')
 })
 
+// const checkout = () => {
+//     if (cartCount === 0) {
+//         alert("Nothing to purchase");
+//     } else {
+//         console.log(cartItems);
+//         removeItem();
+//     }
+// }
+
 const checkout = () => {
     if (cartCount === 0) {
         alert("Nothing to purchase");
     } else {
-        removeItem();
+        // Send a POST request to the server to create a new cart
+        console.log(JSON.stringify({username: 'jason', cartOrder: cartItems}));
+        fetch('/api/cartRoute', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({username: 'jason', cartOrder: cartItems })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to create cart');
+            }
+            // Clear cartItems array and update cart display on successful creation
+            removeItem();
+            alert("Cart created successfully");
+        })
+        .catch(error => {
+            console.error('Error creating cart:', error);
+            alert("Failed to create cart. Please try again later.");
+        });
     }
-}
+};
+
 
 const removeItem = () => {
-    alert("Processing......");
-    alert("Done");
+    // alert("Processing......");
+    // alert("Done");
     cartCount = 0;
     cartItems = []
     document.getElementById('cartCount').textContent = cartCount;
@@ -53,7 +83,7 @@ menuTypes.forEach(type => {
             return response.json();
         })
         .then(menuData => {
-            console.log("Menu data fetched successfully:", menuData);
+            // console.log("Menu data fetched successfully:", menuData);
             const typeData = menuData.filter(item => item.type.toLowerCase() === type.toLowerCase());
 
             console.log("Type Data for", type, ":", typeData);
@@ -94,7 +124,8 @@ menuTypes.forEach(type => {
                             let item = {
                                 name: selectedItem.name,
                                 image: selectedItem.image,
-                                price: selectedItem.price
+                                price: selectedItem.price,
+                                type: selectedItem.type
                             };
                             showAlert(item);
                         }
