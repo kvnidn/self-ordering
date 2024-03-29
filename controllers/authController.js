@@ -44,12 +44,12 @@ const createToken = (id) => {
 
 module.exports.signup_get = (req, res) => {
     const userData = req.user || res.locals.user;
-    res.render('signup', {title: "SignUp", script: "../scripts/signup.js", layout: "layouts/main-layout.ejs", user: userData});
+    res.render('signup', {title: "SignUp", user: userData});
 }
 
 module.exports.login_get = (req, res) => {
     const userData = req.user || res.locals.user;
-    res.render('login', {title: "Login", script: "../scripts/login.js", layout: "layouts/main-layout.ejs", user: userData});
+    res.render('login', {title: "Login", user: userData});
 }
 
 module.exports.signup_post = async (req, res) => {
