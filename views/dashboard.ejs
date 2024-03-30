@@ -7,6 +7,8 @@
 
     <div class="dashboard-container">
 
+        <h1><span class="mcd">McD</span>ini's Menu</h1>
+        
         <a href="/dashboard/add_menus" class="add-menu-btn">
                 <span class="material-icons-sharp">add</span>
                 Add Menu
@@ -30,7 +32,7 @@
                     <tr>
                         <td><%= i+1 %></td>
                         <td><img src="<%= menu[i].image %>" width="150px"></td>
-                        <td><%= menu[i].name %></td>
+                        <td data-name="<%= menu[i].name %>"><%= menu[i].name %></td>
                         <td><%= menu[i].price %></td>
                         <td><%= menu[i].type %></td>
                         <td>
@@ -41,7 +43,7 @@
                                     </span>
                                 </a>
 
-                                <a href="#" class="menu-delete"  data-id="<%= menu[i]._id %>">
+                                <a class="menu-delete" data-id="<%= menu[i]._id %>">
                                     <span class="material-icons-sharp">
                                         delete
                                     </span>
@@ -54,38 +56,66 @@
             </table>
         </form>
     </div>
+
+    <div class="delete-menu-container">
+
+        <div class="delete-menu-info">
+            <img src="../assets/logo_mcd.png">
+            <div class="delete-menu-text">
+                <p class="delete-confirm">Are you sure you want to <span class="delete-highlight">delete</span> "Paket Berkah"?</p>
+                <p class="delete-info">This item will be deleted immediately. You can't undo this action.</p>
+            </div>
+        </div>
+        
+        <div 
+            onclick="document.querySelector('.delete-menu-container').style.display = 'none'"
+            class="delete-menu-action-btn"
+        >
+
+            <a class="delete-btn">
+                Delete
+            </a>
+            
+            <a class="cancel-btn">
+                Cancel
+            </a>
+
+        </div>
+    </div>
+
+    <div class="overlay"></div>
 </main>
 
 <script>
-    const deleteLinks = document.querySelectorAll('.delete');
+    // const deleteLinks = document.querySelectorAll('.delete');
 
-    deleteLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
+    // deleteLinks.forEach(link => {
+    //     link.addEventListener('click', (e) => {
+    //         e.preventDefault();
 
-            const menuId = e.currentTarget.getAttribute('data-id');
+    //         const menuId = e.currentTarget.getAttribute('data-id');
 
-            if (menuId) {
-                fetch(`/menus/${menuId}`, {
-                    method: 'DELETE'
-                })
-                .then(response => {
-                    if (response.ok) {
-                        console.log(`Menu with ID ${menuId} has been deleted.`);
-                        // REFRESH PAGE SO THAT THE ID IS UPDATED
-                        window.location.reload();
-                    } else {
-                        console.error(`Error deleting menu item. ${menuId}`);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-            } else {
-                console.error('Menu ID is undefined.');
-            }
-        });
-    });
+    //         if (menuId) {
+    //             fetch(`/menus/${menuId}`, {
+    //                 method: 'DELETE'
+    //             })
+    //             .then(response => {
+    //                 if (response.ok) {
+    //                     console.log(`Menu with ID ${menuId} has been deleted.`);
+    //                     // REFRESH PAGE SO THAT THE ID IS UPDATED
+    //                     window.location.reload();
+    //                 } else {
+    //                     console.error(`Error deleting menu item. ${menuId}`);
+    //                 }
+    //             })
+    //             .catch(error => {
+    //                 console.error('Error:', error);
+    //             });
+    //         } else {
+    //             console.error('Menu ID is undefined.');
+    //         }
+    //     });
+    // });
 
     // Sort Tables
 
@@ -169,4 +199,89 @@
             }
         });
     })
+
+    // Ketika tombol hapus diklik
+    document.querySelectorAll('.menu-delete').forEach(deleteBtn => {
+        deleteBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            // Dapatkan ID dan nama menu dari data-name atribut pada elemen terkait
+            // const menuID = e.currentTarget.closest('tr').querySelector('td[data-id]').dataset.id;
+            const menuID = e.currentTarget.getAttribute('data-id');
+            const menuName = e.currentTarget.closest('tr').querySelector('td[data-name]').dataset.name;
+
+            // Tampilkan nama menu pada pesan konfirmasi penghapusan
+            document.querySelector('.delete-confirm').innerHTML = `Are you sure you want to <span class="delete-highlight">delete</span> "${menuName}"?`;
+
+            // Tampilkan overlay
+            const overlay = document.querySelector('.overlay');
+            overlay.style.top = "0%";
+            overlay.style.opacity = "1";
+            overlay.classList.add("active");
+
+            // Tampilkan kontainer penghapusan
+            var deleteMenuContainer = document.querySelector('.delete-menu-container');
+            deleteMenuContainer.style.display = 'block';
+            deleteMenuContainer.style.top = '50%';
+            deleteMenuContainer.style.transform = 'translate(-50%, -50%)';
+
+            deleteMenuContainer.dataset.menuID = menuID;
+        })
+    })
+
+    // Event listener untuk tombol pembatalan
+    document.querySelector('.cancel-btn').addEventListener('click', () => {
+        // Sembunyikan overlay
+        const overlay = document.querySelector('.overlay');
+        overlay.style.top = "-100%";
+        overlay.style.opacity = "0";
+
+        // Sembunyikan kontainer penghapusan
+        const deleteMenuContainer = document.querySelector('.delete-menu-container');
+        deleteMenuContainer.style.display = '150%';
+        deleteMenuContainer.style.transform = 'translate(-50%, -50%)';
+        deleteMenuContainer.style.display = 'none';
+    });
+
+    // Event listener untuk tombol penghapusan
+    document.querySelector('.delete-btn').addEventListener('click', () => {
+        // Dapatkan ID menu yang akan dihapus dari data di dalam popup konfirmasi
+        const menuID = document.querySelector('.delete-menu-container').dataset.menuID;
+
+        // 
+        if (menuID) {
+            fetch(`/menus/${menuID}`, {
+                method: 'DELETE'
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log(`Menu with ID ${menuID} has been deleted.`);
+                    
+                    // Hapus baris menu dari antarmuka pengguna
+                    // document.querySelector(`tr[data-id="${menuID}"]`).remove();
+                } else {
+                    console.error(`Error deleting menu item. ${menuId}`);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        } else {
+            console.error('Menu ID is undefined.');
+        }
+
+        // Sembunyikan overlay
+        const overlay = document.querySelector('.overlay');
+        overlay.style.top = "-100%";
+        overlay.style.opacity = "0";
+
+        // Sembunyikan kontainer penghapusan
+        const deleteMenuContainer = document.querySelector('.delete-menu-container');
+        deleteMenuContainer.style.display = '150%';
+        deleteMenuContainer.style.transform = 'translate(-50%, -50%)';
+        deleteMenuContainer.style.display = 'none';
+
+        // REFRESH PAGE SO THAT THE ID IS UPDATED
+        window.location.reload();
+    });
 </script>
