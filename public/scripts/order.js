@@ -29,17 +29,28 @@ closeCart.addEventListener('click', () => {
 // }
 
 const checkout = () => {
+    const username = document.getElementById('username').textContent;
     if (cartCount === 0) {
-        alert("Nothing to purchase");
+        Swal.fire({
+            icon: "warning",
+            html: "Nothing to purchase",
+            timer: 1000,
+            timerProgressBar: true,
+            showConfirmButton: false,
+            scrollbarPadding: false,
+            willClose: () => {
+                clearInterval(timerInterval);
+            }
+        });
     } else {
         // Send a POST request to the server to create a new cart
-        console.log(JSON.stringify({username: 'jason', cartOrder: cartItems}));
+        console.log(JSON.stringify({username: username, cartOrder: cartItems}));
         fetch('/api/cartRoute', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({username: 'jason', cartOrder: cartItems })
+            body: JSON.stringify({username: username, cartOrder: cartItems })
         })
         .then(response => {
             if (!response.ok) {
@@ -47,11 +58,33 @@ const checkout = () => {
             }
             // Clear cartItems array and update cart display on successful creation
             removeItem();
-            alert("Cart created successfully");
+            Swal.fire({
+                title: "Success!",
+                icon: "success",
+                html: "Cart created successfully",
+                timer: 1000,
+                timerProgressBar: true,
+                showConfirmButton: false,
+                scrollbarPadding: false,
+                willClose: () => {
+                    clearInterval(timerInterval);
+                }
+            });
         })
         .catch(error => {
             console.error('Error creating cart:', error);
-            alert("Failed to create cart. Please try again later.");
+            Swal.fire({
+                title: "Error!",
+                icon: "error",
+                html: "Failed to create cart. Please try again later.",
+                timer: 1000,
+                timerProgressBar: true,
+                showConfirmButton: false,
+                scrollbarPadding: false,
+                willClose: () => {
+                    clearInterval(timerInterval);
+                }
+            });
         });
     }
 };
@@ -137,11 +170,35 @@ menuTypes.forEach(type => {
         .catch(error => console.error('Error fetching menu data:', error));
 });
 
-
-    
+// Alert
+let timerInterval;
 
 const showAlert = (item) => {
-    alert(item.name + " - added to cart");
+    // alert(`${item.name} - added to cart`);
+        Swal.fire({
+            title: "Success!",
+            icon: "success",
+            html: `<b>${item.name}</b> - added to cart`,
+            timer: 1000,
+            timerProgressBar: true,
+            showConfirmButton: false,
+            scrollbarPadding: false,
+            // didOpen: () => {
+            //     // Start the timerInterval to update the timer display
+            //     const timer = Swal.getPopup().querySelector("b");
+            //     let remainingTime = Swal.getTimerLeft();
+            //     timerInterval = setInterval(() => {
+            //         remainingTime -= 100;
+            //         if (remainingTime > 0) {
+            //             timer.textContent = Math.ceil(remainingTime / 1000);
+            //         }
+            //     }, 100);
+            // },
+            willClose: () => {
+                clearInterval(timerInterval);
+            }
+        });
+    
     
     // Check if the item is already in the cart
     const existingItem = cartItems.find(cartItem => cartItem.name === item.name);
