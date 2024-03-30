@@ -72,18 +72,67 @@ li {
 
 li a {
     text-decoration: none;
-    color: black;
+    color: white;
     transition: color 0.3s ease;
 }
 
 /* ===== style.css ===== */
-li a:hover {
+/* li a:hover {
     color: rgb(255,199,44);
-}
+} */
 /* ===== style.css ===== */
 
 .coloring-mac a:hover {
     color: black;
+}
+
+.my-swal {
+    z-index: 9999;
+}
+
+.right-navbar #profile {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    width: 150%; 
+    height: 150%; 
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.right-navbar #username:hover {
+    color: rgb(255,199,44);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.right-navbar #profile svg {
+    margin-right: 10px;
+    width: 30px;
+}
+
+a.logout-link {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: rgb(150, 44, 44);
+    background: transparent;
+    border: 2px solid rgb(150, 44, 44);
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none; 
+}
+
+a.logout-link:hover {
+    color: white;
+    background: rgb(150, 44, 44);
+    border: 2px solid rgb(150, 44, 44);
+    outline: none;
 }
 
 /* masih ragu mau buat slider atau enggak */
@@ -576,7 +625,7 @@ svg {
 }
 
 .cartTab {
-    padding-top: 60px;
+    padding-top: 0px;
     width: 400px;
     background-color: #353432;
     color: white;
@@ -589,7 +638,7 @@ svg {
 
 body.showCart .cartTab {
     inset: 0 0 0 auto;
-    z-index: 2;
+    z-index: 99999;
 }
 
 .cartTab h1 {

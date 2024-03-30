@@ -77,8 +77,29 @@
                 emailError.textContent = data.errors.email;
                 passwordError.textContent = data.errors.password;
             }
+            console.log(data.user);
             if (data.user) {
-                location.assign('/');
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 1000,
+                    timerProgressBar: true,
+                    // didOpen: (toast) => {
+                    //     toast.onmouseenter = Swal.stopTimer;
+                    //     toast.onmouseleave = Swal.resumeTimer;
+                    // }
+                });
+                Toast.fire({
+                    customClass: {
+                        container: "my-swal"
+                    },
+                    icon: "success",
+                    title: `Welcome, ${data.username}!`
+                });
+                setTimeout(() => {
+                    location.assign('/');
+                }, 1000);
             }
         }
         catch (err) {
