@@ -1382,6 +1382,18 @@ svg {
     color: rgb(150, 44, 44);
 }
 
+.menu-table .sortable{
+    cursor: pointer;
+}
+
+.menu-table .th-sort-asc::after{
+    content: "\25b4";
+}
+
+.menu-table .th-sort-desc::after{
+    content: "\25be";
+}
+
 .menu-table .menu-modify-btn .menu-update{
     outline: none;
     border: none;
