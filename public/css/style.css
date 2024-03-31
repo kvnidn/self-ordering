@@ -619,7 +619,7 @@ footer .copy {
 }
 /*  */
 
-svg#shopping-cart {
+svg#cart-button {
     width: 30px;
 }
 
@@ -1314,6 +1314,7 @@ svg {
     right: 35px;
     border-radius: 18px;
     color: rgb(150, 44, 44);
+    background-color: white;
     /* border: 3px solid rgb(150, 44, 44); */
     box-shadow: 0 0 12px rgba(150, 44, 44, 0.6);
     display: flex;
@@ -1327,7 +1328,7 @@ svg {
 }
 
 .add-menu:hover{
-    background: rgb(150, 44, 44);
+    background: rgb(255,199,44);
     color: white;
     box-shadow: none;
 }
