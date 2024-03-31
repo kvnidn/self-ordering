@@ -103,7 +103,7 @@ const removeItem = () => {
 
 // PROMOTION
 
-const menuTypes = ['Promotion', 'Alacarte', 'Sides', 'Beverages', 'Desserts', 'Cafe'];
+const menuTypes = ['Promotion', 'Ala Carte', 'Sides', 'Beverages', 'Desserts', 'Cafe'];
 
 menuTypes.forEach(type => {
     const menuElement = document.getElementById(`menu-${type.toLowerCase()}`);
@@ -122,7 +122,7 @@ menuTypes.forEach(type => {
             console.log("Type Data for", type, ":", typeData);
 
             typeData.forEach((item, index) => {
-                if (index % (type === "Promotion" ? 1 : type === "Alacarte" ? 5 : type === "Sides" || type === "Beverages" ? 4 : 2) === 0) {
+                if (index % (type === "Promotion" ? 1 : type === "Ala Carte" ? 5 : type === "Sides" || type === "Beverages" ? 4 : 2) === 0) {
                     const newLine = document.createElement("div");
                     newLine.classList.add(type === "Promotion" || type === "Sides" || type === "Beverages" ? "box-1-1-1" : "box-1-2-1");
                     menuElement.appendChild(newLine);
