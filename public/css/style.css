@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
 * {
     margin: 0;
     padding: 0;
@@ -72,7 +75,7 @@ li {
 
 li a {
     text-decoration: none;
-    color: white;
+    color: rgb(0, 0, 0);
     transition: color 0.3s ease;
 }
 
@@ -616,7 +619,7 @@ footer .copy {
 }
 /*  */
 
-svg {
+svg#shopping-cart {
     width: 30px;
 }
 
@@ -1284,11 +1287,9 @@ svg {
 
 
 
-/* Dashboard -KJ */
+/* Dashboard  */
 /* DO NOT DISTURB */
-
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
+/* Disturbed :) */
 .dashboard-container a, h1, span, th, td{
     font-family: poppins, sans-serif;
 }
@@ -1299,7 +1300,7 @@ svg {
     font-size: 24pt;
     font-weight: 800;
     color: red;
-}
+} 
 
 .dashboard-container .mcd{
     color: #ffc72c;

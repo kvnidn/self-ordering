@@ -68,6 +68,7 @@
         const password = signupform.password.value;
 
         try {
+            // POST the username, email, password from the form into signup
             const res = await fetch('/signup', {
                 method: 'POST',
                 body: JSON.stringify({

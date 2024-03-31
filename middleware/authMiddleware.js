@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
+// Checking Token
 const requireAuth = (req, res, next) => {
     const token = req.cookies.jwt;
     
@@ -19,6 +20,7 @@ const requireAuth = (req, res, next) => {
     }
 };
 
+// FIND USER
 const checkUser = (req, res, next) => {
     const token = req.cookies.jwt;
 
@@ -32,6 +34,7 @@ const checkUser = (req, res, next) => {
                 console.log(decodedToken);
                 let user = await User.findById(decodedToken.id);
                 // Input into views/html
+                // Username for the NAVBAR
                 res.locals.user = user;
                 next();
             }

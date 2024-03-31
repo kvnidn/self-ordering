@@ -24,10 +24,12 @@ const handleError = (err, usernameExisted) => {
         errors.password = "Password is not correct";
     }
     
+    // Duplicate Error
     if (err.code === 11000) {
         errors.email = "Email is already in use";
     }
 
+    // Handling error: Validation for email, Minimum Pass Length, etc
     else if (err.message.includes("user validation failed")) {
         Object.values(err.errors).forEach(({ properties }) => {
             errors[properties.path] = properties.message;
@@ -37,11 +39,19 @@ const handleError = (err, usernameExisted) => {
 };
 
 
+// Create Token for cookies
 const createToken = (id) => {
     const token = jwt.sign({ id: id }, "Secret", { expiresIn: maxAge});
     return token;
 }
 
+/*
+    Request => getting data from website, example:
+    Login: ___
+    Password: ___
+
+    Respond => for showing the result after we click button or after login sign up
+*/
 module.exports.signup_get = (req, res) => {
     const userData = req.user || res.locals.user;
     res.render('signup', {title: "SignUp", user: userData});
@@ -56,13 +66,16 @@ module.exports.signup_post = async (req, res) => {
     const { username, email, password } = req.body;
 
     try {
+        // Create the data
         const user = await User.create({ username:username, email: email, password: password });
+        // get token, get cookies
         const token = createToken(user._id);
         res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
         res.status(201).json( { user: user._id, username: user.username } );
     }
     catch (err) {
         const usernameExisted = await User.findOne({ username });
+        // handle errors, print errors
         const errors = handleError(err, usernameExisted);
         res.status(400).json({ errors });
     }

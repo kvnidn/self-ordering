@@ -20,6 +20,8 @@ const { requireAuth, checkUser } = require("./middleware/authMiddleware");
 app.set("view engine", "ejs");
 // app.set("views", path.join(__dirname, "views"));
 
+// for getting the data form .json file or mongodb file
+// Request, Responds
 app.use(express.json());
 // Static
 app.use(express.static("public"));
@@ -44,6 +46,7 @@ app.listen(port, () => {
     console.log(`Webserver listening on port ${port}`);
 })
 
+// LOGIN/SIGN UP
 app.use(authRoutes);
 
 // Check Account
@@ -74,6 +77,8 @@ app.get("/about", (req, res) => {
 // // Cookies
 // app.get('/set-cookies', (req, res) => {
 //     // res.setHeader('Set-Cookie', 'newUser=true');
+//     Maybe use below for user ADMIN or USER?
+
 //     res.cookie('newUser', false);
 //     res.cookie('isEmployee', true, { maxAge: 5000 * 60 * 60 * 24, httpOnly: true });
 //     res.send("You got the cookies");
