@@ -1561,3 +1561,19 @@ svg {
     transition: opacity 300ms ease;
     z-index: 9998;
 }
+
+/* Modifikasi Scrollbar */
+
+html::-webkit-scrollbar{
+    width: 0.5rem;
+}
+
+html::-webkit-scrollbar-track{
+    background: transparent;
+}
+
+html::-webkit-scrollbar-thumb{
+    background: rgb(150, 44, 44);
+    /* background: rgb(255,199,44); */
+    border-radius: 5rem;
+}
