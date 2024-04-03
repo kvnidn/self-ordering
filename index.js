@@ -7,6 +7,7 @@ const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const morgan = require('morgan')
 const cookieParser = require('cookie-parser');
+const Cart = require('./models/cartModel');
 
 dotenv.config()
 
@@ -37,6 +38,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/api/menuRoute', require('./routes/api/menuRoute'))
 app.use('/api/cartRoute', require('./routes/api/cartRoute'))
+
+// app.use('/dashboard/carts', require('./routes/api/cartRoute'));
 
 mongoose.connect(MONGO_URL)
     .then(() => console.log(`MongoDB connected ${MONGO_URL}`))
@@ -73,6 +76,34 @@ app.get("/about", (req, res) => {
     res.render("about.ejs", {title: "McDini - About Us", script: "", layout: "layouts/main-layout.ejs"})
 })
 
+app.get('/dashboard/carts', async (req, res) => {
+    try {
+        // Fetch data from the database
+        const carts = await Cart.find();
+        // Render the page and pass the fetched data to the EJS template
+        res.render('carts', { title: 'Dashboard - Carts', script: '', layout: 'layouts/main-layout', carts: carts });
+    } catch (error) {
+        // Handle any errors
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+
+// const axios = require('axios');
+
+// app.get('/dashboard/carts', (req, res) => {
+//     axios.get('/routes/api/cartRoute')
+//         .then((response) => {
+//             res.render("carts.ejs", {
+//                 menu: response.data, title: "Carts", script: "", layout: "layouts/main-layout.ejs"
+//             })
+//         })
+//         .catch(err => {
+//             res.send(err);
+//         })
+
+// })
 
 // // Cookies
 // app.get('/set-cookies', (req, res) => {

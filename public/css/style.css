@@ -1189,6 +1189,10 @@ section .signup-section {
     margin: 2em 0;
 }
 
+.menu-table .detail-table {
+    display: none;
+}
+
 table {
     border-spacing: 0px;
     width: 100%;
@@ -1440,6 +1444,22 @@ svg {
     border: 2px solid red;
     transition: all 300ms ease;
     cursor: pointer;
+}
+
+.detail-menu-container{
+    width: 48%;
+    /* border: 1px solid red; */
+    box-shadow: 0 0 3rem rgba(255,0,0,0.5);
+    padding: 3rem 4rem;
+    border-radius: 28pt;
+    background: white;
+    display: none;
+    position: fixed;
+    top: -150%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    z-index: 9999;
+    transition: top 300ms ease, transform 300ms ease, display 300ms ease;
 }
 
 .menu-table .menu-modify-btn .menu-delete:hover{
