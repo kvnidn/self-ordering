@@ -2,21 +2,26 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
 // Checking Token
-const requireAuth = (req, res, next) => {
+const requireAuth = async (req, res, next) => {
     const token = req.cookies.jwt;
     
     if(token) {
-        jwt.verify(token, "Secret", (err, decodedToken) => {
+        jwt.verify(token, "Secret", async (err, decodedToken) => {
             if(err) {
                 console.log(err.message);
-                res.redirect('/login');
+                res.redirect('/');
             } else {
                 console.log(decodedToken);
+                const user = await User.findById(decodedToken.id);
+
+                if(user.role !== "admin"){
+                    return res.status(404).json({ message: "404. That’s an error."});
+                }
                 next();
             }
         });
     } else {
-        res.redirect('/login');
+        res.redirect('/');
     }
 };
 

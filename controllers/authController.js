@@ -8,6 +8,25 @@ const jwt = require('jsonwebtoken');
 const maxAge = 5 * 24 * 60 * 60;
 
 
+// ============== FOR ADDING ACCOUNT ==================
+
+// const newAdmin = new User({
+//     username: 'admin',
+//     email: 'admin_doang@gmail.com',
+//     password: 'ada_ada_aja_lu',
+//     role: 'admin',
+//   });
+  
+// newAdmin.save()
+// .then(admin => {
+//     console.log('New admin created:', admin);
+// })
+// .catch(err => {
+//     console.error('Error creating admin:', err);
+// });
+
+// =======================================================
+
 const handleError = (err, usernameExisted) => {
     console.error(err.message, err.code);
     let errors = { username: "", email: "", password: "" };
@@ -109,3 +128,4 @@ module.exports.logout_get = (req, res) => {
     // res.cookie('jwt', '', {maxAge: 1});
     // res.redirect('/');
 }
+

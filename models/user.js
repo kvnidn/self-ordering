@@ -22,6 +22,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, "Please enter your password"],
         minlength: [5, "Minimum length of the password is 5"]
+    },
+    role: {
+        type: String,
     }
 })
 
@@ -52,7 +55,6 @@ userSchema.statics.login = async function(email, password) {
     }
     throw Error("Incorrect email");
 }
-
 
 
 const User = mongoose.model('user', userSchema);

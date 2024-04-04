@@ -76,7 +76,7 @@ app.get("/about", (req, res) => {
     res.render("about.ejs", {title: "McDini - About Us", script: "", layout: "layouts/main-layout.ejs"})
 })
 
-app.get('/dashboard/carts', async (req, res) => {
+app.get('/dashboard/carts', requireAuth, async (req, res) => {
     try {
         // Fetch data from the database
         const carts = await Cart.find();

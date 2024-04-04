@@ -10,59 +10,71 @@
         </div>
         <div class="form-title text-center">
             <h2 class="text-dark">Update Menu</h2>
-            <span class="text-light">Use This Form to Update Menu</span>
+            <span class="description">Use This Form to Update Menu</span>
         </div>
 
         <form action="/menus" method="POST" id="update_menus">
             <div class="form-group">
                 <label for="name" class="text-light">Name</label>
                 <input type="hidden" name="id" value="<%= menu._id %>">
-                <input type="text" name="name" value="<%= menu.name %>" placeholder="McDini enak" required>
+                <input id="value-input" type="text" name="name" value="<%= menu.name %>" placeholder="McDini enak" required>
                 
                 <div class="nameerror"><%= errors.name %></div>
             </div>
             <div class="form-group">
                 <label for="image_url" class="text-light">Image_URL</label>
-                <input type="text" name="image" value="<%= menu.image %>" placeholder="www.McDini.com" required>
+                <input id="value-input" type="text" name="image" value="<%= menu.image %>" placeholder="www.McDini.com" required>
                 
                 <div class="imageerror"><%= errors.image %></div>
             </div>
             <div class="form-group">
                 <label for="price" class="text-light">Price</label>
-                <input type="number" name="price" value="<%= menu.price %>" placeholder="99999" required>
+                <input id="value-input" type="number" name="price" value="<%= menu.price %>" placeholder="99999" required>
                 
                 <div class="priceerror"><%= errors.price %></div>
             </div>
             <div class="form-group">
                 <label for="type" class="text-light">Type</label>
                 <div class="radio inline">
-                    <input type="radio" id="radio-2" name="type" value="Promotion" <%= menu.type === 'Promotion' ? 'checked' : '' %> required>
-                    <label for="radio-2" class="radio-label">Promotion</label>
+                    <label for="radio-2" class="radio-label">
+                        <input class="input-radio" type="radio" id="radio-2" name="type" value="Promotion" <%= menu.type === 'Promotion' ? 'checked' : '' %> required>
+                        Promotion
+                    </label>
                 </div>
                 <div class="radio inline">
-                    <input type="radio" id="radio-3" name="type" value="Ala Carte" <%= menu.type === 'Ala Carte' ? 'checked' : '' %>>
-                    <label for="radio-3" class="radio-label">Ala Carte</label>
+                    <label for="radio-3" class="radio-label">
+                        <input class="input-radio" type="radio" id="radio-3" name="type" value="Ala Carte" <%= menu.type === 'Ala Carte' ? 'checked' : '' %>>
+                        Ala Carte
+                    </label>
                 </div>
                 <div class="radio inline">
-                    <input type="radio" id="radio-4" name="type" value="Sides" <%= menu.type === 'Sides' ? 'checked' : '' %>>
-                    <label for="radio-4" class="radio-label">Sides</label>
+                    <label for="radio-4" class="radio-label">
+                        <input class="input-radio" type="radio" id="radio-4" name="type" value="Sides" <%= menu.type === 'Sides' ? 'checked' : '' %>>
+                        Sides
+                    </label>
                 </div>
                 <div class="radio inline">
-                    <input type="radio" id="radio-5" name="type" value="Desserts" <%= menu.type === 'Desserts' ? 'checked' : '' %>>
-                    <label for="radio-5" class="radio-label">Desserts</label>
+                    <label for="radio-5" class="radio-label">
+                        <input class="input-radio" type="radio" id="radio-5" name="type" value="Desserts" <%= menu.type === 'Desserts' ? 'checked' : '' %>>
+                        Desserts
+                    </label>
                 </div>
                 <div class="radio inline">
-                    <input type="radio" id="radio-6" name="type" value="Beverages" <%= menu.type === 'Beverages' ? 'checked' : '' %>>
-                    <label for="radio-6" class="radio-label">Beverages</label>
+                    <label for="radio-6" class="radio-label">
+                        <input class="input-radio" type="radio" id="radio-6" name="type" value="Beverages" <%= menu.type === 'Beverages' ? 'checked' : '' %>>
+                        Beverages
+                    </label>
                 </div>
                 <div class="radio inline">
-                    <input type="radio" id="radio-7" name="type" value="Cafe" <%= menu.type === 'Cafe' ? 'checked' : '' %>>
-                    <label for="radio-7" class="radio-label">Cafe</label>
+                    <label for="radio-7" class="radio-label">
+                        <input class="input-radio" type="radio" id="radio-7" name="type" value="Cafe" <%= menu.type === 'Cafe' ? 'checked' : '' %>>
+                        Cafe
+                    </label>
                 </div>
                 <div class="typeerror"><%= errors.type %></div>
             </div>
             
-            <button type="submit" class="btn text-dark update">Save</button>
+            <button type="submit" class="add-menu-btn">Save</button>
         </form>
     </div>
 </main>
