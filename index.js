@@ -89,38 +89,11 @@ app.get('/dashboard/carts', requireAuth, async (req, res) => {
     }
 });
 
-
-// const axios = require('axios');
-
-// app.get('/dashboard/carts', (req, res) => {
-//     axios.get('/routes/api/cartRoute')
-//         .then((response) => {
-//             res.render("carts.ejs", {
-//                 menu: response.data, title: "Carts", script: "", layout: "layouts/main-layout.ejs"
-//             })
-//         })
-//         .catch(err => {
-//             res.send(err);
-//         })
-
-// })
-
-// // Cookies
-// app.get('/set-cookies', (req, res) => {
-//     // res.setHeader('Set-Cookie', 'newUser=true');
-//     Maybe use below for user ADMIN or USER?
-
-//     res.cookie('newUser', false);
-//     res.cookie('isEmployee', true, { maxAge: 5000 * 60 * 60 * 24, httpOnly: true });
-//     res.send("You got the cookies");
-// })
-
-// app.get('/read-cookies', (req, res) => {
-//     const cookies = req.cookies;
-//     console.log(cookies.newUser);
-
-//     res.json(cookies);
-// })
-
 // Menu Routers
 app.use('/', require('./routes/router'))
+
+
+// 
+app.get("*", (req, res) => {
+    res.render('404', { title: 'Error Page', layout: false});
+});

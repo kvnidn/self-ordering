@@ -9,19 +9,19 @@ const requireAuth = async (req, res, next) => {
         jwt.verify(token, "Secret", async (err, decodedToken) => {
             if(err) {
                 console.log(err.message);
-                res.redirect('/');
+                res.render('404', { title: '404', script: '', layout: false});
             } else {
                 console.log(decodedToken);
                 const user = await User.findById(decodedToken.id);
 
                 if(user.role !== "admin"){
-                    return res.status(404).json({ message: "404. That’s an error."});
+                    res.render('404', { title: '404', script: '', layout: false});
                 }
                 next();
             }
         });
     } else {
-        res.redirect('/');
+        res.render('404', { title: '404', script: '', layout: false});
     }
 };
 

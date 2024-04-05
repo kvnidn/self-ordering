@@ -1693,3 +1693,68 @@ h2.text-dark{
 }
 
 
+/* 404 Page */
+#error-404 {
+    background-color: yellow;
+}
+
+#oops {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.error-page img {
+    width: 28%;
+}
+
+.error-page span {
+    padding-left: 2%;
+    text-shadow: 2px 2px 0px #c9c9c9, -2px -2px 0px #c9c9c9;
+    font-weight: 800;
+    font-size: 18vw;
+}
+
+.letter-four-left {
+    display: inline-block;
+    transform: rotate(-30deg);
+}
+
+.letter-four-right {
+    display: inline-block;
+    transform: rotate(5deg);
+}
+
+.p-not-found {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8vw;
+    color: rgb(41, 41, 41);
+}
+
+.back {
+    font-size: 2vw;
+    font-weight: 800;;
+    margin: 1% 5%;
+    display: flex;
+    transition: color 0.3s;
+    text-shadow: 2px 2px 0px #1f1f1f;
+    color: blue;
+}
+
+.back:hover {
+    color: red;
+    text-shadow: 2px 2px 0px #c9c9c9;
+}
+
+#back-home {
+    width: 5%;
+}
+
