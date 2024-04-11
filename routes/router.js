@@ -5,8 +5,9 @@ const controller = require('../controllers/menuController');
 
 // FOR REQUEST
 const axios = require('axios');
+const { requireAuth, checkUser } = require("../middleware/authMiddleware");
 
-route.get('/dashboard', (req, res) => {
+route.get('/dashboard', requireAuth, (req, res) => {
     axios.get("http://localhost:3000/menus")
         .then((response) => {
             res.render("dashboard.ejs", {
@@ -19,11 +20,11 @@ route.get('/dashboard', (req, res) => {
 
 })
 
-route.get('/dashboard/add_menus', (req, res) => {
+route.get('/dashboard/add_menus', requireAuth, (req, res) => {
     res.render("add_menus.ejs", {title: "Dashboard", script: "", layout: "layouts/main-layout.ejs", errors: "", formData: ""});
 })
 
-route.get('/dashboard/update_menus', (req, res) => {
+route.get('/dashboard/update_menus', requireAuth, (req, res) => {
     axios.get("http://localhost:3000/menus", {params: {id: req.query.id}})
     .then(menudata => {
         res.render("update_menus.ejs", {title: "Dashboard", script: "", layout: "layouts/main-layout.ejs", menu: menudata.data, errors: ""});

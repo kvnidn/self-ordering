@@ -29,39 +29,12 @@ closeCart.addEventListener('click', () => {
 // }
 
 const checkout = () => {
-    const username = document.getElementById('username').textContent;
-    if (cartCount === 0) {
-        Swal.fire({
-            icon: "warning",
-            html: "Nothing to purchase",
-            timer: 1000,
-            timerProgressBar: true,
-            showConfirmButton: false,
-            scrollbarPadding: false,
-            willClose: () => {
-                clearInterval(timerInterval);
-            }
-        });
-    } else {
-        // Send a POST request to the server to create a new cart
-        console.log(JSON.stringify({username: username, cartOrder: cartItems}));
-        fetch('/api/cartRoute', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({username: username, cartOrder: cartItems })
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Failed to create cart');
-            }
-            // Clear cartItems array and update cart display on successful creation
-            removeItem();
+    try {
+        const username = document.getElementById('username').textContent;
+        if (cartCount === 0) {
             Swal.fire({
-                title: "Success!",
-                icon: "success",
-                html: "Cart created successfully",
+                icon: "warning",
+                html: "Nothing to purchase",
                 timer: 1000,
                 timerProgressBar: true,
                 showConfirmButton: false,
@@ -70,13 +43,55 @@ const checkout = () => {
                     clearInterval(timerInterval);
                 }
             });
-        })
-        .catch(error => {
-            console.error('Error creating cart:', error);
+        } else {
+            // Send a POST request to the server to create a new cart
+            console.log(JSON.stringify({username: username, cartOrder: cartItems}));
+            fetch('/api/cartRoute', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({username: username, cartOrder: cartItems })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to create cart');
+                }
+                // Clear cartItems array and update cart display on successful creation
+                removeItem();
+                Swal.fire({
+                    title: "Success!",
+                    icon: "success",
+                    html: "Cart created successfully",
+                    timer: 1000,
+                    timerProgressBar: true,
+                    showConfirmButton: false,
+                    scrollbarPadding: false,
+                    willClose: () => {
+                        clearInterval(timerInterval);
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Error creating cart:', error);
+                Swal.fire({
+                    title: "Error!",
+                    icon: "error",
+                    html: "Failed to create cart. Please try again later.",
+                    timer: 1000,
+                    timerProgressBar: true,
+                    showConfirmButton: false,
+                    scrollbarPadding: false,
+                    willClose: () => {
+                        clearInterval(timerInterval);
+                    }
+                });
+            });
+        }} catch {
             Swal.fire({
                 title: "Error!",
                 icon: "error",
-                html: "Failed to create cart. Please try again later.",
+                html: "Please Sign In First!",
                 timer: 1000,
                 timerProgressBar: true,
                 showConfirmButton: false,
@@ -85,9 +100,8 @@ const checkout = () => {
                     clearInterval(timerInterval);
                 }
             });
-        });
-    }
-};
+        }
+    };
 
 
 const removeItem = () => {

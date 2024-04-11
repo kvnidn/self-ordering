@@ -7,6 +7,7 @@ const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const morgan = require('morgan')
 const cookieParser = require('cookie-parser');
+const Cart = require('./models/cartModel');
 
 dotenv.config()
 
@@ -20,6 +21,8 @@ const { requireAuth, checkUser } = require("./middleware/authMiddleware");
 app.set("view engine", "ejs");
 // app.set("views", path.join(__dirname, "views"));
 
+// for getting the data form .json file or mongodb file
+// Request, Responds
 app.use(express.json());
 // Static
 app.use(express.static("public"));
@@ -36,6 +39,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api/menuRoute', require('./routes/api/menuRoute'))
 app.use('/api/cartRoute', require('./routes/api/cartRoute'))
 
+// app.use('/dashboard/carts', require('./routes/api/cartRoute'));
+
 mongoose.connect(MONGO_URL)
     .then(() => console.log(`MongoDB connected ${MONGO_URL}`))
     .catch(err => console.log(err))
@@ -44,6 +49,7 @@ app.listen(port, () => {
     console.log(`Webserver listening on port ${port}`);
 })
 
+// LOGIN/SIGN UP
 app.use(authRoutes);
 
 // Check Account
@@ -70,21 +76,24 @@ app.get("/about", (req, res) => {
     res.render("about.ejs", {title: "McDini - About Us", script: "", layout: "layouts/main-layout.ejs"})
 })
 
-
-// // Cookies
-// app.get('/set-cookies', (req, res) => {
-//     // res.setHeader('Set-Cookie', 'newUser=true');
-//     res.cookie('newUser', false);
-//     res.cookie('isEmployee', true, { maxAge: 5000 * 60 * 60 * 24, httpOnly: true });
-//     res.send("You got the cookies");
-// })
-
-// app.get('/read-cookies', (req, res) => {
-//     const cookies = req.cookies;
-//     console.log(cookies.newUser);
-
-//     res.json(cookies);
-// })
+app.get('/dashboard/carts', requireAuth, async (req, res) => {
+    try {
+        // Fetch data from the database
+        const carts = await Cart.find();
+        // Render the page and pass the fetched data to the EJS template
+        res.render('carts', { title: 'Dashboard - Carts', script: '', layout: 'layouts/main-layout', carts: carts });
+    } catch (error) {
+        // Handle any errors
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
 
 // Menu Routers
 app.use('/', require('./routes/router'))
+
+
+// 
+app.get("*", (req, res) => {
+    res.render('404', { title: 'Error Page', layout: false});
+});

@@ -1,0 +1,311 @@
+    <main id="site-main">
+
+        <a href="/dashboard/add_menus" class="add-menu">
+            <!-- <span class="material-icons-sharp">add</span> -->
+            +
+        </a>
+    
+        <div class="dashboard-container">
+    
+            <h1><span class="mcd">McD</span>ini's Orders</h1>
+    
+            <!-- <form> -->
+                <table class="menu-table">
+                    <thead>
+                        <tr>
+                            <th class="sortable">ID</th>
+                            <th>User</th>
+                            <th class="sortable">Time</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+    
+                    <tbody>
+                        <% for(var i=0; i < carts.length; i++) { %>
+                            <tr>
+                                <td><%= i+1 %></td>
+                                <td data-name="<%= carts[i].username %>"><%= carts[i].username %></td>
+                                <td><%= carts[i].date %></td>
+                                <td>
+                                <div class="menu-modify-btn">
+                                    <p class="menu-update" data-id="<%= carts[i]._id %>">
+                                        <span class="material-icons-sharp">
+                                            info
+                                            </span>
+                                        </p>                                  
+    
+                                    <p class="menu-delete" data-id="<%= carts[i]._id %>">
+                                        <span class="material-icons-sharp">
+                                            done
+                                        </span>
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
+                        <div class="detail-menu-container" id="detail-menu-container<%= carts[i]._id %>">
+                            <div class="detail-menu-info">
+                                <div class="detail-menu-text">
+                                        <h3 class="detail-confirm">Order Details</h3>
+                                        <ul>
+                                            <% let totalPrice = 0; %>
+                                            <% for(var j=0; j < carts[i].cartOrder.length; j++) { %>
+                                                <li>
+                                                    <%= carts[i].cartOrder[j].name %> <%= carts[i].cartOrder[j].quantity + "x" %> <%= carts[i].cartOrder[j].price %>
+                                                    <% totalPrice += carts[i].cartOrder[j].quantity * carts[i].cartOrder[j].price; %>
+                                                </li>
+                                            <% } %>
+                                            <li>Total Price: Rp <%= totalPrice %></li>
+                                        </ul>
+                                </div>
+                            </div>
+
+                            <div onclick="document.querySelector('.detail-menu-container').style.display = 'none'" class="detail-menu-action-btn">
+                                <button class="cancel-btn-detail">
+                                    Close
+                                </button>
+                    
+                            </div>
+                        </div>
+                        <% } %>
+                    </tbody>
+                </table>
+            <!-- </form> -->
+        </div>
+    
+        <div class="delete-menu-container">
+    
+            <div class="delete-menu-info">
+                <img src="../assets/logo_mcd.png">
+                <div class="delete-menu-text">
+                    <p class="delete-confirm">Do you want to mark this order as done?</p>
+                    <p class="delete-info">This order will be deleted immediately. You can't undo this action.</p>
+                </div>
+            </div>
+            
+            <div 
+                onclick="document.querySelector('.delete-menu-container').style.display = 'none'"
+                class="delete-menu-action-btn"
+            >
+    
+                <a class="delete-btn">
+                    Delete
+                </a>
+                
+                <a class="cancel-btn">
+                    Cancel
+                </a>
+    
+            </div>
+        </div>
+    
+        <div class="overlay"></div>
+    </main>
+    
+    <script>
+        
+    
+        function sortTableByColumn(table, column, asc = true){
+            const dirModifier = asc ? 1 : -1;
+            const tBody = table.tBodies[0];
+            const rows = Array.from(tBody.querySelectorAll("tr"));
+    
+            // Sort each row (kalau dia String)
+            const sortedRows = rows.sort((a, b) => {
+                const aColText = a.querySelector(`td:nth-child(${ column + 1 })`).textContent.trim();
+                const bColText = b.querySelector(`td:nth-child(${ column + 1 })`).textContent.trim();
+    
+                return aColText > bColText ? (1 * dirModifier) : (-1 * dirModifier);
+            });
+    
+            // Remove all existing TRs from the table
+            while (tBody.firstChild){
+                tBody.removeChild(tBody.firstChild);
+            }
+    
+            // Re-add the newly sorted rows
+            tBody.append(...sortedRows);
+    
+            // Remember how the column is currently sorted
+            table.querySelectorAll("th").forEach(th => th.classList.remove("th-sort-asc", "th-sort-desc"));
+            table.querySelector(`th:nth-child(${ column + 1 })`).classList.toggle("th-sort-asc", asc);
+            table.querySelector(`th:nth-child(${ column + 1 })`).classList.toggle("th-sort-desc", !asc);
+        }
+    
+        function sortTableByColumnNumerical(table, column, asc = true){
+            const dirModifier = asc ? 1 : -1;
+            const tBody = table.tBodies[0];
+            const rows = Array.from(tBody.querySelectorAll("tr"));
+    
+            // Sort each row
+            const sortedRows = rows.sort((a, b) => {
+                const aColText = parseFloat(a.querySelector(`td:nth-child(${ column + 1 })`).textContent.trim());
+                const bColText = parseFloat(b.querySelector(`td:nth-child(${ column + 1 })`).textContent.trim());
+    
+                // return aColText - bColText; // Perbandingan angka langsung
+                return aColText > bColText ? (1 * dirModifier) : (-1 * dirModifier);
+            });
+    
+    
+            // Remove all existing TRs from the table
+            while (tBody.firstChild){
+                tBody.removeChild(tBody.firstChild);
+            }
+    
+            // Re-add the newly sorted rows
+            tBody.append(...sortedRows);
+    
+            // Remember how the column is currently sorted
+            table.querySelectorAll("th").forEach(th => th.classList.remove("th-sort-asc", "th-sort-desc"));
+            table.querySelector(`th:nth-child(${ column + 1 })`).classList.toggle("th-sort-asc", asc);
+            table.querySelector(`th:nth-child(${ column + 1 })`).classList.toggle("th-sort-desc", !asc);
+        }
+    
+        // sortTableByColumn(document.querySelector("table"), 1, true);
+    
+        document.querySelectorAll(".menu-table th").forEach(headerCell => {
+            headerCell.addEventListener("click", () => {
+                const tableElement = headerCell.parentElement.parentElement.parentElement;
+                const headerIndex = Array.prototype.indexOf.call(headerCell.parentElement.children, headerCell);
+                const currentIsAscending = headerCell.classList.contains("th-sort-asc");
+    
+                if ([2,4].includes(headerIndex)){
+                    // console.log(headerIndex)
+                    sortTableByColumn(tableElement, headerIndex, !currentIsAscending);
+                }
+                if ([0,3].includes(headerIndex)){
+                    sortTableByColumnNumerical(tableElement, headerIndex, !currentIsAscending);
+                }
+            });
+        })
+
+///////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////
+        // Ketika tombol hapus diklik
+        document.querySelectorAll('.menu-delete').forEach(deleteBtn => {
+            deleteBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+    
+                // Dapatkan ID dan nama menu dari data-name atribut pada elemen terkait
+                // const menuID = e.currentTarget.closest('tr').querySelector('td[data-id]').dataset.id;
+                const menuID = e.currentTarget.getAttribute('data-id');
+                console.log(menuID)
+                const menuName = e.currentTarget.closest('tr').querySelector('td[data-name]').dataset.name;
+    
+                // Tampilkan overlay
+                const overlay = document.querySelector('.overlay');
+                overlay.style.top = "0%";
+                overlay.style.opacity = "1";
+                overlay.classList.add("active");
+    
+                // Tampilkan kontainer penghapusan
+                var deleteMenuContainer = document.querySelector('.delete-menu-container');
+                deleteMenuContainer.style.display = 'block';
+                deleteMenuContainer.style.top = '50%';
+                deleteMenuContainer.style.transform = 'translate(-50%, -50%)';
+    
+                deleteMenuContainer.dataset.menuID = menuID;
+            })
+        })
+
+        // Detail order (Testing)
+        document.querySelectorAll('.menu-update').forEach(deleteBtn => {
+            deleteBtn.addEventListener('click', (e) => {
+                console.log('clicked');
+                e.preventDefault();
+    
+                // Dapatkan ID dan nama menu dari data-name atribut pada elemen terkait
+                // const menuID = e.currentTarget.closest('tr').querySelector('td[data-id]').dataset.id;
+                const menuID = e.currentTarget.getAttribute('data-id');
+                console.log(menuID)
+                const menuName = e.currentTarget.closest('tr').querySelector('td[data-name]').dataset.name
+    
+                // Tampilkan overlay
+                const overlay = document.querySelector('.overlay');
+                overlay.style.top = "0%";
+                overlay.style.opacity = "1";
+                overlay.classList.add("active");
+    
+                // Tampilkan kontainer penghapusan
+                var detailMenuContainer = document.getElementById(`detail-menu-container${menuID}`);
+                detailMenuContainer.style.display = 'block';
+                detailMenuContainer.style.top = '50%';
+                detailMenuContainer.style.transform = 'translate(-50%, -50%)';
+    
+                detailMenuContainer.dataset.menuID = menuID;
+            })
+        })
+
+        // Event listener for close buttons
+        document.querySelectorAll('.cancel-btn-detail').forEach(cancelBtn => {
+            cancelBtn.addEventListener('click', () => {
+                // Hide the overlay
+                const overlay = document.querySelector('.overlay');
+                overlay.style.top = "-100%";
+                overlay.style.opacity = "0";
+
+                // Hide the corresponding detail-menu-container
+                const detailMenuContainer = cancelBtn.closest('.detail-menu-container');
+                detailMenuContainer.style.display = 'none';
+                detailMenuContainer.style.transform = 'translate(-50%, -50%)';
+            });
+        });
+
+        // Event listener untuk tombol pembatalan
+        document.querySelector('.cancel-btn').addEventListener('click', () => {
+            // Sembunyikan overlay
+            const overlay = document.querySelector('.overlay');
+            overlay.style.top = "-100%";
+            overlay.style.opacity = "0";
+    
+            // Sembunyikan kontainer penghapusan
+            const deleteMenuContainer = document.querySelector('.delete-menu-container');
+            deleteMenuContainer.style.display = '150%';
+            deleteMenuContainer.style.transform = 'translate(-50%, -50%)';
+            deleteMenuContainer.style.display = 'none';
+        });
+
+    
+        // Event listener untuk tombol penghapusan
+        document.querySelector('.delete-btn').addEventListener('click', () => {
+            // Dapatkan ID menu yang akan dihapus dari data di dalam popup konfirmasi
+            const menuID = document.querySelector('.delete-menu-container').dataset.menuID;
+    
+            // 
+            if (menuID) {
+                fetch(`/api/cartRoute/${menuID}`, {
+                    method: 'DELETE'
+                })
+                .then(response => {
+                    if (response.ok) {
+                        console.log(`Menu with ID ${menuID} has been deleted.`);
+                        
+                        // Hapus baris menu dari antarmuka pengguna
+                        // document.querySelector(`tr[data-id="${menuID}"]`).remove();
+                    } else {
+                        console.error(`Error deleting menu item. ${menuId}`);
+                    }
+                })
+                .catch(error => {
+                    console.log('Error:', error);
+                    console.error('Error:', error);
+                });
+            } else {
+                console.error('Menu ID is undefined.');
+            }
+    
+            // Sembunyikan overlay
+            const overlay = document.querySelector('.overlay');
+            overlay.style.top = "-100%";
+            overlay.style.opacity = "0";
+    
+            // Sembunyikan kontainer penghapusan
+            const deleteMenuContainer = document.querySelector('.delete-menu-container');
+            deleteMenuContainer.style.display = '150%';
+            deleteMenuContainer.style.transform = 'translate(-50%, -50%)';
+            deleteMenuContainer.style.display = 'none';
+    
+            // REFRESH PAGE SO THAT THE ID IS UPDATED
+            window.location.reload();
+        });
+    </script>

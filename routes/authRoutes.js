@@ -1,5 +1,7 @@
 // =================================================================
 // FOR SIGN UP LOGIN
+// We export the controller like handleError, signup_get, login_get, etc
+// Cleaner Code View
 
 const { Router } = require('express');
 const authController = require('../controllers/authController.js');

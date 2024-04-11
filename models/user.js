@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
+// email validator
 const { isEmail } = require('validator');
 const bcrypt = require('bcrypt');
 
+// Get user Schema
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
@@ -20,6 +22,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, "Please enter your password"],
         minlength: [5, "Minimum length of the password is 5"]
+    },
+    role: {
+        type: String,
     }
 })
 
@@ -30,6 +35,7 @@ userSchema.post('save', function(doc, next) {
 });
 
 // Pre Saved
+// Hashing password for better security
 userSchema.pre('save', async function(next) {
     const salt = await bcrypt.genSalt();
     this.password = await bcrypt.hash(this.password, salt);
@@ -37,6 +43,7 @@ userSchema.pre('save', async function(next) {
     next();
 });
 
+// For login checking with JWT password
 userSchema.statics.login = async function(email, password) {
     const user = await this.findOne({ email: email });
     if(user) {
@@ -49,6 +56,7 @@ userSchema.statics.login = async function(email, password) {
     throw Error("Incorrect email");
 }
 
-const User = mongoose.model('user', userSchema);
 
+const User = mongoose.model('user', userSchema);
+// import Schema
 module.exports = User;
