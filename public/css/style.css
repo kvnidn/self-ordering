@@ -1301,7 +1301,7 @@ svg {
 
 .dashboard-container h1{
     text-align: center;
-    padding-top: 2.5rem;
+    padding-top: 5rem;
     font-size: 24pt;
     font-weight: 800;
     color: red;
@@ -1810,19 +1810,6 @@ h2.text-dark{
     font-size: 24px;
     margin: 10px 0;
     justify-content: center;
-}
-
-.form-group {
-    border-top: 2.5px solid rgb(255, 199, 44);
-    display: flex;
-    /* border: 1px solid black; */
-    padding: 30px 10px;
-    transition: all 300ms ease;
-}
-
-.form-group:hover{
-    box-shadow: 0 1rem 3rem rgba(150, 44, 44, 0.25);
-    color: rgb(150, 44, 44);
 }
 
 #value-input {

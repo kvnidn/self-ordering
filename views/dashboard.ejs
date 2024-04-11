@@ -11,7 +11,7 @@
         
         <a class="add-menu-btn">
                 <span class="material-icons-sharp">add</span>
-                Add Menu
+                New Menu
         </a>
 
         <form action="/dashboard" method="POST">
@@ -337,7 +337,11 @@
         newMenuContainer.style.transform = 'translate(-50%, -50%)';
     })
 
+    // Variabel untuk menampung gambar yang akan diunggah
+    let queuedImage = null;
+
     // Event listener untuk upload image
+
     const dropArea = document.getElementById("drop-area");
     const inputFile = document.getElementById("input-file");
     const imageView = document.getElementById("img-view");
@@ -349,6 +353,8 @@
         imageView.style.backgroundImage = `url(${imgLink})`;
         imageView.textContent = "";
         // imageView.style.border = 0;
+
+        queuedImage = inputFile.files[0];
     }
 
     dropArea.addEventListener("dragover", function(e){
@@ -357,7 +363,49 @@
 
     dropArea.addEventListener("drop", function(e){
         e.preventDefault();
+
+        // Menambahkan gambar yang di-drop ke dalam queuedImage
+        uploadImage();
     })
+
+    // Event listener untuk tombol "Save"
+    const saveButton = document.querySelector(".save-btn-menu");
+    saveButton.addEventListener("click", sendQueuedImagesToServer);
+
+    function sendQueuedImagesToServer() {
+        // Pastikan ada gambar yang dipilih sebelum mengirim
+        if (!queuedImage) {
+            console.error("No image selected.");
+            return;
+        }
+
+        const formData = new FormData();
+
+        // Menambahkan gambar yanga da di queuedImage ke dalam formData
+        formData.append("file", queuedImage);
+
+        // Menambahkan nilai dari input teks "name" ke dalam formData
+        // const nameInput = document.querySelector('input[name="name"]');
+        // const nameValue = nameInput.value;
+        // formData.append("name", nameValue);
+
+        // Mengirim formData ke server
+        
+        fetch("upload", {
+            method: "POST",
+            body: formData
+        })
+
+        .then(response => {
+            if (response.status !== 200) throw Error(response.statusText);
+            location.reload(); // Reload halaman setelah berhasil mengirim gambar ke server
+        })
+
+        .catch(error => {
+            // serverMessage.innerHTML = error
+            console.error("Error:", error);
+        })
+    }
 
     // Event listener untuk tombol penghapusan
     document.querySelector('.delete-btn').addEventListener('click', () => {

@@ -97,3 +97,80 @@ app.use('/', require('./routes/router'))
 app.get("*", (req, res) => {
     res.render('404', { title: 'Error Page', layout: false});
 });
+
+
+
+// UPLOAD MENU
+
+const multer = require("multer")
+const path = require("path")
+const fs = require("fs")
+const util = require("util")
+const unlinkFile = util.promisify(fs.unlink)
+
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, './public/assets/menu/uploads/')
+    },
+    filename: function(req, file, cb) {
+        // const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+
+        // Membuat objek Date yang mewakili tanggal dan waktu saat ini
+        var currentDate = new Date();
+
+        // Mendapatkan komponen tanggal
+        var day = currentDate.getDate();
+        var month = currentDate.getMonth() + 1; // Perhatikan bahwa bulan dimulai dari 0
+        var year = currentDate.getFullYear();
+
+        // Mendapatkan komponen waktu
+        var hours = currentDate.getHours();
+        var minutes = currentDate.getMinutes();
+        var seconds = currentDate.getSeconds();
+
+        // Menggabungkan komponen menjadi string dengan format yang diinginkan
+        var formattedDate = `${day}${month < 10 ? '0' : ''}${month}${year.toString().substr(-2)}-${hours < 10 ? '0' : ''}${hours}${minutes < 10 ? '0' : ''}${minutes}${seconds < 10 ? '0' : ''}${seconds}`;
+        
+        cb(null, formattedDate + path.extname(file.originalname))
+
+        // Mendapatkan nama menu dari input dengan name="name"
+        // const menuName = req.body.name.toLowerCase().replace(/\s+/g, '-'); // Mengubah ke huruf kecil dan ganti spasi dengan strip
+        // const uniqueSuffix = Date.now();
+        // const fileName = `${menuName}-${uniqueSuffix}${path.extname(file.originalname)}`;
+        // cb(null, fileName);
+    }
+})
+
+const upload = multer({
+    storage: storage,
+    limits: {fileSize: 1000000},
+    fileFilter: function(req, file, cb){
+        checkFileType(file, cb)
+    }
+}).any()
+
+function checkFileType (file, cb) {
+    const fileTypes = /png/
+    const extname = fileTypes.test(path.extname(file.originalname).toLowerCase())
+    const mimetype = fileTypes.test(file.mimetype)
+
+    if (mimetype && extname){
+        return cb(null, true)
+    } else {
+        cb("Please upload images only")
+    }
+}
+
+app.post("/dashboard/upload", (req, res) => {
+    upload(req, res, (err) => {
+        if (!err && req.files != ""){
+            res.status(200).send()
+        } else if (!err & req.files == ""){
+            res.statusMessage = "Please select an image to upload"
+            res.status(400).end()
+        } else{
+            res.statusMessage = (err === "Please upload images only") ? err : "Photo exceed limit of 1 MB"
+            res.status(400).end()
+        }
+    })
+})
