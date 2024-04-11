@@ -148,7 +148,7 @@
                             <option value="Cafe">Cafe</option>
                         </select>
     
-                        <div class="typerrror"></div>
+                        <div class="typerror"></div>
                     </div>
                 </form>
             </div>
@@ -372,6 +372,46 @@
     const saveButton = document.querySelector(".save-btn-menu");
     saveButton.addEventListener("click", sendQueuedImagesToServer);
 
+    // const controller = require('../controllers/menuController');
+
+    function saveMenuToServer(path) {
+        const name = document.querySelector('input[name="name"]').value;
+        const image = path;
+        const price = document.querySelector('input[name="price"]').value;
+        const type = document.querySelector('select[name="type"]').value;
+
+        const formData = new FormData();
+
+        // Append each value to the FormData object
+        formData.name = name;
+        formData.price = price;
+        formData.image = image;
+        formData.type = type;
+        // formData.append('name', name);
+        // formData.append('image', image);
+        // formData.append('price', price);
+        // formData.append('type', type);
+
+        console.log(formData);
+
+        fetch('/menus', {
+            method: 'POST',
+            body: formData
+        })
+
+        .then(response => {
+            if (response.status !== 200) throw Error(response.statusText);
+            // location.reload(); // Reload halaman setelah berhasil mengirim gambar ke server
+        })
+
+        .catch(error => {
+            // serverMessage.innerHTML = error
+            console.error("Error:", error);
+        })
+
+        // controller.create;
+    }
+
     function sendQueuedImagesToServer() {
         // Pastikan ada gambar yang dipilih sebelum mengirim
         if (!queuedImage) {
@@ -389,6 +429,28 @@
         // const nameValue = nameInput.value;
         // formData.append("name", nameValue);
 
+        // const fileName = "110424-222000";
+
+        // formData.append("fileName", fileName);
+
+        // Membuat objek Date yang mewakili tanggal dan waktu saat ini
+        var currentDate = new Date();
+
+        // Mendapatkan komponen tanggal
+        var day = currentDate.getDate();
+        var month = currentDate.getMonth() + 1; // Perhatikan bahwa bulan dimulai dari 0
+        var year = currentDate.getFullYear();
+
+        // Mendapatkan komponen waktu
+        var hours = currentDate.getHours();
+        var minutes = currentDate.getMinutes();
+        var seconds = currentDate.getSeconds();
+
+        // Menggabungkan komponen menjadi string dengan format yang diinginkan
+        var formattedDate = `${day}${month < 10 ? '0' : ''}${month}${year.toString().substr(-2)}-${hours < 10 ? '0' : ''}${hours}${minutes < 10 ? '0' : ''}${minutes}${seconds < 10 ? '0' : ''}${seconds}`;
+
+        formData.append("fileName", formattedDate);
+
         // Mengirim formData ke server
         
         fetch("/dashboard/upload", {
@@ -398,7 +460,21 @@
 
         .then(response => {
             if (response.status !== 200) throw Error(response.statusText);
-            location.reload(); // Reload halaman setelah berhasil mengirim gambar ke server
+            return response.text(); // Mengambil teks yang dikirim kembali oleh server
+            // location.reload(); // Reload halaman setelah berhasil mengirim gambar ke server
+        })
+
+        .then(data => {
+            // Data di sini akan berisi path file yang dikirim kembali oleh server
+            pathfile = "../assets/menu/uploads/" + data;
+            console.log("Image path:", pathfile);
+
+            saveMenuToServer(pathfile);
+
+            // Menyimpan data ke dalam variabel
+            // serverResponse = data;
+
+            // location.reload();
         })
 
         .catch(error => {

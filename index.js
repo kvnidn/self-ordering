@@ -112,6 +112,13 @@ const storage = multer.diskStorage({
     destination: function(req, file, cb) {
         cb(null, './public/assets/menu/uploads/')
     },
+    // filename: function(req, file, cb) {
+    //     const uploadedFileName = req.body.fileName;
+    //     const fileExtension = path.extname(file.originalname);
+
+    //     const finalFileName = `${uploadedFileName}${fileExtension}`;
+    //     cb(null, finalFileName);
+    // }
     filename: function(req, file, cb) {
         // const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
 
@@ -133,11 +140,11 @@ const storage = multer.diskStorage({
         
         cb(null, formattedDate + path.extname(file.originalname))
 
-        // Mendapatkan nama menu dari input dengan name="name"
-        // const menuName = req.body.name.toLowerCase().replace(/\s+/g, '-'); // Mengubah ke huruf kecil dan ganti spasi dengan strip
-        // const uniqueSuffix = Date.now();
-        // const fileName = `${menuName}-${uniqueSuffix}${path.extname(file.originalname)}`;
-        // cb(null, fileName);
+    //     // Mendapatkan nama menu dari input dengan name="name"
+    //     // const menuName = req.body.name.toLowerCase().replace(/\s+/g, '-'); // Mengubah ke huruf kecil dan ganti spasi dengan strip
+    //     // const uniqueSuffix = Date.now();
+    //     // const fileName = `${menuName}-${uniqueSuffix}${path.extname(file.originalname)}`;
+    //     // cb(null, fileName);
     }
 })
 
@@ -147,7 +154,7 @@ const upload = multer({
     fileFilter: function(req, file, cb){
         checkFileType(file, cb)
     }
-}).any()
+}).single('file')
 
 function checkFileType (file, cb) {
     const fileTypes = /png/
@@ -164,7 +171,9 @@ function checkFileType (file, cb) {
 app.post("/dashboard/upload", (req, res) => {
     upload(req, res, (err) => {
         if (!err && req.files != ""){
-            res.status(200).send()
+            // console.log('The filename is ' + res.req.file.path);
+            // res.send(res.req.file.filename);      
+            res.status(200).send(res.req.file.filename)
         } else if (!err & req.files == ""){
             res.statusMessage = "Please select an image to upload"
             res.status(400).end()
