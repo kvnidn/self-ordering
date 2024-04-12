@@ -1,0 +1,1 @@
+Image folder for newly added menu's image
