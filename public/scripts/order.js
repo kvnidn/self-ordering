@@ -197,17 +197,6 @@ const showAlert = (item) => {
             timerProgressBar: true,
             showConfirmButton: false,
             scrollbarPadding: false,
-            // didOpen: () => {
-            //     // Start the timerInterval to update the timer display
-            //     const timer = Swal.getPopup().querySelector("b");
-            //     let remainingTime = Swal.getTimerLeft();
-            //     timerInterval = setInterval(() => {
-            //         remainingTime -= 100;
-            //         if (remainingTime > 0) {
-            //             timer.textContent = Math.ceil(remainingTime / 1000);
-            //         }
-            //     }, 100);
-            // },
             willClose: () => {
                 clearInterval(timerInterval);
             }

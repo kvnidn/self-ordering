@@ -114,7 +114,7 @@
             <div class="new-menu-details">
                 <h2>New Menu</h2>
     
-                <form action="/menus" method="POST" id="add_menus" class="form">
+                <form id="add_menus" class="form">
                     <div class="form-group">
                         <label for="name" class="details-title">Name</label><br>
                         <input type="hidden" name="id" value="">
@@ -122,13 +122,6 @@
     
                         <div class="nameerror"></div>
                     </div>
-    
-                    <!-- <div class="form-group">
-                        <label for="image_url" class="text-light">Image Path</label><br>
-                        <input type="text" name="image" value="" placeholder="Enter the image's path..." required>
-    
-                        <div class="imageerror"></div>
-                    </div> -->
     
                     <div class="form-group">
                         <label for="price" class="details-title">Price</label><br>
@@ -380,36 +373,22 @@
         const price = document.querySelector('input[name="price"]').value;
         const type = document.querySelector('select[name="type"]').value;
 
-        const formData = new FormData();
-
-        // Append each value to the FormData object
-        formData.name = name;
-        formData.price = price;
-        formData.image = image;
-        formData.type = type;
-        // formData.append('name', name);
-        // formData.append('image', image);
-        // formData.append('price', price);
-        // formData.append('type', type);
-
-        console.log(formData);
-
         fetch('/menus', {
             method: 'POST',
-            body: formData
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({name: name, price: price, image: image, type: type})
         })
 
         .then(response => {
             if (response.status !== 200) throw Error(response.statusText);
-            // location.reload(); // Reload halaman setelah berhasil mengirim gambar ke server
+            location.reload();
         })
 
         .catch(error => {
-            // serverMessage.innerHTML = error
             console.error("Error:", error);
         })
-
-        // controller.create;
     }
 
     function sendQueuedImagesToServer() {
@@ -424,33 +403,6 @@
         // Menambahkan gambar yanga da di queuedImage ke dalam formData
         formData.append("file", queuedImage);
 
-        // Menambahkan nilai dari input teks "name" ke dalam formData
-        // const nameInput = document.querySelector('input[name="name"]');
-        // const nameValue = nameInput.value;
-        // formData.append("name", nameValue);
-
-        // const fileName = "110424-222000";
-
-        // formData.append("fileName", fileName);
-
-        // Membuat objek Date yang mewakili tanggal dan waktu saat ini
-        var currentDate = new Date();
-
-        // Mendapatkan komponen tanggal
-        var day = currentDate.getDate();
-        var month = currentDate.getMonth() + 1; // Perhatikan bahwa bulan dimulai dari 0
-        var year = currentDate.getFullYear();
-
-        // Mendapatkan komponen waktu
-        var hours = currentDate.getHours();
-        var minutes = currentDate.getMinutes();
-        var seconds = currentDate.getSeconds();
-
-        // Menggabungkan komponen menjadi string dengan format yang diinginkan
-        var formattedDate = `${day}${month < 10 ? '0' : ''}${month}${year.toString().substr(-2)}-${hours < 10 ? '0' : ''}${hours}${minutes < 10 ? '0' : ''}${minutes}${seconds < 10 ? '0' : ''}${seconds}`;
-
-        formData.append("fileName", formattedDate);
-
         // Mengirim formData ke server
         
         fetch("/dashboard/upload", {
@@ -460,21 +412,14 @@
 
         .then(response => {
             if (response.status !== 200) throw Error(response.statusText);
-            return response.text(); // Mengambil teks yang dikirim kembali oleh server
-            // location.reload(); // Reload halaman setelah berhasil mengirim gambar ke server
+            return response.text();
         })
 
         .then(data => {
             // Data di sini akan berisi path file yang dikirim kembali oleh server
             pathfile = "../assets/menu/uploads/" + data;
-            console.log("Image path:", pathfile);
 
             saveMenuToServer(pathfile);
-
-            // Menyimpan data ke dalam variabel
-            // serverResponse = data;
-
-            // location.reload();
         })
 
         .catch(error => {
@@ -495,9 +440,6 @@
             .then(response => {
                 if (response.ok) {
                     console.log(`Menu with ID ${menuID} has been deleted.`);
-                    
-                    // Hapus baris menu dari antarmuka pengguna
-                    // document.querySelector(`tr[data-id="${menuID}"]`).remove();
                 } else {
                     console.error(`Error deleting menu item. ${menuId}`);
                 }
@@ -533,11 +475,6 @@
         newMenuContainer.style.display = '150%';
         newMenuContainer.style.transform = 'translate(-50%, -50%)';
         newMenuContainer.style.display = 'none';
-
-        // Hapus foto yang sudah diupload
-        // const imageView = document.getElementById("img-view");
-        // imageView.style.backgroundImage = "none";
-        // imageView.textContent.opacity = "100%";
 
         window.location.reload();
     });
