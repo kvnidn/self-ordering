@@ -133,7 +133,7 @@ menuTypes.forEach(type => {
             // console.log("Menu data fetched successfully:", menuData);
             const typeData = menuData.filter(item => item.type.toLowerCase() === type.toLowerCase());
 
-            console.log("Type Data for", type, ":", typeData);
+            // console.log("Type Data for", type, ":", typeData);
 
             typeData.forEach((item, index) => {
                 if (index % (type === "Promotion" ? 1 : type === "Ala Carte" ? 5 : type === "Sides" || type === "Beverages" ? 4 : 2) === 0) {
@@ -178,10 +178,84 @@ menuTypes.forEach(type => {
                         }
                     }
                 });
-
+                
             });
         })
         .catch(error => console.error('Error fetching menu data:', error));
+    });
+    
+
+const searchInput = document.querySelector('.searchBar input');
+const noMatchScreen = document.getElementById("no-match");
+    
+// Function to filter menu items based on partial matches of search text
+function filterMenuItems(searchText) {
+    searchText = searchText.toLowerCase().trim();
+    let atleastOneMatch = false;
+
+    // Iterate over each menu type
+    menuTypes.forEach(type => {
+        const lowerCaseType = type.toLowerCase();
+        const menuElement = document.getElementById(`menu-${lowerCaseType}`);
+        const items = menuElement.querySelectorAll('li');
+        let categoryContainer;
+
+        // Determine the correct category container based on menu type
+        switch (lowerCaseType) {
+            case 'promotion':
+                categoryContainer = document.querySelector('.box-1-1'); // Promotion container
+                break;
+            case 'ala carte':
+                categoryContainer = document.querySelector('.box-1-2'); // Ala Carte container
+                break;
+            case 'sides':
+                categoryContainer = document.querySelectorAll('.box-1-1')[1]; // Sides container (second box-1-1)
+                break;
+            case 'desserts':
+                categoryContainer = document.querySelectorAll('.box-1-2')[1]; // Desserts container (second box-1-2)
+                break;
+            case 'beverages':
+                categoryContainer = document.querySelectorAll('.box-1-1')[2]; // Beverages container (third box-1-1)
+                break;
+            case 'cafe':
+                categoryContainer = document.querySelectorAll('.box-1-2')[2]; // Cafe container (third box-1-2)
+                break;
+            default:
+                categoryContainer = null;
+        }
+
+        if (!categoryContainer) return; // Exit if category container not found
+
+        let categoryHasMatch = false;
+
+        // Filter items based on search text
+        items.forEach(item => {
+            const itemName = item.dataset.name.toLowerCase();
+            const itemMatchesSearch = searchText === '' || itemName.includes(searchText);
+
+            item.style.display = itemMatchesSearch ? 'flex' : 'none';
+            if (itemMatchesSearch) {
+                categoryHasMatch = true;
+                atleastOneMatch = categoryHasMatch
+            }
+        });
+
+        // Show/hide category container based on matching items
+        categoryContainer.style.display = categoryHasMatch ? 'block' : 'none';
+    });
+
+    if(!atleastOneMatch){
+        noMatchScreen.style.display = "block";
+    }
+    else{
+        noMatchScreen.style.display = "none";
+    }
+}
+
+// Event listener for search input
+searchInput.addEventListener('input', function(event) {
+    const searchText = event.target.value;
+    filterMenuItems(searchText);
 });
 
 // Alert

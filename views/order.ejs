@@ -1,4 +1,10 @@
 
+    <div class="searchBar" style="top: 30px; z-index: 9999; position: fixed; right: 26%;">
+        <input type="text" style="font-size: 12pt; height: 40px; border-radius: 8px; padding: 0 10px; width: 180px;" placeholder="Search...">
+    </div>
+
+    <div class="filler" style="margin-top: 60px;"></div>
+
     <div class="container" id="order">
         <div class="icon-cart">
             <svg id="cart-button" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -25,7 +31,7 @@
     </div>
         <!-- PROMOTION MENU -->
         
-        <div class="box-1-1" id="order">
+        <div class="box-1-1" id="order" style="display: block;">
             <h1>Promotion Menu</h1>
             <ul id="menu-promotion"></ul>
         </div>
@@ -33,7 +39,7 @@
     
         <!-- ALA CARTE & VALUE MEALS -->
     
-        <div class="box-1-2" id="order">
+        <div class="box-1-2" id="order" style="display: block;">
             <h1>Ala Carte & Value Meals</h1>
     
             <div class="box-1-2-1">
@@ -43,7 +49,7 @@
     
         <!-- SIDES -->
     
-        <div class="box-1-1" id="order">
+        <div class="box-1-1" id="order" style="display: block;">
             <h1>Sides</h1>
             <div class="box-1-1-1">
                 <ul id="menu-sides"></ul>
@@ -53,7 +59,7 @@
     
         <!-- DESSERTS -->
     
-        <div class="box-1-2">
+        <div class="box-1-2" style="display: block;">
             <h1>Desserts</h1>
             <div class="box-1-2-1">
                 <ul id="menu-desserts"></ul>
@@ -62,7 +68,7 @@
     
         <!-- BEVERAGES -->
     
-        <div class="box-1-1" id="order">
+        <div class="box-1-1" id="order" style="display: block;">
             <h1>Beverages</h1>
             <div class="box-1-1-1">
                 <ul id="menu-beverages"></ul>
@@ -70,10 +76,16 @@
         </div>
     
         <!-- McCafé Pastries -->
-        <div class="box-1-2">
+        <div class="box-1-2" style="display: block;">
             <h1>McCafé Pastries</h1>
             <div class="box-1-2-1">
                 <ul id="menu-cafe"></ul>
+            </div>
+        </div>
+
+        <div class="box-1-2" id="no-match" style="display: none;">
+            <div style="margin: 18% 38%;">
+                <h1>No result found :(</h1>
             </div>
         </div>
         
