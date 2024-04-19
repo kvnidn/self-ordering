@@ -6,6 +6,11 @@
             <li><a href="/order">Order</a></li>
             <li><a href="/locations">Locations</a></li>
             <li><a href="/about">About</a></li>
+            <% if (title == "McDini - Order") { %>
+                <div class="searchBar" style="top: 30px; position: fixed; right: 26%;">
+                    <input type="text" style="font-size: 12pt; height: 40px; border-radius: 8px; padding: 0 10px; width: 180px;" placeholder="Search...">
+                </div>
+            <% } %>
         </ul>
         <div style="<% if(user) { %>
             padding-top: 0px;

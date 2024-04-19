@@ -134,10 +134,9 @@ menuTypes.forEach(type => {
             const typeData = menuData.filter(item => item.type.toLowerCase() === type.toLowerCase());
 
             // console.log("Type Data for", type, ":", typeData);
-
             typeData.forEach((item, index) => {
-                if (index % (type === "Promotion" ? 1 : type === "Ala Carte" ? 5 : type === "Sides" || type === "Beverages" ? 4 : 2) === 0) {
-                    const newLine = document.createElement("div");
+                if (index % 3 === 0) {
+                    const newLine = document.createElement("ul");
                     newLine.classList.add(type === "Promotion" || type === "Sides" || type === "Beverages" ? "box-1-1-1" : "box-1-2-1");
                     menuElement.appendChild(newLine);
                 }

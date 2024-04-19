@@ -280,7 +280,7 @@ a.logout-link:hover {
 
 .box-1-1 {
     background-color: #f2f2f2;
-    padding: 50px 10%;
+    padding: 50px 20%;
 
 }
 .box-1-1#order {
@@ -289,7 +289,7 @@ a.logout-link:hover {
 
 .box-1-1 ul{
     display: flex;
-    justify-content: center;
+    justify-content: start;
 }
 
 /* .box-1-1 h1{
@@ -333,8 +333,8 @@ a.logout-link:hover {
 } */
 
 .box-1-1-1 ul{
-    display: flex;
-    justify-content: center;
+    /* display: flex;
+    justify-content: center; */
 }
 
 .box-1-1-1 h1{
@@ -421,7 +421,7 @@ a.logout-link:hover {
 
 .box-1-2 {
     background-color: #f2f2f2;
-    padding: 50px 10%;
+    padding: 50px 20%;
 
 }
 
@@ -433,7 +433,7 @@ a.logout-link:hover {
 
 .box-1-2 ul{
     display: flex;
-    justify-content: center;
+    justify-content: start;
 }
 
 .box-1-2 h1{
@@ -488,8 +488,8 @@ a.logout-link:hover {
 }
 
 .box-1-2-1 ul{
-    display: flex;
-    justify-content: center;
+    /* display: flex;
+    justify-content: center; */
 }
 
 .box-1-2-1 button {
