@@ -110,6 +110,7 @@ const removeItem = () => {
     cartCount = 0;
     cartItems = []
     document.getElementById('cartCount').textContent = cartCount;
+    document.getElementById('cartCountTotal').textContent = cartCount + ' item(s)';
     document.getElementById('cartTotal').textContent = 0;
     listCartHTML.innerHTML = '';
 };
@@ -294,6 +295,7 @@ const showAlert = (item) => {
     // Update the total cartCount based on the total quantity of items in the cart
     cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
     document.getElementById('cartCount').textContent = cartCount;
+    document.getElementById('cartCountTotal').textContent = cartCount + ' item(s)';
 };
 
 const updateCartDisplay = () => {
@@ -326,13 +328,13 @@ const updateCartDisplay = () => {
             <div class="name">
                 ${item.name}
             </div>
-            <div class="totalPrice">
-                Rp ${item.price.toLocaleString()}
-            </div>
             <div class="quantity">
                 <span class="minus">-</span>
                 <span>${item.quantity}</span>
                 <span class="plus">+</span>
+            </div>
+            <div class="totalPrice">
+                Rp ${(item.price * item.quantity).toLocaleString()}
             </div>
         `;
 
@@ -364,6 +366,8 @@ const updateCartDisplay = () => {
 
         listCartHTML.appendChild(cartItemHTML);
     });
+    cartCountTotal = cartItems.reduce((total, item) => total + item.quantity, 0);
+    document.getElementById('cartCountTotal').textContent = cartCountTotal + ' item(s)';
 };
 
 
@@ -386,5 +390,6 @@ const updateQuantity = (itemName, change) => {
         // Update the total cartCount based on the total quantity of items in the cart
         cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
         document.getElementById('cartCount').textContent = cartCount;
+        document.getElementById('cartCountTotal').textContent = cartCount + ' item(s)';
     }
 };
