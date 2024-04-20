@@ -138,7 +138,7 @@ menuTypes.forEach(type => {
             typeData.forEach((item, index) => {
                 if (index % 3 === 0) {
                     const newLine = document.createElement("ul");
-                    newLine.classList.add(type === "Promotion" || type === "Sides" || type === "Beverages" ? "box-1-1-1" : "box-1-2-1");
+                    // newLine.classList.add(type === "Promotion" || type === "Sides" || type === "Beverages" ? "box-1-1-1" : "box-1-2-1");
                     menuElement.appendChild(newLine);
                 }
 
@@ -183,6 +183,83 @@ menuTypes.forEach(type => {
         })
         .catch(error => console.error('Error fetching menu data:', error));
     });
+
+
+const searchFetch = (keyword) => {
+    const menuTypes = ['Promotion', 'Ala Carte', 'Sides', 'Beverages', 'Desserts', 'Cafe'];
+    
+    menuTypes.forEach(type => {
+        const menuElement = document.getElementById(`menu-${type.toLowerCase()}`);
+    
+        fetch('/api/menuRoute') // Assuming this endpoint returns menu data
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(menuData => {
+                // console.log("Menu data fetched successfully:", menuData);
+                let typeData = null;
+                if(keyword != null){
+                    typeData = menuData.filter(item => item.type.toLowerCase() === type.toLowerCase() && item.name.toLowerCase().includes(keyword.toLowerCase()));
+                }
+                else{
+                    typeData = menuData.filter(item => item.type.toLowerCase() === type.toLowerCase());
+                }
+                console.log(typeData);
+                menuElement.innerHTML = '';
+                // console.log("Type Data for", type, ":", typeData);
+                typeData.forEach((item, index) => {
+                    if (index % 3 === 0) {
+                        const newLine = document.createElement("ul");
+                        // newLine.classList.add(type === "Promotion" || type === "Sides" || type === "Beverages" ? "box-1-1-1" : "box-1-2-1");
+                        menuElement.appendChild(newLine);
+                    }
+    
+                    const listItem = document.createElement("li");
+                    listItem.dataset.name = item.name;
+    
+                    listItem.innerHTML =
+                        `
+                    <div class="card">
+                        <div class="card-content">
+                            <img src="${item.image}" alt="${item.name}" id="order">
+                            <h3>${item.name}</h3>
+                            <div class="price">Rp ${item.price.toLocaleString()}</div>
+                            <button class="addCart">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                    `;
+                    const current = menuElement.lastChild;
+                    current.appendChild(listItem);
+    
+                    listItem.addEventListener('click', (event) => {
+                        let positionClick = event.target;
+                        if (positionClick.classList.contains('addCart')) {
+                            let selectedItemName = positionClick.closest('li').dataset.name;
+                            let selectedItem = typeData.find(item => item.name === selectedItemName);
+    
+                            if (selectedItem) {
+                                let item = {
+                                    name: selectedItem.name,
+                                    image: selectedItem.image,
+                                    price: selectedItem.price,
+                                    type: selectedItem.type
+                                };
+                                showAlert(item);
+                            }
+                        }
+                    });
+                    
+                });
+            })
+            .catch(error => console.error('Error fetching menu data:', error));
+        });
+}
+
     
 
 const searchInput = document.querySelector('.searchBar input');
@@ -192,6 +269,7 @@ const noMatchScreen = document.getElementById("no-match");
 function filterMenuItems(searchText) {
     searchText = searchText.toLowerCase().trim();
     let atleastOneMatch = false;
+    searchFetch(searchText);
 
     // Iterate over each menu type
     menuTypes.forEach(type => {
@@ -242,6 +320,10 @@ function filterMenuItems(searchText) {
 
         // Show/hide category container based on matching items
         categoryContainer.style.display = categoryHasMatch ? 'block' : 'none';
+
+        if(searchText == ''){
+            categoryContainer.style.display = 'block';
+        }
     });
 
     if(!atleastOneMatch){

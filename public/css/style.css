@@ -290,7 +290,7 @@ a.logout-link:hover {
 
 .box-1-1 ul{
     display: flex;
-    justify-content: center;
+    justify-content: start;
 }
 
 /* .box-1-1 h1{
@@ -434,7 +434,7 @@ a.logout-link:hover {
 
 .box-1-2 ul{
     display: flex;
-    justify-content: center;
+    justify-content: start;
 }
 
 .box-1-2 h1{
@@ -511,6 +511,11 @@ a.logout-link:hover {
 
 .box-1-2-1 button:hover {
     background-color: rgb(174, 32, 22);;
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
 }
 
 /* FOOTER */
