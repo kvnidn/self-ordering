@@ -1,6 +1,6 @@
 <main id="site-main">
 
-    <a href="/dashboard/add_menus" class="add-menu">
+    <a class="add-menu">
         <!-- <span class="material-icons-sharp">add</span> -->
         +
     </a>
@@ -33,7 +33,7 @@
                         <td><%= i+1 %></td>
                         <td><img src="<%= menu[i].image %>" width="150px"></td>
                         <td data-name="<%= menu[i].name %>"><%= menu[i].name %></td>
-                        <td><%= menu[i].price %></td>
+                        <td><%= menu[i].price.toLocaleString() %></td>
                         <td><%= menu[i].type %></td>
                         <td>
                             <div class="menu-modify-btn">
@@ -186,6 +186,13 @@
     //     });
     // });
 
+    // Modifikasi tampilan harga dengan pemisah setiap tiga digit
+    // function formatPrice(price) {
+    //     // Menggunakan metode toLocaleString() untuk memformat harga
+    //     // dengan pemisah ribuan
+    //     return price.toLocaleString('id-ID');
+    // }
+
     // Sort Tables
 
     /**
@@ -314,6 +321,24 @@
 
     // Event listener untuk tombol add-menu-btn
     document.querySelector('.add-menu-btn').addEventListener('click', () => {
+        // Tampilkan new-menu-container
+        // const newMenuContainer = document.querySelector('.new-menu-container');
+
+        // Tampilkan overlay
+        const overlay = document.querySelector('.overlay');
+        overlay.style.top = "0%";
+        overlay.style.opacity = "1";
+        overlay.classList.add("active");
+
+        // Tampilkan new-menu-container
+        var newMenuContainer = document.querySelector('.new-menu-container');
+        newMenuContainer.style.display = 'block';
+        newMenuContainer.style.top = '50%';
+        newMenuContainer.style.transform = 'translate(-50%, -50%)';
+    })
+
+    // Event listener untuk tombol add-menu
+    document.querySelector('.add-menu').addEventListener('click', () => {
         // Tampilkan new-menu-container
         // const newMenuContainer = document.querySelector('.new-menu-container');
 
