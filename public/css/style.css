@@ -1235,6 +1235,7 @@ svg {
 .dashboard-container h1{
     text-align: center;
     padding-top: 5rem;
+    padding-bottom: 2rem;
     font-size: 24pt;
     font-weight: 800;
     color: red;
@@ -1319,6 +1320,10 @@ svg {
     text-align: center;
 }
 
+.menu-table th:nth-child(1) {
+    width: 80px;
+}
+
 .menu-table td{
     font-weight: 500;
 }
@@ -1366,6 +1371,7 @@ svg {
 .menu-table .menu-modify-btn .menu-update:hover{
     background-color: transparent;
     color: #52ba63;
+    cursor: pointer;
 }
 
 .menu-table .menu-modify-btn .menu-delete{
