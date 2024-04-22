@@ -1364,6 +1364,7 @@ svg {
 .menu-table .menu-modify-btn .menu-update:hover{
     background-color: transparent;
     color: #52ba63;
+    cursor: pointer;
 }
 
 .menu-table .menu-modify-btn .menu-delete{
