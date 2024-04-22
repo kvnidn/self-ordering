@@ -1413,6 +1413,7 @@ svg {
     background: rgb(255,199,44);
     color: white;
     box-shadow: none;
+    cursor: pointer;
 }
 
 .add-menu-btn {
@@ -1437,6 +1438,7 @@ svg {
     background: rgb(150, 44, 44);
     color: white;
     font-weight: 500;
+    cursor: pointer;
 }
 
 .menu-table{
