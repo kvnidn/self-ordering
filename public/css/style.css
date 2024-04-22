@@ -1235,6 +1235,7 @@ svg {
 .dashboard-container h1{
     text-align: center;
     padding-top: 5rem;
+    padding-bottom: 2rem;
     font-size: 24pt;
     font-weight: 800;
     color: red;
@@ -1315,6 +1316,10 @@ svg {
     padding: 15px 20px;
     word-break: break-all;
     text-align: center;
+}
+
+.menu-table th:nth-child(1) {
+    width: 80px;
 }
 
 .menu-table td{
