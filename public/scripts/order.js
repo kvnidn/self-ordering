@@ -123,7 +123,7 @@ const menuTypes = ['Promotion', 'Ala Carte', 'Sides', 'Beverages', 'Desserts', '
 menuTypes.forEach(type => {
     const menuElement = document.getElementById(`menu-${type.toLowerCase()}`);
 
-    fetch('/api/menuRoute') // Assuming this endpoint returns menu data
+    fetch('/menus') // Assuming this endpoint returns menu data
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -191,7 +191,7 @@ const searchFetch = (keyword) => {
     menuTypes.forEach(type => {
         const menuElement = document.getElementById(`menu-${type.toLowerCase()}`);
     
-        fetch('/api/menuRoute') // Assuming this endpoint returns menu data
+        fetch('/menus') // Assuming this endpoint returns menu data
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');

@@ -40,7 +40,7 @@ exports.create = (req, res) => {
     }
 };
 
-exports.find = (req, res) => {
+exports.find = async (req, res) => {
     // FIND 1 MENU or ALL MENU
     if(req.query.id) {
         const id = req.query.id;
@@ -56,15 +56,17 @@ exports.find = (req, res) => {
             res.status(500).send({ message: err.message || "Some error occurred while retrieving menus." });
         });
     } else {
-        Menu.find()
-            .then(menu => {
-                res.send(menu);
+        try {
+            const menuItems = await Menu.find()
+            if (!menuItems) {
+                return res.status(404).json({message: 'Not found'})
+            }const sorted = menuItems.sort((a, b) => {
+                return a.name.localeCompare(b.name);
             })
-            .catch(err => {
-                res.status(500).send({
-                    message: err.message || "Some error occurred while retrieving menus."
-                });
-            })
+            res.status(200).json(sorted)
+        } catch (error) {
+            res.status(500).json({message: error.message})
+        }
     }
 
 }
