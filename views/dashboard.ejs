@@ -1,7 +1,6 @@
 <main id="site-main">
 
     <a class="add-menu">
-        <!-- <span class="material-icons-sharp">add</span> -->
         +
     </a>
 
@@ -37,7 +36,7 @@
                         <td><%= menu[i].type %></td>
                         <td>
                             <div class="menu-modify-btn">
-                                <a href="/dashboard/update_menus?id=<%=menu[i]._id %>" class="menu-update">
+                                <a class="menu-update">
                                     <span class="material-icons-sharp">
                                         edit
                                     </span>
@@ -94,17 +93,6 @@
                     <div id="img-view">
                         <img src="../assets/cloud_upload.svg">
         
-                        <!-- <svg class="cloud-upload-icon">
-                            <path xmlns="http://www.w3.org/2000/svg" 
-                            d="M261.5-216.5q-68.552 0-116.526-47.709Q97-311.918 97-381.747 97-449 146.25-497.5t111.25-48q8.824-84.893 72.613-141.447Q393.901-743.5 480-743.5q93.929 0 158.964 65.279Q704-612.943 704-520v54h32q53-1.5 90 35.125 37 36.626 37 89.247 0 
-                            52.502-35.125 88.815Q792.75-216.5 740.5-216.5H525q-24.969 0-41.234-16.531Q467.5-249.562 
-                            467.5-274v-241L377-424.5l-18-17L480-563l121.5 121.5-18 17L493-515v241q0 12 9.75 
-                            22T525-242h213.42q41.45 0 70.265-28.645Q837.5-299.29 
-                            837.5-341.25q0-41.75-28.819-70.42-28.819-28.671-70.556-28.671H678.5V-519.5q0-82.378-58.036-140.439Q562.428-718 
-                            480.087-718q-82.342 0-140.392 58.061-58.049 58.061-58.049 140.439h-22.018Q205-519.5 163.75-479t-41.25 
-                            98q0 57.5 40.75 98.25T261.5-242H364v25.5H261.5Zm218.5-251Z"/>
-                        </svg> -->
-        
                         <p>Drag and drop your image here<br>or<br>Browse to upload image</p>
                         <span>Recommended size: 240 x 180 px (.png)</span>
                     </div>
@@ -153,6 +141,60 @@
             <a class="cancel-btn-menu">Cancel</a>
         </div>
     </div>
+
+    <div class="update-menu-container">
+
+        <div class="update-menu-input">
+            <div class="update-menu-pics">
+                <label for="input-file2" id="view-area">
+                    <input type="file" accept="image/png" id="input-file2" hidden>
+                    <div id="img-view2">
+                    </div>
+                </label>
+            </div>
+            
+            <div class="update-menu-details">
+                <h2>Update Menu</h2>
+    
+                <form id="update_menus" class="form">
+                    <div class="form-group">
+                        <label for="name" class="details-title">Name</label><br>
+                        <input type="hidden" name="id2" value="">
+                        <input type="text" name="name2" value="" placeholder="Enter the menu's name..." required>
+    
+                        <div class="nameerror"></div>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="price" class="details-title">Price</label><br>
+                        <input type="number" name="price2" value="" placeholder="Enter the menu's price..." required>
+    
+                        <div class="pricerrror"></div>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="type" class="details-title">Type</label><br>
+                        <select name="type2">
+                            <option value="Promotion">Promotion</option>
+                            <option value="Ala Carte">Ala Carte</option>
+                            <option value="Sides">Sides</option>
+                            <option value="Desserts">Desserts</option>
+                            <option value="Beverages">Beverages</option>
+                            <option value="Cafe">Cafe</option>
+                        </select>
+    
+                        <div class="typerror"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <div class="update-menu-btn">
+            <a class="save-btn-menu2">Save</a>
+
+            <a class="cancel-btn-menu2">Cancel</a>
+        </div>
+    </div>
 </main>
 
 <script>
@@ -185,13 +227,6 @@
     //         }
     //     });
     // });
-
-    // Modifikasi tampilan harga dengan pemisah setiap tiga digit
-    // function formatPrice(price) {
-    //     // Menggunakan metode toLocaleString() untuk memformat harga
-    //     // dengan pemisah ribuan
-    //     return price.toLocaleString('id-ID');
-    // }
 
     // Sort Tables
 
@@ -453,6 +488,147 @@
         })
     }
 
+    // Event listener untuk tombol edit menu
+    document.querySelectorAll('.menu-update').forEach(updateBtn => {
+        updateBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            // Ambil ID menu yang akan diupdate
+            // const id = document.querySelector('input[name=id2]').value;
+            // console.log(id)
+            
+
+            // Ambil data menu dari tabel yang sesuai dengan ID yang dipilih
+            const menuRow = e.currentTarget.closest('tr');
+            const menuID = menuRow.querySelector('td:nth-child(1)').textContent.trim();
+            const menuIDNumber = parseFloat(menuID)
+            console.log(menuIDNumber);
+            const menuName = menuRow.querySelector('td[data-name]').textContent.trim();
+            const menuPrice = menuRow.querySelector('td:nth-child(4)').textContent.trim();
+            const priceWithoutCommas = menuPrice.replace(/,/g, ''); // Hilangkan tanda koma
+            const menuPriceNumber = parseFloat(priceWithoutCommas);
+            const menuType = menuRow.querySelector('td:nth-child(5)').textContent.trim();
+            const menuImageSrc = menuRow.querySelector('img').getAttribute('src');
+
+            // Isi formulir update menu dengan data yang relevan
+            document.querySelector('input[name="id2"]').value = menuIDNumber;
+            document.querySelector('input[name="name2"]').value = menuName;
+            document.querySelector('input[name="price2"]').value = menuPriceNumber;
+            document.querySelector('select[name="type2"]').value = menuType;
+            document.querySelector('#img-view2').style.backgroundImage = `url(${menuImageSrc})`;
+
+            // Tampilkan overlay
+            const overlay = document.querySelector('.overlay');
+            overlay.style.top = "0%";
+            overlay.style.opacity = "1";
+            overlay.classList.add("active");
+
+            // Tampilkan kontainer update menu
+            const updateMenuContainer = document.querySelector('.update-menu-container');
+            updateMenuContainer.style.display = 'block';
+            updateMenuContainer.style.top = '50%';
+            updateMenuContainer.style.transform = 'translate(-50%, -50%)';
+        });
+    });
+
+    // Variabel untuk menampung gambar yang akan diunggah
+    let queuedImage2 = null;
+
+    // Event listener untuk upload image
+
+    const dropArea2 = document.getElementById("view-area");
+    const inputFile2 = document.getElementById("input-file2");
+    const imageView2 = document.getElementById("img-view2");
+
+    inputFile2.addEventListener("change", uploadImage2);
+
+    function uploadImage2(){
+        let imgLink2 = URL.createObjectURL(inputFile2.files[0]);
+        imageView2.style.backgroundImage = `url(${imgLink2})`;
+        // imageView.textContent = "";
+        // imageView.style.border = 0;
+
+        queuedImage2 = inputFile2.files[0];
+    }
+
+    dropArea2.addEventListener("dragover", function(e){
+        e.preventDefault();
+    });
+
+    dropArea2.addEventListener("drop", function(e){
+        e.preventDefault();
+
+        // Menambahkan gambar yang di-drop ke dalam queuedImage
+        uploadImage2();
+    })
+
+    // Event listener untuk tombol "Save"
+    const saveButton2 = document.querySelector(".save-btn-menu2");
+    saveButton2.addEventListener("click", sendQueuedImagesToServer2);
+
+    function updateMenuToServer(path) {
+        const id = document.querySelector('input[name=id2]').value;
+        console.log(id)
+        const name = document.querySelector('input[name="name2"]').value;
+        const image = path;
+        const price = document.querySelector('input[name="price2"]').value;
+        const type = document.querySelector('select[name="type2"]').value;
+
+        fetch('/menus/:id', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({id: id, name: name, price: price, image: image, type: type})
+        })
+
+        .then(response => {
+            if (response.status !== 200) throw Error(response.statusText);
+            location.reload();
+        })
+
+        .catch(error => {
+            console.error("Error:", error);
+        })
+    }
+
+    function sendQueuedImagesToServer2() {
+        // Pastikan ada gambar yang dipilih sebelum mengirim
+        if (!queuedImage2) {
+            console.error("No image selected.");
+            return;
+        }
+
+        const formData = new FormData();
+
+        // Menambahkan gambar yanga da di queuedImage ke dalam formData
+        formData.append("file", queuedImage2);
+
+        // Mengirim formData ke server
+        
+        fetch("/dashboard/upload", {
+            method: "POST",
+            body: formData
+        })
+
+        .then(response => {
+            if (response.status !== 200) throw Error(response.statusText);
+            return response.text();
+        })
+
+        .then(data => {
+            // Data di sini akan berisi path file yang dikirim kembali oleh server
+            pathfile = "../assets/menu/uploads/" + data;
+
+            updateMenuToServer(pathfile);
+        })
+
+        .catch(error => {
+            // serverMessage.innerHTML = error
+            console.error("Error:", error);
+        })
+    }
+
     // Event listener untuk tombol penghapusan
     document.querySelector('.delete-btn').addEventListener('click', () => {
         // Dapatkan ID menu yang akan dihapus dari data di dalam popup konfirmasi
@@ -497,6 +673,22 @@
 
         // Sembunyikan kontainer menu baru
         const newMenuContainer = document.querySelector('.new-menu-container');
+        newMenuContainer.style.display = '150%';
+        newMenuContainer.style.transform = 'translate(-50%, -50%)';
+        newMenuContainer.style.display = 'none';
+
+        window.location.reload();
+    });
+
+    // Event listener untuk tombol pembatalan di menu baru
+    document.querySelector('.cancel-btn-menu2').addEventListener('click', () => {
+        // Sembunyikan overlay
+        const overlay = document.querySelector('.overlay');
+        overlay.style.top = "-100%";
+        overlay.style.opacity = "0";
+
+        // Sembunyikan kontainer menu baru
+        const newMenuContainer = document.querySelector('.update-menu-container');
         newMenuContainer.style.display = '150%';
         newMenuContainer.style.transform = 'translate(-50%, -50%)';
         newMenuContainer.style.display = 'none';
