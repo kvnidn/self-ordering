@@ -36,7 +36,7 @@
                         <td><%= menu[i].type %></td>
                         <td>
                             <div class="menu-modify-btn">
-                                <a class="menu-update">
+                                <a class="menu-update" update-id="<%= menu[i]._id %>">
                                     <span class="material-icons-sharp">
                                         edit
                                     </span>
@@ -493,11 +493,6 @@
         updateBtn.addEventListener('click', (e) => {
             e.preventDefault();
 
-            // Ambil ID menu yang akan diupdate
-            // const id = document.querySelector('input[name=id2]').value;
-            // console.log(id)
-            
-
             // Ambil data menu dari tabel yang sesuai dengan ID yang dipilih
             const menuRow = e.currentTarget.closest('tr');
             const menuID = menuRow.querySelector('td:nth-child(1)').textContent.trim();
@@ -567,29 +562,46 @@
     saveButton2.addEventListener("click", sendQueuedImagesToServer2);
 
     function updateMenuToServer(path) {
-        const id = document.querySelector('input[name=id2]').value;
+        // Select the element by class name and attribute
+        const element = document.querySelector('.menu-update[update-id]');
+
+        // Get the value of the update-id attribute
+        const id = element.getAttribute('update-id');
+        // const id = document.querySelector('input[name=id2]').value;
         console.log(id)
         const name = document.querySelector('input[name="name2"]').value;
         const image = path;
         const price = document.querySelector('input[name="price2"]').value;
         const type = document.querySelector('select[name="type2"]').value;
 
-        fetch('/menus/:id', {
+        const requestBody = {
+            id: id,
+            name: name,
+            price: price,
+            image: image,
+            type: type
+        };
+        // Send a PUT request to update the menu item
+        fetch(`/menus/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({id: id, name: name, price: price, image: image, type: type})
+            body: JSON.stringify(requestBody)
         })
-
         .then(response => {
-            if (response.status !== 200) throw Error(response.statusText);
-            location.reload();
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json(); // Assuming server responds with JSON
         })
-
+        .then(data => {
+            console.log('Menu updated successfully:', data);
+            location.reload(); // Reload the page after successful update
+        })
         .catch(error => {
-            console.error("Error:", error);
-        })
+            console.error('Error updating menu:', error);
+        });
     }
 
     function sendQueuedImagesToServer2() {
