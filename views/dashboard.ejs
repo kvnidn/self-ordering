@@ -559,7 +559,20 @@
 
     // Event listener untuk tombol "Save"
     const saveButton2 = document.querySelector(".save-btn-menu2");
-    saveButton2.addEventListener("click", sendQueuedImagesToServer2);
+    // saveButton2.addEventListener("click", sendQueuedImagesToServer2);
+
+    saveButton2.addEventListener("click", () => {
+        if (queuedImage2 === null){
+            var backgroundImageValue = document.querySelector('#img-view2').style.backgroundImage;
+            backgroundImage = backgroundImageValue.replace('url("', '').replace('")', '');
+            console.log(backgroundImage);
+
+            updateMenuToServer(backgroundImage);
+        }
+        else{
+            sendQueuedImagesToServer2();
+        }
+    });
 
     function updateMenuToServer(path) {
         // Select the element by class name and attribute
