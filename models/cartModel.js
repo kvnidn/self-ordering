@@ -38,8 +38,8 @@ const cartSchema = new Schema(
             // minLength: [3, "Please enter a minimum length of characters: 3"]
         },
         date: {
-            type: Date,
-            default: Date.now
+            type: String,
+            // default: Date.now
         },
         cartOrder: [orderSchema]
     },
