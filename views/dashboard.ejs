@@ -498,6 +498,8 @@
             const menuID = menuRow.querySelector('td:nth-child(1)').textContent.trim();
             const menuIDNumber = parseFloat(menuID)
             console.log(menuIDNumber);
+            const menuIDdb = e.currentTarget.getAttribute('update-id');
+            console.log(menuIDdb);
             const menuName = menuRow.querySelector('td[data-name]').textContent.trim();
             const menuPrice = menuRow.querySelector('td:nth-child(4)').textContent.trim();
             const priceWithoutCommas = menuPrice.replace(/,/g, ''); // Hilangkan tanda koma
@@ -523,6 +525,8 @@
             updateMenuContainer.style.display = 'block';
             updateMenuContainer.style.top = '50%';
             updateMenuContainer.style.transform = 'translate(-50%, -50%)';
+
+            updateMenuContainer.dataset.menuIDdb = menuIDdb;
         });
     });
 
@@ -579,9 +583,10 @@
         const element = document.querySelector('.menu-update[update-id]');
 
         // Get the value of the update-id attribute
-        const id = element.getAttribute('update-id');
+        // const id = element.getAttribute('update-id');
         // const id = document.querySelector('input[name=id2]').value;
-        console.log(id)
+        // console.log(id)
+        const id = document.querySelector('.update-menu-container').dataset.menuIDdb;
         const name = document.querySelector('input[name="name2"]').value;
         const image = path;
         const price = document.querySelector('input[name="price2"]').value;
