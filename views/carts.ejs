@@ -18,7 +18,10 @@
                         <% for(var i=0; i < carts.length; i++) { %>
                             <tr>
                                 <td><%= i+1 %></td>
-                                <td data-name="<%= carts[i].username %>"><%= carts[i].username %></td>
+                                <% let inputString = carts[i].username; %>
+                                <% let lastIndex = inputString.lastIndexOf('_'); %>
+                                <% let trimmedString = inputString.substring(0, lastIndex); %>
+                                <td data-name="<%= carts[i].username %>"><%= trimmedString %></td>
                                 <td><%= carts[i].date %></td>
                                 <td>
                                 <div class="menu-modify-btn">
@@ -41,20 +44,20 @@
                                 <div class="detail-menu-text">
                                         <h3 class="detail-confirm">Order Details</h3>
                                         <div style="display: flex; justify-content: space-between;">
-                                            <ul class="detail-list" style="width: 170px;">
-                                                <li>Item Name</li>
+                                            <ul class="detail-list">
+                                                <li style="font-weight: bold;">Item Name</li>
                                                 <% for(var j=0; j < carts[i].cartOrder.length; j++) { %>
                                                     <li><%= carts[i].cartOrder[j].name %></li>
                                                 <% } %>
                                             </ul>
                                             <ul class="detail-list" style="text-align: center;">
-                                                <li>Quantity</li>
+                                                <li style="font-weight: bold;">Quantity</li>
                                                 <% for(var j=0; j < carts[i].cartOrder.length; j++) { %>
                                                     <li><%= carts[i].cartOrder[j].quantity%></li>
                                                 <% } %>
                                             </ul>
                                             <ul class="detail-list">
-                                                <li class=data>Price</li>
+                                                <li class=data style="font-weight: bold;">Price</li>
                                                 <% let totalPrice = 0; %>
                                                 <% for(var j=0; j < carts[i].cartOrder.length; j++) { %>
                                                     <li class=data><%= carts[i].cartOrder[j].price %></li>

@@ -38,8 +38,8 @@ const cartSchema = new Schema(
             type: String,
         },
         date: {
-            type: Date,
-            default: Date.now
+            type: String,
+            // default: Date.now
         },
         cartOrder: [orderSchema]
     },

@@ -45,11 +45,12 @@ router.post('/', async (req, res) => {
         const timeWithOffset = new Date(`${datePart}T${timePart}`).toLocaleTimeString('en-US', { timeZone: 'Asia/Bangkok', hour12: false });
 
         // Construct the final ISO string with GMT+7 timezone
-        const formattedDateString = `${datePart}T${timeWithOffset}.000+07:00`;
+        const formattedDateString = `${datePart} (Jam ${timeWithOffset} GMT+07:00)`;
         
         // Create a new cart object with the user's ID and cartOrder
         const newCart = new Cart({
             username: user.username+"_"+formattedDateString, // Assuming user._id is the ID of the user
+            date: formattedDateString,
             cartOrder: cartOrder
         });
         // console.log(user.username);
