@@ -84,6 +84,6 @@ app.get('/dashboard/carts', requireAuth, async (req, res) => {
 app.use('/', require('./routes/router'))
 
 app.get("*", (req, res) => {
-    res.render('404', { title: 'Error Page', layout: false});
+    res.render('404', { title: '404 - Not Found', layout: false});
 });
 
