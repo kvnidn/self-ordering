@@ -42,35 +42,41 @@
                         <div class="detail-menu-container" id="detail-menu-container<%= carts[i]._id %>">
                             <div class="detail-menu-info">
                                 <div class="detail-menu-text">
-                                        <h3 class="detail-confirm">Order Details</h3>
+                                        <h3 class="detail-confirm" style="position: sticky; top: 0; background-color: white; z-index: 1; padding: 0.2rem;">Order Details</h3>
                                         <div style="display: flex; justify-content: space-between;">
                                             <ul class="detail-list">
-                                                <li style="font-weight: bold;">Item Name</li>
+                                                <li style="font-weight: bold; position: sticky; top: 0; background-color: white; z-index: 1; padding: 1rem; margin: 0;">Item Name</li>
                                                 <% for(var j=0; j < carts[i].cartOrder.length; j++) { %>
                                                     <li><%= carts[i].cartOrder[j].name %></li>
                                                 <% } %>
                                             </ul>
                                             <ul class="detail-list" style="text-align: center;">
-                                                <li style="font-weight: bold;">Quantity</li>
+                                                <li style="font-weight: bold; position: sticky; top: 0; background-color: white; z-index: 1; padding: 1rem; margin: 0;">Quantity</li>
                                                 <% for(var j=0; j < carts[i].cartOrder.length; j++) { %>
                                                     <li><%= carts[i].cartOrder[j].quantity%></li>
                                                 <% } %>
                                             </ul>
-                                            <ul class="detail-list">
-                                                <li class=data style="font-weight: bold;">Price</li>
+                                            <ul class="detail-list" style="text-align: end;">
+                                                <li class=data style="font-weight: bold; position: sticky; top: 0; background-color: white; z-index: 1; padding: 1rem; margin: 0;">Price</li>
                                                 <% let totalPrice = 0; %>
-                                                <% for(var j=0; j < carts[i].cartOrder.length; j++) { %>
-                                                    <li class=data><%= carts[i].cartOrder[j].price %></li>
-                                                <% totalPrice += carts[i].cartOrder[j].quantity * carts[i].cartOrder[j].price; %>
+                                                <% for (let j = 0; j < carts[i].cartOrder.length; j++) { %>
+                                                    <% const item = carts[i].cartOrder[j]; %>
+                                                    <% const itemTotalPrice = item.price * item.quantity; %>
+                                                    <li class="data">Rp <%= itemTotalPrice.toLocaleString() %></li>
+                                                    <% totalPrice += itemTotalPrice; %>
                                                 <% } %>
                                             </ul>
                                                
                                         </div>
                                     </div>
-                                    <li style="justify-content: flex-end; display: flex; border-top: 4px solid black; padding-top: 10px;">Total Price: Rp <%= totalPrice %></li>
+                            </div>
+                            <div class="total-price-section">
+                                <ul class="detail-list" style="text-align: end;">
+                                    <li style="justify-content: flex-end; display: flex; border-top: 4px solid black; padding-top: 10px;">Total Price: Rp <%= (totalPrice).toLocaleString() %></li>
+                                </ul>
                             </div>
  
-                            <div onclick="document.querySelector('.detail-menu-container').style.display = 'none'" class="detail-menu-action-btn" style="display: flex; justify-content: center; padding-top: 20px;">
+                            <div onclick="document.querySelector('.detail-menu-container').style.display = 'none'" class="detail-menu-action-btn" style="display: flex; justify-content: end; padding-top: 20px;">
                                 <button class="cancel-btn-detail" style="border-radius: 12.5px; padding: 10px 10px;">
                                     Close
                                 </button>

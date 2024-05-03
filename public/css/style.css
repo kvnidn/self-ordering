@@ -1405,6 +1405,45 @@ svg {
     transition: top 300ms ease, transform 300ms ease, display 300ms ease;
 }
 
+.detail-menu-container > .detail-menu-info {
+    flex-grow: 1;
+    max-height: 400px;    
+    overflow-y: auto;
+}
+
+.detail-menu-container > .detail-menu-action-btn {
+    flex-shrink: 0;
+    height: 100%;
+}
+
+.detail-menu-container > .detail-menu-info::-webkit-scrollbar {
+    display: none;
+}
+
+.detail-menu-container .cancel-btn-detail {
+    position: relative;
+    text-align: center;
+    width: 100px;
+    /* padding: 40px; */
+    background: transparent;
+    font-family: poppins, sans-serif;
+    font-weight: 700;
+    border: 3px solid rgb(150, 44, 44);
+    margin-right: 10px;
+    /* letter-spacing: 10px; */
+    cursor: pointer;
+    border-radius: 120px;
+    transition: 0.5s;
+    float: right;
+}
+
+.detail-menu-container .cancel-btn-detail:hover {
+    background: rgb(150, 44, 44);
+    box-shadow: 0 5px 25px 0 rgb(150, 44, 44) inset, 0 5px 25px 0 rgb(150, 44, 44), 0 5px 25px 0 rgb(150, 44, 44) inset, 0 5px 25px 0 rgb(150, 44, 44);
+    text-shadow: 0 0 5px rgb(150, 44, 44), 0 0 5px rgb(150, 44, 44);
+    color: white;
+}
+
 .menu-table .menu-modify-btn .menu-delete:hover{
     background-color: transparent;
     color: red;
