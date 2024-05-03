@@ -1274,10 +1274,14 @@ svg {
     cursor: pointer;
 }
 
+.button-container {
+    display: flex;
+}
+
 .add-menu-btn {
     border: 2px dashed rgb(150, 44, 44);
     color: rgb(150, 44, 44);
-    display: flex;
+    display: inline-block;
     align-items: center;
     justify-content: center;
     box-shadow: 0 0 3rem rgba(255,199,44,0.25);
@@ -1292,6 +1296,61 @@ svg {
 }
 
 .add-menu-btn:hover{
+    box-shadow: none;
+    background: rgb(150, 44, 44);
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.order-details-btn {
+    border: 2px dashed rgb(150, 44, 44);
+    color: rgb(150, 44, 44);
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 3rem rgba(255,199,44,0.25);
+    transition: all 300ms ease;
+    width: 12rem;
+    gap: 0.25rem;
+    padding: 0.8rem 1.8rem;
+    margin: 2.5rem 0 3rem auto;
+    font-weight: 700;
+    font-size: 15px;
+    border-radius: 18px;
+}
+
+.order-details-btn:hover{
+    box-shadow: none;
+    background: rgb(150, 44, 44);
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.add-menu-btn .material-icons-sharp,
+.order-details-btn .material-symbols-outlined {
+    vertical-align: middle;
+}
+
+.dashboard-btn {
+    border: 2px solid rgb(150, 44, 44);
+    color: #962c2c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 3rem rgba(255,199,44,0.25);
+    transition: all 300ms ease;
+    width: 10.8rem;
+    gap: 0.25rem;
+    padding: 0.8rem 1.8rem;
+    margin: 0.5rem 0 3rem 0;
+    font-weight: 700;
+    font-size: 15px;
+    border-radius: 18px;
+}
+
+.dashboard-btn:hover{
     box-shadow: none;
     background: rgb(150, 44, 44);
     color: white;

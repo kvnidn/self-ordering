@@ -8,10 +8,19 @@
 
         <h1><span class="mcd">McD</span>ini's Menu</h1>
         
-        <a class="add-menu-btn">
-                <span class="material-icons-sharp">add</span>
-                New Menu
-        </a>
+        <div class="button-container">
+            <a class="add-menu-btn">
+                    <span class="material-icons-sharp" style="padding-bottom: 2px;">add</span>
+                    New Menu
+            </a>
+
+            <a class="order-details-btn">
+                Check Order
+                <span class="material-symbols-outlined" style="padding-bottom: 2px; padding-left: 0.4rem;">
+                    event_list
+                    </span>
+            </a>
+        </div>
 
         <form action="/dashboard" method="POST">
             <table class="menu-table">
