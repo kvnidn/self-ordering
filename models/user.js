@@ -1,3 +1,7 @@
+/*
+    User Schema untuk database MongoDB
+    memakai validator untuk email, bcrypt untuk hashing 
+*/
 const mongoose = require('mongoose');
 // email validator
 const { isEmail } = require('validator');

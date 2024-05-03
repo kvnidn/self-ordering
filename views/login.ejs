@@ -17,10 +17,6 @@
                         <input type="password" name="password" placeholder="Enter password" required/>
                         <div class="password-error"></div>
                     </div>
-                    <!-- <div class="form-element">
-                        <input type="checkbox" name="remember-me">
-                        <label for="remember-me">Remember me</label>
-                    </div> -->
                     <div class="form-element">
                         <button>Sign in</button>
                     </div>
@@ -85,10 +81,6 @@
                     showConfirmButton: false,
                     timer: 1000,
                     timerProgressBar: true,
-                    // didOpen: (toast) => {
-                    //     toast.onmouseenter = Swal.stopTimer;
-                    //     toast.onmouseleave = Swal.resumeTimer;
-                    // }
                 });
                 Toast.fire({
                     customClass: {
@@ -105,11 +97,5 @@
         catch (err) {
             console.log(err);
         }
-        // err.preventDefault();
-
-        // const email = form.email.value;
-        // const password = form.password.value;
-
-        // console.log(email, password);
     });
     </script>

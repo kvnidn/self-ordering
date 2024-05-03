@@ -1,3 +1,6 @@
+/*
+    Menu Schema untuk database MongoDB
+*/
 const {Schema, model} = require('mongoose')
 
 const menuSchema = new Schema(

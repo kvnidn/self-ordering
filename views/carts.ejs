@@ -1,11 +1,9 @@
-[18:15] JASON PERMANA
     <main id="site-main">
  
         <div class="dashboard-container">
    
             <h1><span class="mcd">McD</span>ini's Orders</h1>
    
-            <!-- <form> -->
                 <table class="menu-table">
                     <thead>
                         <tr>
@@ -64,9 +62,6 @@
                                                 <% } %>
                                             </ul>
                                                
-                                            <!-- <div style="padding-right: 40px;">
- 
-                                            </div> -->
                                         </div>
                                     </div>
                                     <li style="justify-content: flex-end; display: flex; border-top: 4px solid black; padding-top: 10px;">Total Price: Rp <%= totalPrice %></li>
@@ -82,7 +77,6 @@
                         <% } %>
                     </tbody>
                 </table>
-            <!-- </form> -->
         </div>
    
         <div class="delete-menu-container">
@@ -173,7 +167,6 @@
             table.querySelector(`th:nth-child(${ column + 1 })`).classList.toggle("th-sort-desc", !asc);
         }
    
-        // sortTableByColumn(document.querySelector("table"), 1, true);
    
         document.querySelectorAll(".menu-table th").forEach(headerCell => {
             headerCell.addEventListener("click", () => {
@@ -293,8 +286,6 @@
                     if (response.ok) {
                         console.log(`Menu with ID ${menuID} has been deleted.`);
                        
-                        // Hapus baris menu dari antarmuka pengguna
-                        // document.querySelector(`tr[data-id="${menuID}"]`).remove();
                     } else {
                         console.error(`Error deleting menu item. ${menuId}`);
                     }

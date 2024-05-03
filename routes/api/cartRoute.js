@@ -1,5 +1,7 @@
-// cartRouter.js
-
+/*
+  cartRouter.js
+  punya code GET, POST, PATCH, DELETE untuk mengelola data MongoDB
+*/
 const express = require('express');
 const router = express.Router();
 const Cart = require('../../models/cartModel');

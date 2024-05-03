@@ -1,3 +1,6 @@
+/*
+    Order Schema, Cart Schema untuk database MongoDB
+*/
 const {Schema, model} = require('mongoose')
 
 const orderSchema = new Schema(
@@ -33,9 +36,6 @@ const cartSchema = new Schema(
     {
         username: {
             type: String,
-            // required: [true, "test"],
-            // unique: [true, "Username exists"],
-            // minLength: [3, "Please enter a minimum length of characters: 3"]
         },
         date: {
             type: Date,

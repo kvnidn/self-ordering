@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const expressLayouts = require("express-ejs-layouts");
-// const path = require("path");
 
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
@@ -19,7 +18,6 @@ const { requireAuth, checkUser } = require("./middleware/authMiddleware");
 
 
 app.set("view engine", "ejs");
-// app.set("views", path.join(__dirname, "views"));
 
 // for getting the data form .json file or mongodb file
 // Request, Responds
@@ -36,10 +34,8 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/api/menuRoute', require('./routes/api/menuRoute'))
+// app.use('/api/menuRoute', require('./routes/api/menuRoute')) // Jika menuRoute.js tidak dipakai, akan diremove
 app.use('/api/cartRoute', require('./routes/api/cartRoute'))
-
-// app.use('/dashboard/carts', require('./routes/api/cartRoute'));
 
 mongoose.connect(MONGO_URL)
     .then(() => console.log(`MongoDB connected ${MONGO_URL}`))
@@ -58,11 +54,6 @@ app.get('*', checkUser);
 app.get("/", (req, res) => {
     res.render("index.ejs", {title: "McDini - Home", script: "../scripts/script.js", layout: "layouts/main-layout.ejs"})
 })
-
-// requireAuth => require to Login, else cant go to link
-// app.get("/order", requireAuth, (req, res) => {
-//     res.render("order.ejs", {title: "McDini - Order", script: "../scripts/order.js", layout: "layouts/main-layout.ejs"})
-// })
 
 app.get("/order", (req, res) => {
     res.render("order.ejs", {title: "McDini - Order", script: "../scripts/order.js", layout: "layouts/main-layout.ejs"})
@@ -92,8 +83,6 @@ app.get('/dashboard/carts', requireAuth, async (req, res) => {
 // Menu Routers
 app.use('/', require('./routes/router'))
 
-
-// 
 app.get("*", (req, res) => {
     res.render('404', { title: 'Error Page', layout: false});
 });

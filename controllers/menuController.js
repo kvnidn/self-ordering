@@ -1,7 +1,8 @@
-
+/*
+    Code create, find, update, delete, untuk mengelola database MongoDB
+*/
 const Menu = require('../models/menuModel');
 
-// MASIH SEMENTARA KARENA TIDAK TERDETEKSI PROBLEM, untuk masalah [UPDATED]
 exports.create = (req, res) => {
     const { id, name, price, image, type } = req.body;
 

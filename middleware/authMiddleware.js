@@ -1,3 +1,5 @@
+// Memakai JWT, untuk token di website supaya bisa tetap login
+
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 

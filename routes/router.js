@@ -1,3 +1,10 @@
+/*
+    router.js, membuat server dengan ejs,
+    menggunakan middleware untuk user
+    menggunakan axios untuk request http
+    menggunakan multer buat upload page
+    membuat route untuk dashboard (add menu, update menu, delete menu, find menu) memakai API dari file controller (menuController)
+*/
 const express = require('express');
 const route = express.Router();
 
@@ -37,13 +44,10 @@ route.get('/dashboard/update_menus', requireAuth, (req, res) => {
     })
     .catch(err => {
         res.send(err);
-    })
-    // res.render("update_menus.ejs", {title: "Dashboard", script: "", layout: "layouts/main-layout.ejs"});
-})
+    })})
 
 
 // API
-
 route.post('/menus', controller.create);
 route.get('/menus', controller.find);
 route.put('/menus/:id', controller.update);
@@ -53,13 +57,11 @@ route.delete('/menus/:id', controller.delete);
 
 
 // UPLOAD MENU
-
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
         cb(null, './public/assets/menu/uploads/')
     },
     filename: function(req, file, cb) {
-        // const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
 
         // Membuat objek Date yang mewakili tanggal dan waktu saat ini
         var currentDate = new Date();
@@ -116,4 +118,4 @@ route.post("/dashboard/upload", (req, res) => {
     })
 })
 
-module.exports = route
+module.exports = route;
