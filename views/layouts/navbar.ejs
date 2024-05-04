@@ -1,6 +1,6 @@
 <header id="navbar"><span class="animation" style="--i:1;"></span>
     <div class="navbar" style="<% if(user) { %> padding-top: 20px;padding-bottom: 20px;<% } %>">
-        <a href="#" class="logo"><img src="../assets/logo_mcd.png"></a>
+        <a href="<%= user == null ? '/' : (user.role === 'admin' ? '/dashboard' : '/') %>" class="logo"><img src="../assets/logo_mcd.png"></a>
         <ul class="center-navbar">
             <li><a href="/">Home</a></li>
             <li><a href="/order">Order</a></li>
