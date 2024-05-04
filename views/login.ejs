@@ -1,3 +1,4 @@
+   <!-- Popup login -->
     <section class="login-section">
         <div class="login">
             <button id="show-login">Login</button>
@@ -10,18 +11,15 @@
                     <div class="form-element">
                         <label for="email">Email</label>
                         <input type="text" name="email" placeholder="Enter email" required/>
-                        <div class="email-error"></div>
+                        <div class="email-error" style="color: red;"></div>
                     </div>
                     <div class="form-element">
                         <label for="password">Password</label>
                         <input type="password" name="password" placeholder="Enter password" required/>
-                        <div class="password-error"></div>
+                        <div class="password-error" style="color: red;"></div>
                     </div>
                     <div class="form-element">
                         <button>Sign in</button>
-                    </div>
-                    <div class="form-element">
-                        <a href="#">Forgot password?</a>
                     </div>
                 </form>
             </div>
@@ -32,13 +30,15 @@
         const loginButton = document.querySelector('#show-login');
         const loginPopup = document.querySelector('.login-popup');
         const closeloginButton = document.querySelector('.login-popup .login-close-btn');
-
+        
+        // Show login popup
         loginButton.addEventListener("click", () => {
             loginPopup.style.top = "0%";
             loginPopup.style.opacity = "1";
             loginPopup.classList.add("active");
         });
 
+        // Close login popup
         closeloginButton.addEventListener("click", () => {
             loginPopup.style.top = "-150%";
             loginPopup.style.opacity = "0";
@@ -49,7 +49,8 @@
 
     const emailError = document.querySelector('.email-error');
     const passwordError = document.querySelector('.password-error');
-
+    
+    // Login submit
     form.addEventListener('submit', async (err) => {
         err.preventDefault();
 

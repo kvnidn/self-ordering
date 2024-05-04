@@ -71,16 +71,19 @@ const createToken = (id) => {
 
     Respond => for showing the result after we click button or after login sign up
 */
+// Render username in navigation bar
 module.exports.signup_get = (req, res) => {
     const userData = req.user || res.locals.user;
     res.render('signup', {title: "SignUp", user: userData});
 }
 
+// Render username in navigation bar
 module.exports.login_get = (req, res) => {
     const userData = req.user || res.locals.user;
     res.render('login', {title: "Login", user: userData});
 }
 
+// Save user data from signing up
 module.exports.signup_post = async (req, res) => {
     const { username, email, password } = req.body;
 
@@ -101,6 +104,7 @@ module.exports.signup_post = async (req, res) => {
     // res.send('new signup');
 }
 
+// Build session after login
 module.exports.login_post = async (req, res) => {
     // console.log(req.body);
     const { email, password } = req.body;
@@ -122,10 +126,9 @@ module.exports.login_post = async (req, res) => {
     
 }
 
+// Clear login session
 module.exports.logout_get = (req, res) => {
     res.clearCookie('jwt');
     res.redirect('/');
-    // res.cookie('jwt', '', {maxAge: 1});
-    // res.redirect('/');
 }
 

@@ -1,3 +1,4 @@
+<!-- Signup popup -->
 <section class="signup-section">
     <div class="signup">
         <button id="show-signup">Sign Up</button>
@@ -10,17 +11,17 @@
                 <div class="form-element">
                     <label for="username">Username</label>
                     <input type="text" name="username" placeholder="Enter username" required/>
-                    <div class="usernameerror"></div>
+                    <div class="usernameerror" style="color: red;"></div>
                 </div>
                 <div class="form-element">
                     <label for="email">Email</label>
                     <input type="text" name="email" placeholder="Enter email" required/>
-                    <div class="emailerror"></div>
+                    <div class="emailerror" style="color: red;"></div>
                 </div>
                 <div class="form-element">
                     <label for="password">Password</label>
                     <input type="password" name="password" placeholder="Enter password" required/>
-                    <div class="passworderror"></div>
+                    <div class="passworderror" style="color: red;"></div>
                 </div>
                 <div class="form-element">
                     <button>Sign up</button>
@@ -34,13 +35,15 @@
     const signupButton = document.querySelector('#show-signup');
     const signupPopup = document.querySelector('.signup-popup');
     const closesignupButton = document.querySelector('.signup-popup .signup-close-btn');
-
+    
+    // Show signup popup
     signupButton.addEventListener("click", () => {
         signupPopup.style.top = "0%";
         signupPopup.style.opacity = "1";
         signupPopup.classList.add("active");
     });
 
+    // close signup popup
     closesignupButton.addEventListener("click", () => {
         signupPopup.style.top = "-150%";
         signupPopup.style.opacity = "0";
@@ -54,6 +57,7 @@
     const signupemailError = document.querySelector('.emailerror');
     const signuppasswordError = document.querySelector('.passworderror');
 
+    // Signup submit
     signupform.addEventListener('submit', async (err) => {
         err.preventDefault();
 

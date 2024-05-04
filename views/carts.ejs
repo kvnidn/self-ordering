@@ -1,3 +1,6 @@
+<!-- /dashboard/carts
+    Tampilan order dari user pada dashboard
+-->
     <main id="site-main">
  
         <div class="dashboard-container">
@@ -126,7 +129,7 @@
    
     <script>
        
-   
+        // Sorting data tabel berdasarkan string
         function sortTableByColumn(table, column, asc = true){
             const dirModifier = asc ? 1 : -1;
             const tBody = table.tBodies[0];
@@ -153,7 +156,8 @@
             table.querySelector(`th:nth-child(${ column + 1 })`).classList.toggle("th-sort-asc", asc);
             table.querySelector(`th:nth-child(${ column + 1 })`).classList.toggle("th-sort-desc", !asc);
         }
-   
+        
+        //Sorting data table berdasarkan angka
         function sortTableByColumnNumerical(table, column, asc = true){
             const dirModifier = asc ? 1 : -1;
             const tBody = table.tBodies[0];
@@ -183,7 +187,7 @@
             table.querySelector(`th:nth-child(${ column + 1 })`).classList.toggle("th-sort-desc", !asc);
         }
    
-   
+        // Aktivasi fungsi sorting pada header table
         document.querySelectorAll(".menu-table th").forEach(headerCell => {
             headerCell.addEventListener("click", () => {
                 const tableElement = headerCell.parentElement.parentElement.parentElement;

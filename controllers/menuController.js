@@ -3,6 +3,7 @@
 */
 const Menu = require('../models/menuModel');
 
+// Create new menu
 exports.create = (req, res) => {
     const { id, name, price, image, type } = req.body;
 
@@ -41,8 +42,9 @@ exports.create = (req, res) => {
     }
 };
 
+// Fetch menu data
 exports.find = async (req, res) => {
-    // FIND 1 MENU or ALL MENU
+    // FIND 1 MENU
     if(req.query.id) {
         const id = req.query.id;
         Menu.findById(id)
@@ -56,6 +58,8 @@ exports.find = async (req, res) => {
         .catch(err => {
             res.status(500).send({ message: err.message || "Some error occurred while retrieving menus." });
         });
+
+    // Find all menu
     } else {
         try {
             const menuItems = await Menu.find()
@@ -72,6 +76,7 @@ exports.find = async (req, res) => {
 
 }
 
+// Update menu data
 exports.update = (req, res) => {
     if(!req.body){
         return res
@@ -92,6 +97,7 @@ exports.update = (req, res) => {
         })
 }
 
+// Delete menu data
 exports.delete = async (req, res) => {
     try {
         const id = req.params.id;

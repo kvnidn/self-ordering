@@ -1,4 +1,5 @@
 var indexSlide = 0;
+// Automatic carousel
 function autoSlideShow() {
     var i;
     const image = document.querySelectorAll(".banner");
@@ -16,6 +17,7 @@ autoSlideShow();
 
 setInterval(autoSlideShow, 4500);
 
+// Show additional offer cards
 let showButton = document.getElementById("show-button");
 showButton.addEventListener("click", showOffers);
 

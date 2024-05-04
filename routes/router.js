@@ -16,10 +16,8 @@ const { requireAuth, checkUser } = require("../middleware/authMiddleware");
 
 const multer = require("multer")
 const path = require("path")
-const fs = require("fs")
-const util = require("util")
-const unlinkFile = util.promisify(fs.unlink)
 
+// Render dashboard page
 route.get('/dashboard', requireAuth, (req, res) => {
     axios.get("http://localhost:3000/menus")
         .then((response) => {
@@ -33,30 +31,15 @@ route.get('/dashboard', requireAuth, (req, res) => {
 
 })
 
-route.get('/dashboard/add_menus', requireAuth, (req, res) => {
-    res.render("add_menus.ejs", {title: "Dashboard", script: "", layout: "layouts/main-layout.ejs", errors: "", formData: ""});
-})
 
-route.get('/dashboard/update_menus', requireAuth, (req, res) => {
-    axios.get("http://localhost:3000/menus", {params: {id: req.query.id}})
-    .then(menudata => {
-        res.render("update_menus.ejs", {title: "Dashboard", script: "", layout: "layouts/main-layout.ejs", menu: menudata.data, errors: ""});
-    })
-    .catch(err => {
-        res.send(err);
-    })})
-
-
-// API
+// Menu API
 route.post('/menus', controller.create);
 route.get('/menus', controller.find);
 route.put('/menus/:id', controller.update);
 route.delete('/menus/:id', controller.delete);
 
 
-
-
-// UPLOAD MENU
+// Save image when new menu is created
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
         cb(null, './public/assets/menu/uploads/')
@@ -103,6 +86,7 @@ const checkFileType = (file, cb) => {
         cb("Please upload images only")
     }
 }
+
 
 route.post("/dashboard/upload", (req, res) => {
     upload(req, res, (err) => {

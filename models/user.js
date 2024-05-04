@@ -1,5 +1,6 @@
 /*
-    User Schema untuk database MongoDB
+    User Schema menampung data user
+    username, email, password, dan role (optional)
     memakai validator untuk email, bcrypt untuk hashing 
 */
 const mongoose = require('mongoose');

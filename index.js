@@ -51,22 +51,27 @@ app.use(authRoutes);
 // Check Account
 app.get('*', checkUser);
 
+// Render home page
 app.get("/", (req, res) => {
     res.render("index.ejs", {title: "McDini - Home", script: "../scripts/script.js", layout: "layouts/main-layout.ejs"})
 })
 
+// Render order page
 app.get("/order", (req, res) => {
     res.render("order.ejs", {title: "McDini - Order", script: "../scripts/order.js", layout: "layouts/main-layout.ejs"})
 })
 
+// Render locations page
 app.get("/locations", (req, res) => {
     res.render("locations.ejs", {title: "McDini - Locations", script: "", layout: "layouts/main-layout.ejs"})
 })
 
+// Render about page
 app.get("/about", (req, res) => {
     res.render("about.ejs", {title: "McDini - About Us", script: "", layout: "layouts/main-layout.ejs"})
 })
 
+// Render dashboard order page
 app.get('/dashboard/carts', requireAuth, async (req, res) => {
     try {
         // Fetch data from the database
@@ -83,6 +88,7 @@ app.get('/dashboard/carts', requireAuth, async (req, res) => {
 // Menu Routers
 app.use('/', require('./routes/router'))
 
+// Render 404 page
 app.get("*", (req, res) => {
     res.render('404', { title: '404 - Not Found', layout: false});
 });

@@ -1,5 +1,6 @@
 /*
-    Order Schema, Cart Schema untuk database MongoDB
+    Order Schema untuk menampung detail pesanan yang ditambahkan ke Cart Schema
+    Cart Schema menampung data user, pesanan, dan waktu pemesanan
 */
 const {Schema, model} = require('mongoose')
 

@@ -1,3 +1,6 @@
+<!-- /dashboard 
+    Tampilan list menu pada dashboard
+-->
 <main id="site-main">
 
     <a class="add-menu">
@@ -214,6 +217,7 @@
      * @param {boolean} asc Determines if the sorting will be in ascending
      */
 
+    // Sort data table berdasarkan string
     function sortTableByColumn(table, column, asc = true){
         const dirModifier = asc ? 1 : -1;
         const tBody = table.tBodies[0];
@@ -241,6 +245,7 @@
         table.querySelector(`th:nth-child(${ column + 1 })`).classList.toggle("th-sort-desc", !asc);
     }
 
+    // Sort data table berdasarkan angka
     function sortTableByColumnNumerical(table, column, asc = true){
         const dirModifier = asc ? 1 : -1;
         const tBody = table.tBodies[0];
@@ -270,8 +275,7 @@
         table.querySelector(`th:nth-child(${ column + 1 })`).classList.toggle("th-sort-desc", !asc);
     }
 
-    // sortTableByColumn(document.querySelector("table"), 1, true);
-
+    // Aktivasi fungsi sorting pada header table
     document.querySelectorAll(".menu-table th").forEach(headerCell => {
         headerCell.addEventListener("click", () => {
             const tableElement = headerCell.parentElement.parentElement.parentElement;
@@ -294,7 +298,6 @@
             e.preventDefault();
 
             // Dapatkan ID dan nama menu dari data-name atribut pada elemen terkait
-            // const menuID = e.currentTarget.closest('tr').querySelector('td[data-id]').dataset.id;
             const menuID = e.currentTarget.getAttribute('data-id');
             const menuName = e.currentTarget.closest('tr').querySelector('td[data-name]').dataset.name;
 
@@ -334,7 +337,6 @@
     // Event listener untuk tombol add-menu-btn
     document.querySelector('.add-menu-btn').addEventListener('click', () => {
         // Tampilkan new-menu-container
-        // const newMenuContainer = document.querySelector('.new-menu-container');
 
         // Tampilkan overlay
         const overlay = document.querySelector('.overlay');
@@ -352,7 +354,6 @@
     // Event listener untuk tombol add-menu
     document.querySelector('.add-menu').addEventListener('click', () => {
         // Tampilkan new-menu-container
-        // const newMenuContainer = document.querySelector('.new-menu-container');
 
         // Tampilkan overlay
         const overlay = document.querySelector('.overlay');
@@ -401,8 +402,6 @@
     // Event listener untuk tombol "Save"
     const saveButton = document.querySelector(".save-btn-menu");
     saveButton.addEventListener("click", sendQueuedImagesToServer);
-
-    // const controller = require('../controllers/menuController');
 
     function saveMenuToServer(path) {
         const name = document.querySelector('input[name="name"]').value;
@@ -521,8 +520,6 @@
     function uploadImage2(){
         let imgLink2 = URL.createObjectURL(inputFile2.files[0]);
         imageView2.style.backgroundImage = `url(${imgLink2})`;
-        // imageView.textContent = "";
-        // imageView.style.border = 0;
 
         queuedImage2 = inputFile2.files[0];
     }
@@ -540,7 +537,6 @@
 
     // Event listener untuk tombol "Save"
     const saveButton2 = document.querySelector(".save-btn-menu2");
-    // saveButton2.addEventListener("click", sendQueuedImagesToServer2);
 
     saveButton2.addEventListener("click", () => {
         if (queuedImage2 === null){
@@ -560,9 +556,6 @@
         const element = document.querySelector('.menu-update[update-id]');
 
         // Get the value of the update-id attribute
-        // const id = element.getAttribute('update-id');
-        // const id = document.querySelector('input[name=id2]').value;
-        // console.log(id)
         const id = document.querySelector('.update-menu-container').dataset.menuIDdb;
         const name = document.querySelector('input[name="name2"]').value;
         const image = path;

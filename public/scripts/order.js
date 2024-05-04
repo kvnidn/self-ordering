@@ -11,23 +11,17 @@ let listProducts = [];
 
 let cartItems = [];
 
+// Open shopping cart
 iconCart.addEventListener('click', () => {
     body.classList.toggle('showCart')
 })
 
+// Close shopping cart
 closeCart.addEventListener('click', () => {
     body.classList.toggle('showCart')
 })
 
-// const checkout = () => {
-//     if (cartCount === 0) {
-//         alert("Nothing to purchase");
-//     } else {
-//         console.log(cartItems);
-//         removeItem();
-//     }
-// }
-
+// Clear shopping cart and save cart data to MongoDB
 const checkout = () => {
     try {
         const username = document.getElementById('username').textContent;
@@ -103,10 +97,8 @@ const checkout = () => {
         }
     };
 
-
+// Clear shopping cart
 const removeItem = () => {
-    // alert("Processing......");
-    // alert("Done");
     cartCount = 0;
     cartItems = []
     document.getElementById('cartCount').textContent = cartCount;
@@ -116,14 +108,14 @@ const removeItem = () => {
 };
 
 
-// PROMOTION
+// Initial data fetching and menu rendering for order page
 
 const menuTypes = ['Promotion', 'Ala Carte', 'Sides', 'Beverages', 'Desserts', 'Cafe'];
 
 menuTypes.forEach(type => {
     const menuElement = document.getElementById(`menu-${type.toLowerCase()}`);
 
-    fetch('/menus') // Assuming this endpoint returns menu data
+    fetch('/menus')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -131,14 +123,11 @@ menuTypes.forEach(type => {
             return response.json();
         })
         .then(menuData => {
-            // console.log("Menu data fetched successfully:", menuData);
             const typeData = menuData.filter(item => item.type.toLowerCase() === type.toLowerCase());
 
-            // console.log("Type Data for", type, ":", typeData);
             typeData.forEach((item, index) => {
                 if (index % 3 === 0) {
                     const newLine = document.createElement("ul");
-                    // newLine.classList.add(type === "Promotion" || type === "Sides" || type === "Beverages" ? "box-1-1-1" : "box-1-2-1");
                     menuElement.appendChild(newLine);
                 }
 
@@ -161,6 +150,7 @@ menuTypes.forEach(type => {
                 const current = menuElement.lastChild;
                 current.appendChild(listItem);
 
+                // Add to cart button for each menu card
                 listItem.addEventListener('click', (event) => {
                     let positionClick = event.target;
                     if (positionClick.classList.contains('addCart')) {
@@ -185,6 +175,7 @@ menuTypes.forEach(type => {
     });
 
 
+// Data fetching and menu rendering for search bar filtering
 const searchFetch = (keyword) => {
     const menuTypes = ['Promotion', 'Ala Carte', 'Sides', 'Beverages', 'Desserts', 'Cafe'];
     
@@ -380,6 +371,7 @@ const showAlert = (item) => {
     document.getElementById('cartCountTotal').textContent = cartCount + ' item(s)';
 };
 
+// Update shopping cart display
 const updateCartDisplay = () => {
     listCartHTML.innerHTML = ''; // Clear the existing cart items
 
@@ -452,7 +444,7 @@ const updateCartDisplay = () => {
     document.getElementById('cartCountTotal').textContent = cartCountTotal + ' item(s)';
 };
 
-
+// Update quantity in shopping cart
 const updateQuantity = (itemName, change) => {
     const itemToUpdate = cartItems.find(item => item.name === itemName);
 

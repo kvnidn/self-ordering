@@ -1,5 +1,6 @@
 /*
-    Menu Schema untuk database MongoDB
+    Menu Schema untuk informasi menu
+    Nama item, image path, harga, dan tipenya
 */
 const {Schema, model} = require('mongoose')
 
