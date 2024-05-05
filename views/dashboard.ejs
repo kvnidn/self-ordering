@@ -369,10 +369,10 @@
     })
 
     // Variabel untuk menampung gambar yang akan diunggah
+    // Variable to hold the uploaded image
     let queuedImage = null;
 
-    // Event listener untuk upload image
-
+    // Event listener for uploading an image
     const dropArea = document.getElementById("drop-area");
     const inputFile = document.getElementById("input-file");
     const imageView = document.getElementById("img-view");
@@ -380,35 +380,44 @@
     inputFile.addEventListener("change", uploadImage);
 
     function uploadImage(){
+        // Create a URL for the selected image
         let imgLink = URL.createObjectURL(inputFile.files[0]);
         imageView.style.backgroundImage = `url(${imgLink})`;
         imageView.textContent = "";
         // imageView.style.border = 0;
 
+        // Store the selected image
         queuedImage = inputFile.files[0];
     }
 
+    // Prevent default behavior when dragging over the drop area
     dropArea.addEventListener("dragover", function(e){
         e.preventDefault();
     });
 
+    // Event listener for dropping an image
     dropArea.addEventListener("drop", function(e){
         e.preventDefault();
 
         // Menambahkan gambar yang di-drop ke dalam queuedImage
+        // Add the dropped image to the queue
         uploadImage();
     })
 
     // Event listener untuk tombol "Save"
+    // Event listener for the "Save" button
     const saveButton = document.querySelector(".save-btn-menu");
     saveButton.addEventListener("click", sendQueuedImagesToServer);
 
+    // Function to save the menu to the server
     function saveMenuToServer(path) {
+        // Get menu details from the form
         const name = document.querySelector('input[name="name"]').value;
         const image = path;
         const price = document.querySelector('input[name="price"]').value;
         const type = document.querySelector('select[name="type"]').value;
 
+        // Send a POST request to save the menu
         fetch('/menus', {
             method: 'POST',
             headers: {
@@ -418,6 +427,7 @@
         })
 
         .then(response => {
+            // Reload the page if the request is successful
             if (response.status !== 200) throw Error(response.statusText);
             location.reload();
         })
@@ -427,8 +437,10 @@
         })
     }
 
+    // Function to send the queued images to the server
     function sendQueuedImagesToServer() {
         // Pastikan ada gambar yang dipilih sebelum mengirim
+        // Ensure an image is selected before sending
         if (!queuedImage) {
             console.error("No image selected.");
             return;
@@ -437,24 +449,28 @@
         const formData = new FormData();
 
         // Menambahkan gambar yanga da di queuedImage ke dalam formData
+        // Add the queued image for the FormData object
         formData.append("file", queuedImage);
 
         // Mengirim formData ke server
-        
+        // Send the FormData to the server
         fetch("/dashboard/upload", {
             method: "POST",
             body: formData
         })
 
         .then(response => {
+            // Process the response
             if (response.status !== 200) throw Error(response.statusText);
             return response.text();
         })
 
         .then(data => {
             // Data di sini akan berisi path file yang dikirim kembali oleh server
+            // Concatenate the server response to form the image path
             pathfile = "../assets/menu/uploads/" + data;
 
+            // Save the mnu with the image path
             saveMenuToServer(pathfile);
         })
 
@@ -465,11 +481,13 @@
     }
 
     // Event listener untuk tombol edit menu
+    // Event listener for the "Edit Menu" button
     document.querySelectorAll('.menu-update').forEach(updateBtn => {
         updateBtn.addEventListener('click', (e) => {
             e.preventDefault();
 
             // Ambil data menu dari tabel yang sesuai dengan ID yang dipilih
+            // Get the menu data from the table row corresponding to the selected ID
             const menuRow = e.currentTarget.closest('tr');
             const menuID = menuRow.querySelector('td:nth-child(1)').textContent.trim();
             const menuIDNumber = parseFloat(menuID)
@@ -484,6 +502,7 @@
             const menuImageSrc = menuRow.querySelector('img').getAttribute('src');
 
             // Isi formulir update menu dengan data yang relevan
+            // Fill the update menu form with relevant data
             document.querySelector('input[name="id2"]').value = menuIDNumber;
             document.querySelector('input[name="name2"]').value = menuName;
             document.querySelector('input[name="price2"]').value = menuPriceNumber;
@@ -491,26 +510,30 @@
             document.querySelector('#img-view2').style.backgroundImage = `url(${menuImageSrc})`;
 
             // Tampilkan overlay
+            // Show the overlay
             const overlay = document.querySelector('.overlay');
             overlay.style.top = "0%";
             overlay.style.opacity = "1";
             overlay.classList.add("active");
 
             // Tampilkan kontainer update menu
+            // Show the update menu container
             const updateMenuContainer = document.querySelector('.update-menu-container');
             updateMenuContainer.style.display = 'block';
             updateMenuContainer.style.top = '50%';
             updateMenuContainer.style.transform = 'translate(-50%, -50%)';
 
+            // Set the dataset with the menu ID from the database
             updateMenuContainer.dataset.menuIDdb = menuIDdb;
         });
     });
 
     // Variabel untuk menampung gambar yang akan diunggah
+    // Variable to hold the uploaded image (for updating menu)
     let queuedImage2 = null;
 
     // Event listener untuk upload image
-
+    // Event listener for uploading an image (for updating menu)
     const dropArea2 = document.getElementById("view-area");
     const inputFile2 = document.getElementById("input-file2");
     const imageView2 = document.getElementById("img-view2");
@@ -518,39 +541,49 @@
     inputFile2.addEventListener("change", uploadImage2);
 
     function uploadImage2(){
+        // Create a URL for the selected image
         let imgLink2 = URL.createObjectURL(inputFile2.files[0]);
         imageView2.style.backgroundImage = `url(${imgLink2})`;
 
+        // Store the selected image
         queuedImage2 = inputFile2.files[0];
     }
 
+    // Prevent default behavior when dragging over the drop area
     dropArea2.addEventListener("dragover", function(e){
         e.preventDefault();
     });
 
+    // Event listener for dropping an image
     dropArea2.addEventListener("drop", function(e){
         e.preventDefault();
 
         // Menambahkan gambar yang di-drop ke dalam queuedImage
+        // Add the dropped image to the queue
         uploadImage2();
     })
 
     // Event listener untuk tombol "Save"
+    // Event listener for the "Save" button of update menu
     const saveButton2 = document.querySelector(".save-btn-menu2");
 
     saveButton2.addEventListener("click", () => {
         if (queuedImage2 === null){
+            // If no new image is selected, use the existing one
             var backgroundImageValue = document.querySelector('#img-view2').style.backgroundImage;
             backgroundImage = backgroundImageValue.replace('url("', '').replace('")', '');
             console.log(backgroundImage);
 
+            // Update the menu with the existing image
             updateMenuToServer(backgroundImage);
         }
         else{
+            // If a new image is selected, send it to the server
             sendQueuedImagesToServer2();
         }
     });
 
+    // Function to update the menu on the server
     function updateMenuToServer(path) {
         // Select the element by class name and attribute
         const element = document.querySelector('.menu-update[update-id]');
@@ -562,6 +595,7 @@
         const price = document.querySelector('input[name="price2"]').value;
         const type = document.querySelector('select[name="type2"]').value;
 
+        // Create a request body with the menu details
         const requestBody = {
             id: id,
             name: name,
@@ -569,6 +603,7 @@
             image: image,
             type: type
         };
+
         // Send a PUT request to update the menu item
         fetch(`/menus/${id}`, {
             method: 'PUT',
@@ -578,6 +613,7 @@
             body: JSON.stringify(requestBody)
         })
         .then(response => {
+            // If the request is successful, reload the page
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
@@ -592,8 +628,10 @@
         });
     }
 
+    // Function to send queued images to the server
     function sendQueuedImagesToServer2() {
         // Pastikan ada gambar yang dipilih sebelum mengirim
+        // Ensure an image is selected before sending
         if (!queuedImage2) {
             console.error("No image selected.");
             return;
@@ -602,24 +640,28 @@
         const formData = new FormData();
 
         // Menambahkan gambar yanga da di queuedImage ke dalam formData
+        // Add the queued image to the FormData object
         formData.append("file", queuedImage2);
 
         // Mengirim formData ke server
-        
+        // Send the FormData to the server
         fetch("/dashboard/upload", {
             method: "POST",
             body: formData
         })
 
         .then(response => {
+            // Process the response
             if (response.status !== 200) throw Error(response.statusText);
             return response.text();
         })
 
         .then(data => {
             // Data di sini akan berisi path file yang dikirim kembali oleh server
+            // Concatenate the server response to form the image path
             pathfile = "../assets/menu/uploads/" + data;
 
+            // Update the menu with the new image path
             updateMenuToServer(pathfile);
         })
 
