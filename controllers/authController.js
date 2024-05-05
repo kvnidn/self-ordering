@@ -10,20 +10,20 @@ const maxAge = 5 * 24 * 60 * 60;
 
 // ============== FOR ADDING ACCOUNT ==================
 
-// const newAdmin = new User({
-//     username: 'admin',
-//     email: 'admin_doang@gmail.com',
-//     password: 'ada_ada_aja_lu',
-//     role: 'admin',
-//   });
+const newAdmin = new User({
+    username: 'admin',
+    email: 'admin@mcdini.com',
+    password: '12345',
+    role: 'admin',
+  });
   
-// newAdmin.save()
-// .then(admin => {
-//     console.log('New admin created:', admin);
-// })
-// .catch(err => {
-//     console.error('Error creating admin:', err);
-// });
+newAdmin.save()
+.then(admin => {
+    console.log('New admin created:', admin);
+})
+.catch(err => {
+    console.error('Error creating admin:', err);
+});
 
 // =======================================================
 
